@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { Button } from "../../components/ui/button";
 import { ActualitsPourLesSubsection } from "./sections/ActualitsPourLesSubsection";
 import { FooterSubsection } from "./sections/FooterSubsection";
 import { HeroSectionSubsection } from "./sections/HeroSectionSubsection";

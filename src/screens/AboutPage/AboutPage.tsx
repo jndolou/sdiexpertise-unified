@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "../../components/layout";
 import { Card, CardContent } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
 import { ShieldCheckIcon, UsersIcon, AwardIcon, TargetIcon } from "lucide-react";
 
 const valuesData = [
