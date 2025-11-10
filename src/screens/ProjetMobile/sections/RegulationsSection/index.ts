@@ -1,0 +1,1 @@
+export { RegulationsSection } from "./RegulationsSection";

@@ -1,0 +1,198 @@
+import {
+  ChevronRightIcon,
+  DollarSignIcon,
+  ShoppingCartIcon,
+  UserIcon,
+  ZapIcon,
+} from "lucide-react";
+import React from "react";
+import { Button } from "../../../../components/ui/button";
+
+const navigationLinks = [
+  { label: "Page principale", hasChevron: false },
+  { label: "Accès pro", hasChevron: false },
+  { label: "Plan du site", hasChevron: false },
+  { label: "Zones d'interventions", hasChevron: true },
+  { label: "Tous nos services", hasChevron: true },
+  { label: "Ordre de mission", hasChevron: false },
+  { label: "Mon projet", hasChevron: false },
+  { label: "Ressources", hasChevron: false },
+  { label: "Actualités", hasChevron: false },
+  { label: "Qui sommes nous ?", hasChevron: false },
+];
+
+const utilityLinks = [
+  { icon: ZapIcon, label: "Simuler mon DPE" },
+  { icon: DollarSignIcon, label: "Estimer la valeur de mon bien" },
+];
+
+const legalLinks = ["Mentions légales", "Cookies", "CGV"];
+
+export const FooterSection = (): JSX.Element => {
+  return (
+    <footer className="flex flex-col w-full items-start gap-12 pt-12 pb-32 px-8 bg-transparent rounded-[16px_16px_0px_0px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[16px_16px_0px_0px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none relative">
+      <div className="flex items-center gap-2 w-full">
+        <img
+          className="w-[219px] h-[60px] object-cover"
+          alt="Logo principal"
+          src="/logo-principal-violet-7c5ed6-2x-1.png"
+        />
+      </div>
+
+      <nav className="flex flex-col items-start gap-6 w-full">
+        {navigationLinks.map((link, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <div className="flex items-center gap-1.5 flex-1">
+              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                {link.label}
+              </div>
+            </div>
+            {link.hasChevron && <ChevronRightIcon className="w-4 h-4" />}
+          </div>
+        ))}
+      </nav>
+
+      <div className="flex items-start justify-between w-full">
+        <Button
+          variant="ghost"
+          className="inline-flex items-center gap-1 h-auto p-0 hover:bg-transparent"
+        >
+          <UserIcon className="w-4 h-4" />
+          <div className="mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] whitespace-nowrap [font-style:var(--titre-3-font-style)]">
+            Mon Espace
+          </div>
+        </Button>
+
+        <Button
+          variant="ghost"
+          className="inline-flex items-center gap-1 h-auto p-0 hover:bg-transparent"
+        >
+          <ShoppingCartIcon className="w-4 h-4" />
+          <div className="mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] whitespace-nowrap [font-style:var(--titre-3-font-style)]">
+            Mon Panier
+          </div>
+        </Button>
+      </div>
+
+      <div className="inline-flex items-center gap-[15px]">
+        <Button className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 rounded-[62px] overflow-hidden border-[none] shadow-[0px_-1.85px_1.85px_#ececec,inset_0px_1.85px_1.85px_#ffffff] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(145deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[62px] before:[background:linear-gradient(169deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_36%,rgba(170,127,251,1)_68%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none relative">
+          <div className="[font-family:'Ubuntu',Helvetica] font-medium text-[#5d3ca4] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
+            Contactez-nous
+          </div>
+        </Button>
+
+        <Button className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324]">
+          <div className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
+            Obtenir un devis
+          </div>
+        </Button>
+      </div>
+
+      <div className="flex flex-col items-start justify-center gap-[23px] w-full">
+        {utilityLinks.map((link, index) => (
+          <Button
+            key={index}
+            variant="ghost"
+            className="flex items-center gap-1.5 h-auto p-0 hover:bg-transparent"
+          >
+            <link.icon className="w-5 h-5" />
+            <div className="flex justify-center items-center gap-1">
+              <div className="flex gap-1 flex-1 items-center">
+                <div className="flex-1 mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
+                  {link.label}
+                </div>
+              </div>
+            </div>
+          </Button>
+        ))}
+      </div>
+
+      <div className="flex flex-col items-start gap-8 w-full">
+        <div className="mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
+          Contactez-nous
+        </div>
+
+        <div className="flex flex-col items-start gap-4 w-full">
+          <div className="flex items-start gap-4 w-full">
+            <div className="inline-flex flex-col items-start gap-2">
+              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                Lundi à vendredi
+              </div>
+
+              <div className="font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-[length:var(--paragraphe-2-desktop-font-size)] leading-[var(--paragraphe-2-desktop-line-height)] text-dark tracking-[var(--paragraphe-2-desktop-letter-spacing)] whitespace-nowrap [font-style:var(--paragraphe-2-desktop-font-style)]">
+                8:00 - 19:00
+              </div>
+            </div>
+
+            <div className="flex flex-col items-start gap-2 flex-1">
+              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] [font-style:var(--parahraphe-3-font-style)]">
+                Samedi
+              </div>
+
+              <div className="font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-[length:var(--paragraphe-2-desktop-font-size)] leading-[var(--paragraphe-2-desktop-line-height)] text-dark tracking-[var(--paragraphe-2-desktop-letter-spacing)] whitespace-nowrap [font-style:var(--paragraphe-2-desktop-font-style)]">
+                9:00 - 18:00
+              </div>
+            </div>
+          </div>
+
+          <div className="inline-flex items-start gap-4">
+            <div className="inline-flex flex-col items-start gap-2">
+              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                Par téléphone
+              </div>
+
+              <div className="font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-dark text-[length:var(--paragraphe-2-desktop-font-size)] tracking-[var(--paragraphe-2-desktop-letter-spacing)] leading-[var(--paragraphe-2-desktop-line-height)] whitespace-nowrap [font-style:var(--paragraphe-2-desktop-font-style)]">
+                01 71 68 17 97
+              </div>
+
+              <div className="font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-dark text-[length:var(--paragraphe-2-desktop-font-size)] tracking-[var(--paragraphe-2-desktop-letter-spacing)] leading-[var(--paragraphe-2-desktop-line-height)] whitespace-nowrap [font-style:var(--paragraphe-2-desktop-font-style)]">
+                06 79 87 60 08
+              </div>
+            </div>
+
+            <div className="inline-flex flex-col items-start gap-2">
+              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                Par mail
+              </div>
+
+              <div className="font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-dark text-[length:var(--paragraphe-2-desktop-font-size)] tracking-[var(--paragraphe-2-desktop-letter-spacing)] leading-[var(--paragraphe-2-desktop-line-height)] whitespace-nowrap [font-style:var(--paragraphe-2-desktop-font-style)]">
+                email@entreprise.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-start gap-4 w-full mb-[-20.00px]">
+        <div className="flex items-start justify-center gap-4 w-full">
+          {legalLinks.map((link, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && (
+                <div className="mt-[-1.00px] [font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-[16.8px] whitespace-nowrap">
+                  |
+                </div>
+              )}
+              <Button
+                variant="ghost"
+                className="inline-flex justify-center items-center gap-1 h-auto p-0 hover:bg-transparent"
+              >
+                <div className="inline-flex gap-1 items-center">
+                  <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] text-center tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                    {link}
+                  </div>
+                </div>
+              </Button>
+            </React.Fragment>
+          ))}
+        </div>
+
+        <div className="font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] text-center tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] [font-style:var(--parahraphe-3-font-style)] w-full">
+          ©2025 SDIExpertise®
+        </div>
+      </div>
+    </footer>
+  );
+};

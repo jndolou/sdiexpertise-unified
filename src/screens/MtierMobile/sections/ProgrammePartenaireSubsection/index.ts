@@ -1,0 +1,1 @@
+export { ProgrammePartenaireSubsection } from "./ProgrammePartenaireSubsection";

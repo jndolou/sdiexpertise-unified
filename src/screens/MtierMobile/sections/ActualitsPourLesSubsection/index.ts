@@ -1,0 +1,1 @@
+export { ActualitsPourLesSubsection } from "./ActualitsPourLesSubsection";
