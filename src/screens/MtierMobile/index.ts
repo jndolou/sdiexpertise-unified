@@ -1,0 +1,1 @@
+export { MtierMobile } from "./MtierMobile";

@@ -1,0 +1,1 @@
+export { NewsFilterSection } from "./NewsFilterSection";

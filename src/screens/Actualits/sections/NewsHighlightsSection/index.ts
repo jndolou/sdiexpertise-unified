@@ -1,0 +1,1 @@
+export { NewsHighlightsSection } from "./NewsHighlightsSection";

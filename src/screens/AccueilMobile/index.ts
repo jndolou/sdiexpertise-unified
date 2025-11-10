@@ -1,0 +1,1 @@
+export { AccueilMobile } from "./AccueilMobile";
