@@ -6,6 +6,7 @@ import { FooterSubsection } from "../../components/sections/FooterSubsection";
 import { HeroSectionSubsection } from "../../components/sections/HeroSectionSubsection";
 import { IlsNousFontConfianceSubsection } from "../../components/sections/IlsNousFontConfianceSubsection";
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
+import { NosExpertisesSubsection } from "../../components/sections/NosExpertisesSubsection";
 import { PourquoiCrerUnSubsection } from "../../components/sections/PourquoiCrerUnSubsection";
 import { RencontronsNousSubsection } from "../../components/sections/RencontronsNousSubsection";
 import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
@@ -26,6 +27,7 @@ export const ProPage = (): JSX.Element => {
 
         <DcouvrirNotreSubsection />
         <IlsNousFontConfianceSubsection />
+        <NosExpertisesSubsection />
         <PourquoiCrerUnSubsection />
         <ActualitsPourLesSubsection />
         <RencontronsNousSubsection />
