@@ -1,1 +1,11 @@
 export { GoogleRating } from "./GoogleRating";
+export { ExpertiseSection } from "./ExpertiseSection";
+export { FeaturedArticles } from "./FeaturedArticles";
+export { DiagnosticsSection } from "./DiagnosticsSection";
+export { QuoteSection } from "./QuoteSection";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { NewsletterSection } from "./NewsletterSection";
+export { Footer } from "./Footer";
+export { TrustSection } from "./TrustSection";
+export { WhyCreateProSection } from "./WhyCreateProSection";
+export { MeetUsSection } from "./MeetUsSection";
