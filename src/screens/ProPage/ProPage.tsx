@@ -1,16 +1,12 @@
 import React from "react";
 import { Header } from "../../components/layout";
 import { ActualitsPourLesSubsection } from "../../components/sections/ActualitsPourLesSubsection";
-import { CeQueDisentNosSubsection } from "../../components/sections/CeQueDisentNosSubsection";
 import { DcouvrirNotreSubsection } from "../../components/sections/DcouvrirNotreSubsection";
 import { FooterSubsection } from "../../components/sections/FooterSubsection";
 import { HeroSectionSubsection } from "../../components/sections/HeroSectionSubsection";
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
-import { NosSubsection } from "../../components/sections/NosSubsection";
 import { NosWrapperSubsection } from "../../components/sections/NosWrapperSubsection";
 import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
-import { VotreDevisEnSubsection } from "../../components/sections/VotreDevisEnSubsection";
-import { VotreProjetSubsection } from "../../components/sections/VotreProjetSubsection";
 
 export const ProPage = (): JSX.Element => {
   return (
@@ -26,12 +22,8 @@ export const ProPage = (): JSX.Element => {
         <HeroSectionSubsection />
 
         <DcouvrirNotreSubsection />
-        <VotreProjetSubsection />
         <ActualitsPourLesSubsection />
         <NosWrapperSubsection />
-        <NosSubsection />
-        <VotreDevisEnSubsection />
-        <CeQueDisentNosSubsection />
         <NewsletterSubsection />
         <FooterSubsection />
       </main>
