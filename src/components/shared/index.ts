@@ -7,3 +7,4 @@ export { TestimonialsSection } from "./TestimonialsSection";
 export { NewsletterSection } from "./NewsletterSection";
 export { Footer } from "./Footer";
 export { TrustSection } from "./TrustSection";
+export { WhyCreateProSection } from "./WhyCreateProSection";
