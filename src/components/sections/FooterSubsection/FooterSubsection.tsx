@@ -6,19 +6,20 @@ import {
   ZapIcon,
 } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../ui/button";
 
 const navigationLinks = [
-  { label: "Page principale", hasChevron: false },
-  { label: "Accès pro", hasChevron: false },
-  { label: "Plan du site", hasChevron: false },
-  { label: "Zones d'interventions", hasChevron: true },
-  { label: "Tous nos services", hasChevron: true },
-  { label: "Ordre de mission", hasChevron: false },
-  { label: "Mon projet", hasChevron: false },
-  { label: "Ressources", hasChevron: false },
-  { label: "Actualités", hasChevron: false },
-  { label: "Qui sommes nous ?", hasChevron: false },
+  { label: "Page principale", hasChevron: false, href: "/" },
+  { label: "Accès pro", hasChevron: false, href: "/pro" },
+  { label: "Plan du site", hasChevron: false, href: "#" },
+  { label: "Zones d'interventions", hasChevron: true, href: "/ville" },
+  { label: "Tous nos services", hasChevron: true, href: "/services" },
+  { label: "Ordre de mission", hasChevron: false, href: "#" },
+  { label: "Mon projet", hasChevron: false, href: "/projet" },
+  { label: "Ressources", hasChevron: false, href: "/ressources" },
+  { label: "Actualités", hasChevron: false, href: "/actualites" },
+  { label: "Qui sommes nous ?", hasChevron: false, href: "/about" },
 ];
 
 const legalLinks = [
@@ -40,8 +41,9 @@ export const FooterSubsection = (): JSX.Element => {
 
       <nav className="flex flex-col items-start gap-6 relative self-stretch w-full flex-[0_0_auto]">
         {navigationLinks.map((link, index) => (
-          <div
+          <Link
             key={index}
+            to={link.href}
             className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto] cursor-pointer"
           >
             <div
@@ -55,7 +57,7 @@ export const FooterSubsection = (): JSX.Element => {
             {link.hasChevron && (
               <ChevronRightIcon className="relative w-4 h-4" />
             )}
-          </div>
+          </Link>
         ))}
       </nav>
 
