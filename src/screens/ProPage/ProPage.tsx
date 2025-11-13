@@ -7,6 +7,7 @@ import { HeroSectionSubsection } from "../../components/sections/HeroSectionSubs
 import { IlsNousFontConfianceSubsection } from "../../components/sections/IlsNousFontConfianceSubsection";
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
 import { PourquoiCrerUnSubsection } from "../../components/sections/PourquoiCrerUnSubsection";
+import { RencontronsNousSubsection } from "../../components/sections/RencontronsNousSubsection";
 import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
 
 export const ProPage = (): JSX.Element => {
@@ -26,6 +27,7 @@ export const ProPage = (): JSX.Element => {
         <IlsNousFontConfianceSubsection />
         <PourquoiCrerUnSubsection />
         <ActualitsPourLesSubsection />
+        <RencontronsNousSubsection />
         <NewsletterSubsection />
         <FooterSubsection />
       </main>
