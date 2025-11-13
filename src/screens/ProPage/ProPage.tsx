@@ -28,11 +28,11 @@ export const ProPage = (): JSX.Element => {
         <HeroSectionSubsection />
 
         <JeLoueJeVendLaSubsection />
+        <DcouvrirNotreSubsection />
         <LmentsDeRassuranceSubsection />
         <VotreProjetSubsection />
         <ActualitsPourLesSubsection />
         <NosWrapperSubsection />
-        <DcouvrirNotreSubsection />
         <NosSubsection />
         <VotreDevisEnSubsection />
         <CeQueDisentNosSubsection />
