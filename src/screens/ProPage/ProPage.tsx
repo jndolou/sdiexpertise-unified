@@ -5,7 +5,6 @@ import { DcouvrirNotreSubsection } from "../../components/sections/DcouvrirNotre
 import { FooterSubsection } from "../../components/sections/FooterSubsection";
 import { HeroSectionSubsection } from "../../components/sections/HeroSectionSubsection";
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
-import { NosWrapperSubsection } from "../../components/sections/NosWrapperSubsection";
 import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
 
 export const ProPage = (): JSX.Element => {
@@ -23,7 +22,6 @@ export const ProPage = (): JSX.Element => {
 
         <DcouvrirNotreSubsection />
         <ActualitsPourLesSubsection />
-        <NosWrapperSubsection />
         <NewsletterSubsection />
         <FooterSubsection />
       </main>
