@@ -9,6 +9,7 @@ import { NewsletterSubsection } from "../../components/sections/NewsletterSubsec
 import { PourquoiCrerUnSubsection } from "../../components/sections/PourquoiCrerUnSubsection";
 import { RencontronsNousSubsection } from "../../components/sections/RencontronsNousSubsection";
 import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
+import { AssuranceElementsSection } from "../VilleMobile/sections/AssuranceElementsSection";
 
 export const ProPage = (): JSX.Element => {
   return (
@@ -28,6 +29,7 @@ export const ProPage = (): JSX.Element => {
         <PourquoiCrerUnSubsection />
         <ActualitsPourLesSubsection />
         <RencontronsNousSubsection />
+        <AssuranceElementsSection />
         <NewsletterSubsection />
         <FooterSubsection />
       </main>
