@@ -5,7 +5,6 @@ import { CeQueDisentNosSubsection } from "../../components/sections/CeQueDisentN
 import { DcouvrirNotreSubsection } from "../../components/sections/DcouvrirNotreSubsection";
 import { FooterSubsection } from "../../components/sections/FooterSubsection";
 import { HeroSectionSubsection } from "../../components/sections/HeroSectionSubsection";
-import { JeLoueJeVendLaSubsection } from "../../components/sections/JeLoueJeVendLaSubsection";
 import { LmentsDeRassuranceSubsection } from "../../components/sections/LmentsDeRassuranceSubsection";
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
 import { NosSubsection } from "../../components/sections/NosSubsection";
@@ -27,7 +26,6 @@ export const ProPage = (): JSX.Element => {
       <main className="relative w-full pt-[110px]">
         <HeroSectionSubsection />
 
-        <JeLoueJeVendLaSubsection />
         <DcouvrirNotreSubsection />
         <LmentsDeRassuranceSubsection />
         <VotreProjetSubsection />
