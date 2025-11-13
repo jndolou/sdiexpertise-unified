@@ -36,6 +36,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
           <Route path="/article" element={<PageArticle />} />
           <Route path="/actualites" element={<Actualits />} />
           <Route path="/projet" element={<ProjetMobile />} />
+          <Route path="/pro" element={<MtierMobile />} />
           <Route path="/services" element={<TousLesServices />} />
           <Route path="/ville" element={<VilleMobile />} />
         </Routes>
