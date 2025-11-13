@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Header } from "../../components/layout";
+import { GoogleRating, ExpertiseSection } from "../../components/shared";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Checkbox } from "../../components/ui/checkbox";
@@ -433,13 +434,7 @@ export const Performance = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[25px]">
-              <h3 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
-                Une expertise reconnue
-              </h3>
-
-              <img className="w-full h-auto" alt="Frame" src="/frame-337.svg" />
-            </div>
+            <ExpertiseSection titleOnly />
           </div>
         </section>
 
