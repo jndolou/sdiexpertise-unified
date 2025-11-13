@@ -5,3 +5,5 @@ export { DiagnosticsSection } from "./DiagnosticsSection";
 export { QuoteSection } from "./QuoteSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { NewsletterSection } from "./NewsletterSection";
+export { Footer } from "./Footer";
+export { TrustedBySection } from "./TrustedBySection";
