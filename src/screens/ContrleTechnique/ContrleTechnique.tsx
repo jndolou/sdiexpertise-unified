@@ -5,12 +5,12 @@ import {
   HomeIcon,
   MoreHorizontalIcon,
   ShoppingCartIcon,
-  StarIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
 import React from "react";
 import { Header } from "../../components/layout";
+import { GoogleRating } from "../../components/shared";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Checkbox } from "../../components/ui/checkbox";
@@ -202,24 +202,7 @@ export const ContrleTechnique = (): JSX.Element => {
           </div>
 
           {/* Rating Badge */}
-          <Card className="w-fit border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(224,127,63,1)_37%,rgba(224,127,63,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-0.5">
-                <div className="flex items-center gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon
-                      key={i}
-                      className="w-3 h-3 fill-current text-dark"
-                    />
-                  ))}
-                </div>
-                <span className="font-medium text-xs text-dark">4.9</span>
-              </div>
-              <p className="font-mot-en-valeur-3 font-[number:var(--mot-en-valeur-3-font-weight)] text-dark text-[length:var(--mot-en-valeur-3-font-size)] tracking-[var(--mot-en-valeur-3-letter-spacing)] leading-[var(--mot-en-valeur-3-line-height)] [font-style:var(--mot-en-valeur-3-font-style)]">
-                Sur Google
-              </p>
-            </CardContent>
-          </Card>
+          <GoogleRating variant="card" />
         </section>
 
         {/* Why Section */}

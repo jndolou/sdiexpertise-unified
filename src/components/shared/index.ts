@@ -1,0 +1,1 @@
+export { GoogleRating } from "./GoogleRating";
