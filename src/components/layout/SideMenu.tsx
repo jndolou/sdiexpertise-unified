@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { X, Home, Star, ShoppingCart, User, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 
 interface SideMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  isPro?: boolean;
 }
 
-export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, isPro = false }) => {
+export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
+  const [isPro, setIsPro] = useState(false);
   return (
     <>
       {isOpen && (
@@ -43,6 +43,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, isPro = fal
 
           <div className="flex gap-2 mb-6">
             <button
+              onClick={() => setIsPro(false)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 !isPro
                   ? "bg-[#aa7ffb] text-white"
@@ -55,6 +56,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, isPro = fal
               </span>
             </button>
             <button
+              onClick={() => setIsPro(true)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 isPro
                   ? "bg-[#7fdb9f] text-[#1c1b1b]"
