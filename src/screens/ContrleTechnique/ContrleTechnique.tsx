@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Header } from "../../components/layout";
-import { GoogleRating } from "../../components/shared";
+import { GoogleRating, ExpertiseSection } from "../../components/shared";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Checkbox } from "../../components/ui/checkbox";
@@ -363,12 +363,7 @@ export const ContrleTechnique = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="space-y-[25px]">
-              <h3 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
-                Une expertise reconnue
-              </h3>
-              <img className="w-full h-auto" alt="Frame" src="/frame-337.svg" />
-            </div>
+            <ExpertiseSection titleOnly />
           </div>
         </section>
 
