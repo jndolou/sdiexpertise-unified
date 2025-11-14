@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { X, Home, Star, ShoppingCart, User, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { ServicesMenu } from "./ServicesMenu";
 
 interface SideMenuProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface SideMenuProps {
 
 export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
   const [isPro, setIsPro] = useState(false);
+  const [showServicesMenu, setShowServicesMenu] = useState(false);
   return (
     <>
       {isOpen && (
@@ -23,7 +25,12 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col h-full p-6">
+        {showServicesMenu ? (
+          <div className="h-full p-6">
+            <ServicesMenu onBack={() => setShowServicesMenu(false)} />
+          </div>
+        ) : (
+          <div className="flex flex-col h-full p-6">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-[#aa7ffb] rounded-lg flex items-center justify-center">
@@ -71,7 +78,10 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           </div>
 
           <nav className="flex flex-col gap-1 flex-1">
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors group">
+            <button
+              onClick={() => setShowServicesMenu(true)}
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors group"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 Tous les services
               </span>
@@ -174,6 +184,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
         </div>
+        )}
       </div>
     </>
   );
