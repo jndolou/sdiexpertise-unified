@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../components/ui/button";
+import { NewsletterSection } from "../../components/shared";
 import { AvisSection } from "./sections/AvisSection";
 import { ChiffresClesSection } from "./sections/ChiffresClesSection";
 import { CitationSection } from "./sections/CitationSection";
@@ -8,7 +9,6 @@ import { ContenuWrapperSection } from "./sections/ContenuWrapperSection";
 import { DernieresEvolutionsSection } from "./sections/DernieresEvolutionsSection";
 import { EnBrefSection } from "./sections/EnBrefSection";
 import { FooterSection } from "./sections/FooterSection";
-import { NewsletterSection } from "./sections/NewsletterSection";
 import { SourcesReferencesSection } from "./sections/SourcesReferencesSection";
 import { TabBarSection } from "./sections/TabBarSection";
 
@@ -203,7 +203,7 @@ export const PageArticle = (): JSX.Element => {
       <ChiffresClesSection />
       <AvisSection />
       <SourcesReferencesSection />
-      <NewsletterSection />
+      <NewsletterSection useIconButton={false} />
       <FooterSection />
     </main>
   );
