@@ -4,6 +4,7 @@ import {
   HomeIcon,
   MenuIcon,
   ShoppingCartIcon,
+  StarIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
