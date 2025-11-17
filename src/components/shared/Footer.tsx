@@ -92,6 +92,7 @@ export const Footer = ({
           const isProPage = link.label === "Accès pro";
           const isRessources = link.label === "Ressources";
           const isProjet = link.label === "Mon projet";
+          const isActualites = link.label === "Actualités";
           const content = (
             <>
               <div className="flex items-center gap-1.5 flex-1">
@@ -144,6 +145,18 @@ export const Footer = ({
               <Link
                 key={index}
                 to="/projet"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isActualites) {
+            return (
+              <Link
+                key={index}
+                to="/actualites"
                 className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
               >
                 {content}
