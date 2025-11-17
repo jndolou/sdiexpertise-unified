@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/layout";
 import { BottomNavigation } from "../../components/shared";
 import { Badge } from "../../components/ui/badge";
@@ -190,9 +191,11 @@ export const PageRessources = (): JSX.Element => {
                 Nos experts sont là pour vous guider.
               </p>
             </div>
-            <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base">
-              Parler à un expert
-            </Button>
+            <Link to="/contact">
+              <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base">
+                Parler à un expert
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
