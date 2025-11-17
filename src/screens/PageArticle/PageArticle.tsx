@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
-import { NewsletterSection, Footer } from "../../components/shared";
+import { BottomNavigation, NewsletterSection, Footer } from "../../components/shared";
 import { AvisSection } from "./sections/AvisSection";
 import { ChiffresClesSection } from "./sections/ChiffresClesSection";
 import { CitationSection } from "./sections/CitationSection";
@@ -9,7 +9,6 @@ import { ContenuWrapperSection } from "./sections/ContenuWrapperSection";
 import { DernieresEvolutionsSection } from "./sections/DernieresEvolutionsSection";
 import { EnBrefSection } from "./sections/EnBrefSection";
 import { SourcesReferencesSection } from "./sections/SourcesReferencesSection";
-import { TabBarSection } from "./sections/TabBarSection";
 
 const decorativeShapes = [
   {
@@ -155,7 +154,7 @@ export const PageArticle = (): JSX.Element => {
 
       <Header />
 
-      <TabBarSection />
+      <BottomNavigation />
       <DernieresEvolutionsSection />
       <EnBrefSection />
       <ContenuWrapperSection />

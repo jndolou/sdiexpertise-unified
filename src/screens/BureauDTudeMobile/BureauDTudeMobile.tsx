@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { BeReadySection } from "./sections/BeReadySection";
 import { ClientCaseGuideSection } from "./sections/ClientCaseGuideSection";
 import { FeaturesSection } from "./sections/FeaturesSection";
@@ -8,7 +9,6 @@ import { HeroSection } from "./sections/HeroSection";
 import { NewsletterSection } from "./sections/NewsletterSection";
 import { OurSupportSection } from "./sections/OurSupportSection";
 import { RegulationsAndComplianceSection } from "./sections/RegulationsAndComplianceSection";
-import { TabBarSection } from "./sections/TabBarSection";
 import { WhyTheseSection } from "./sections/WhyTheseSection";
 
 const decorativeImages = [
@@ -114,9 +114,7 @@ export const BureauDTudeMobile = (): JSX.Element => {
         <FooterSection />
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <TabBarSection />
-      </div>
+      <BottomNavigation />
     </div>
   );
 };

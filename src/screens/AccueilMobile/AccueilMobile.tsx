@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { ActualitsPourLesSubsection } from "../../components/sections/ActualitsPourLesSubsection";
 import { CeQueDisentNosSubsection } from "../../components/sections/CeQueDisentNosSubsection";
 import { DcouvrirNotreSubsection } from "../../components/sections/DcouvrirNotreSubsection";
@@ -10,7 +11,6 @@ import { LmentsDeRassuranceSubsection } from "../../components/sections/LmentsDe
 import { NewsletterSubsection } from "../../components/sections/NewsletterSubsection";
 import { NosSubsection } from "../../components/sections/NosSubsection";
 import { NosWrapperSubsection } from "../../components/sections/NosWrapperSubsection";
-import { TabBarSubsection } from "../../components/sections/TabBarSubsection";
 import { VotreDevisEnSubsection } from "../../components/sections/VotreDevisEnSubsection";
 import { VotreProjetSubsection } from "../../components/sections/VotreProjetSubsection";
 
@@ -40,7 +40,7 @@ export const AccueilMobile = (): JSX.Element => {
         <FooterSubsection />
       </main>
 
-      <TabBarSubsection />
+      <BottomNavigation />
     </div>
   );
 };

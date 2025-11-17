@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { ClientCaseGuideSection } from "./sections/ClientCaseGuideSection";
 import { FeaturesSection } from "./sections/FeaturesSection";
 import { FooterSection } from "./sections/FooterSection";
@@ -8,7 +9,6 @@ import { HeroSection } from "./sections/HeroSection";
 import { NewsletterSection } from "./sections/NewsletterSection";
 import { OurSupportSection } from "./sections/OurSupportSection";
 import { RegulationsSection } from "./sections/RegulationsSection";
-import { TabBarSection } from "./sections/TabBarSection";
 import { WhyThisSection } from "./sections/WhyThisSection";
 
 const decorativeShapes = [
@@ -130,7 +130,7 @@ export const Diagnostics = (): JSX.Element => {
         <FooterSection />
       </main>
 
-      <TabBarSection />
+      <BottomNavigation />
     </div>
   );
 };
