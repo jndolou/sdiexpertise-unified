@@ -90,6 +90,7 @@ export const Footer = ({
         {navigationLinks.map((link, index) => {
           const isHomePage = link.label === "Page principale";
           const isProPage = link.label === "Accès pro";
+          const isRessources = link.label === "Ressources";
           const content = (
             <>
               <div className="flex items-center gap-1.5 flex-1">
@@ -118,6 +119,18 @@ export const Footer = ({
               <Link
                 key={index}
                 to="/pro"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isRessources) {
+            return (
+              <Link
+                key={index}
+                to="/ressources"
                 className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
               >
                 {content}
