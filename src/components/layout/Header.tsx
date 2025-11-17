@@ -14,7 +14,7 @@ export const Header = (): JSX.Element => {
             <img
               className="relative w-[170px] h-8 object-cover"
               alt="Logo horizontal"
-              src="/logo copy.png"
+              src="/logo copy copy.png"
             />
           </Link>
         </div>
