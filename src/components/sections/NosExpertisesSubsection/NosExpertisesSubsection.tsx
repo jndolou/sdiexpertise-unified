@@ -13,7 +13,7 @@ const expertiseData = [
   {
     title: "Bureau d'études",
     description: "Études techniques et conseils pour vos projets",
-    link: "#",
+    link: "/bureau-etude",
   },
   {
     title: "Bureau de contrôle",
