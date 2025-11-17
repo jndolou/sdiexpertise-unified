@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
-import { Footer } from "../../components/shared";
+import { BottomNavigation, Footer } from "../../components/shared";
 import { Card, CardContent } from "../../components/ui/card";
 import { ShieldCheckIcon, UsersIcon, AwardIcon, TargetIcon } from "lucide-react";
 
@@ -170,6 +170,7 @@ export const AboutPage = (): JSX.Element => {
       </main>
 
       <Footer />
+      <BottomNavigation />
     </div>
   );
 };

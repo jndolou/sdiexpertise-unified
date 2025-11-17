@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Header } from "../../components/layout";
-import { Footer } from "../../components/shared";
+import { BottomNavigation, Footer } from "../../components/shared";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Card, CardContent } from "../../components/ui/card";
@@ -172,6 +172,7 @@ export const ContactPage = (): JSX.Element => {
       </main>
 
       <Footer />
+      <BottomNavigation />
     </div>
   );
 };
