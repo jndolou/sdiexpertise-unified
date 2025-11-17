@@ -100,11 +100,14 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               </span>
             </Link>
 
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
+            <Link
+              to="/actualites"
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 Actualités
               </span>
-            </button>
+            </Link>
 
             <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
