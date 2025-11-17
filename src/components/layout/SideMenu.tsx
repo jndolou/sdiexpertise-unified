@@ -91,11 +91,14 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <ChevronRight className="w-5 h-5 text-[#1c1b1b] group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
+            <Link
+              to="/ressources"
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 {isPro ? "Ressources pro" : "Ressources"}
               </span>
-            </button>
+            </Link>
 
             <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
