@@ -6,6 +6,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 
 interface NavigationLink {
@@ -86,19 +87,40 @@ export const Footer = ({
       </div>
 
       <nav className="flex flex-col items-start gap-6 w-full">
-        {navigationLinks.map((link, index) => (
-          <button
-            key={index}
-            className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0 text-left"
-          >
-            <div className="flex items-center gap-1.5 flex-1">
-              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
-                {link.label}
+        {navigationLinks.map((link, index) => {
+          const isHomePage = link.label === "Page principale";
+          const content = (
+            <>
+              <div className="flex items-center gap-1.5 flex-1">
+                <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                  {link.label}
+                </div>
               </div>
-            </div>
-            {link.hasChevron && <ChevronRightIcon className="w-4 h-4" />}
-          </button>
-        ))}
+              {link.hasChevron && <ChevronRightIcon className="w-4 h-4" />}
+            </>
+          );
+
+          if (isHomePage) {
+            return (
+              <Link
+                key={index}
+                to="/"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          return (
+            <button
+              key={index}
+              className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0 text-left"
+            >
+              {content}
+            </button>
+          );
+        })}
       </nav>
 
       <div className="flex items-start justify-between w-full">
