@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { X, Home, Star, ShoppingCart, User, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { ServicesMenu } from "./ServicesMenu";
@@ -49,7 +50,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex gap-2 mb-6">
-            <button
+            <Link
+              to="/"
               onClick={() => setIsPro(false)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 !isPro
@@ -61,7 +63,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <span className="font-[Ubuntu] font-medium text-sm">
                 Page principale
               </span>
-            </button>
+            </Link>
             <button
               onClick={() => setIsPro(true)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
