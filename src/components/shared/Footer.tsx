@@ -6,6 +6,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 
 interface NavigationLink {
@@ -86,19 +87,105 @@ export const Footer = ({
       </div>
 
       <nav className="flex flex-col items-start gap-6 w-full">
-        {navigationLinks.map((link, index) => (
-          <button
-            key={index}
-            className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0 text-left"
-          >
-            <div className="flex items-center gap-1.5 flex-1">
-              <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
-                {link.label}
+        {navigationLinks.map((link, index) => {
+          const isHomePage = link.label === "Page principale";
+          const isProPage = link.label === "Accès pro";
+          const isRessources = link.label === "Ressources";
+          const isProjet = link.label === "Mon projet";
+          const isActualites = link.label === "Actualités";
+          const isContact = link.label === "Qui sommes nous ?";
+          const content = (
+            <>
+              <div className="flex items-center gap-1.5 flex-1">
+                <div className="mt-[-1.00px] font-parahraphe-3 font-[number:var(--parahraphe-3-font-weight)] text-dark text-[length:var(--parahraphe-3-font-size)] tracking-[var(--parahraphe-3-letter-spacing)] leading-[var(--parahraphe-3-line-height)] whitespace-nowrap [font-style:var(--parahraphe-3-font-style)]">
+                  {link.label}
+                </div>
               </div>
-            </div>
-            {link.hasChevron && <ChevronRightIcon className="w-4 h-4" />}
-          </button>
-        ))}
+              {link.hasChevron && <ChevronRightIcon className="w-4 h-4" />}
+            </>
+          );
+
+          if (isHomePage) {
+            return (
+              <Link
+                key={index}
+                to="/"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isProPage) {
+            return (
+              <Link
+                key={index}
+                to="/pro"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isRessources) {
+            return (
+              <Link
+                key={index}
+                to="/ressources"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isProjet) {
+            return (
+              <Link
+                key={index}
+                to="/projet"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isActualites) {
+            return (
+              <Link
+                key={index}
+                to="/actualites"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          if (isContact) {
+            return (
+              <Link
+                key={index}
+                to="/contact"
+                className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity text-left"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          return (
+            <button
+              key={index}
+              className="flex items-center justify-between w-full cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0 text-left"
+            >
+              {content}
+            </button>
+          );
+        })}
       </nav>
 
       <div className="flex items-start justify-between w-full">
@@ -122,14 +209,16 @@ export const Footer = ({
       </div>
 
       <div className="inline-flex items-center gap-[15px]">
-        <Button
-          variant="ghost"
-          className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 rounded-[62px] overflow-hidden border-[none] shadow-[0px_-1.85px_1.85px_#ececec,inset_0px_1.85px_1.85px_#ffffff] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(145deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[62px] before:[background:linear-gradient(169deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_36%,rgba(170,127,251,1)_68%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none hover:opacity-90"
-        >
-          <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#5d3ca4] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
-            {contactButtonText}
-          </span>
-        </Button>
+        <Link to="/contact">
+          <Button
+            variant="ghost"
+            className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 rounded-[62px] overflow-hidden border-[none] shadow-[0px_-1.85px_1.85px_#ececec,inset_0px_1.85px_1.85px_#ffffff] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(145deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[62px] before:[background:linear-gradient(169deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_36%,rgba(170,127,251,1)_68%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none hover:opacity-90"
+          >
+            <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#5d3ca4] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
+              {contactButtonText}
+            </span>
+          </Button>
+        </Link>
 
         <Button className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0eef4]">
           <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">

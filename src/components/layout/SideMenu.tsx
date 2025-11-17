@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { X, Home, Star, ShoppingCart, User, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { ServicesMenu } from "./ServicesMenu";
@@ -49,7 +50,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex gap-2 mb-6">
-            <button
+            <Link
+              to="/"
               onClick={() => setIsPro(false)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 !isPro
@@ -61,8 +63,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <span className="font-[Ubuntu] font-medium text-sm">
                 Page principale
               </span>
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/pro"
               onClick={() => setIsPro(true)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 isPro
@@ -74,7 +77,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <span className="font-[Ubuntu] font-medium text-sm">
                 Accès pro
               </span>
-            </button>
+            </Link>
           </div>
 
           <nav className="flex flex-col gap-1 flex-1">
@@ -88,23 +91,32 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <ChevronRight className="w-5 h-5 text-[#1c1b1b] group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
+            <Link
+              to="/ressources"
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 {isPro ? "Ressources pro" : "Ressources"}
               </span>
-            </button>
+            </Link>
 
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
+            <Link
+              to="/actualites"
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 Actualités
               </span>
-            </button>
+            </Link>
 
-            <button className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors">
+            <Link
+              to="/about"
+              className="flex items-center justify-between h-14 px-4 rounded-xl hover:bg-white/50 transition-colors"
+            >
               <span className="font-[Ubuntu] font-normal text-[#1c1b1b] text-base">
                 Qui sommes-nous ?
               </span>
-            </button>
+            </Link>
 
             <button className="flex items-center gap-3 h-14 px-4 rounded-xl hover:bg-white/50 transition-colors mt-4">
               <User className="w-5 h-5 text-[#1c1b1b]" />
@@ -124,14 +136,16 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           <div className="flex flex-col gap-3 mt-auto pt-6 border-t border-[#ebebeb]">
             {!isPro ? (
               <>
-                <Button
-                  variant="outline"
-                  className="h-12 rounded-[62px] border-[#aa7ffb] text-[#aa7ffb] hover:bg-[#aa7ffb]/10"
-                >
-                  <span className="font-[Ubuntu] font-bold text-sm">
-                    Contactez-nous
-                  </span>
-                </Button>
+                <Link to="/contact">
+                  <Button
+                    variant="outline"
+                    className="h-12 w-full rounded-[62px] border-[#aa7ffb] text-[#aa7ffb] hover:bg-[#aa7ffb]/10"
+                  >
+                    <span className="font-[Ubuntu] font-bold text-sm">
+                      Contactez-nous
+                    </span>
+                  </Button>
+                </Link>
                 <Button className="h-12 rounded-[62px] bg-[#faf8fc] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0ebf5]">
                   <span className="font-[Ubuntu] font-bold text-[#1c1b1b] text-sm">
                     Obtenir un devis

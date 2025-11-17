@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { AboutUsSection } from "./sections/AboutUsSection";
 import { AssuranceElementsSection } from "./sections/AssuranceElementsSection";
 import { FooterSection } from "./sections/FooterSection";
@@ -8,7 +9,6 @@ import { NewsSection } from "./sections/NewsSection";
 import { NewsletterSection } from "./sections/NewsletterSection";
 import { OurSimulatorsSection } from "./sections/OurSimulatorsSection";
 import { RegulationsSection } from "./sections/RegulationsSection";
-import { TabBarSection } from "./sections/TabBarSection";
 
 export const ProjetMobile = (): JSX.Element => {
   return (
@@ -31,7 +31,7 @@ export const ProjetMobile = (): JSX.Element => {
       <OurSimulatorsSection />
       <NewsletterSection />
       <FooterSection />
-      <TabBarSection />
+      <BottomNavigation />
     </div>
   );
 };

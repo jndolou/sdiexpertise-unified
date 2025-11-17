@@ -1,102 +1,170 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation, NewsletterSection, Footer } from "../../components/shared";
+import { AvisSection } from "./sections/AvisSection";
+import { ChiffresClesSection } from "./sections/ChiffresClesSection";
+import { CitationSection } from "./sections/CitationSection";
+import { ContenuSection } from "./sections/ContenuSection";
+import { ContenuWrapperSection } from "./sections/ContenuWrapperSection";
+import { DernieresEvolutionsSection } from "./sections/DernieresEvolutionsSection";
+import { EnBrefSection } from "./sections/EnBrefSection";
+import { SourcesReferencesSection } from "./sections/SourcesReferencesSection";
 
-const decorativeImages = [
+const decorativeShapes = [
   {
-    className: "absolute top-[322px] left-[108px] w-[33px] h-28",
+    top: "top-[322px]",
+    left: "left-[108px]",
+    width: "w-[33px]",
+    height: "h-28",
+    src: "/forme-d-corative-5.svg",
     alt: "Forme dcorative",
-    src: "/forme-d-corative.svg",
   },
   {
-    className: "absolute top-[1077px] left-[474px] w-[27px] h-[138px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-2.svg",
-  },
-  {
-    className: "absolute top-[2176px] left-[433px] w-[68px] h-[82px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-3.svg",
-  },
-  {
-    className: "absolute top-[2399px] left-[108px] w-[35px] h-[138px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-2.svg",
-  },
-  {
-    className: "absolute top-[3093px] left-[436px] w-[65px] h-[111px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-1.svg",
-  },
-  {
-    className: "absolute top-[3649px] left-[108px] w-12 h-[83px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-10.svg",
-  },
-  {
-    className: "absolute top-[-11676px] left-[-5160px] w-[120px] h-[121px]",
-    alt: "Forme dcorative",
+    top: "top-[1077px]",
+    left: "left-[474px]",
+    width: "w-[27px]",
+    height: "h-[138px]",
     src: "/forme-d-corative-4.svg",
-  },
-  {
-    className: "absolute top-[-11676px] left-[-5160px] w-[153px] h-[146px]",
     alt: "Forme dcorative",
-    src: "/forme-d-corative-2.svg",
   },
   {
-    className: "absolute top-[-11676px] left-[-5160px] w-[88px] h-[88px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-8.svg",
-  },
-  {
-    className: "absolute top-[-11676px] left-[-5160px] w-[120px] h-[121px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-4.svg",
-  },
-  {
-    className:
-      "absolute top-[26px] left-[334px] w-[167px] h-[200px] rounded-[34px] object-cover",
-    alt: "Polygon",
-    src: "/polygon-3.png",
-  },
-  {
-    className: "absolute top-[1656px] left-[150px] w-[135px] h-[149px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-12.svg",
-  },
-  {
-    className: "absolute top-0.5 left-[405px] w-[76px] h-[83px]",
-    alt: "Forme dcorative",
-    src: "/forme-d-corative-11.svg",
-  },
-  {
-    className: "absolute top-[1622px] left-[189px] w-[88px] h-[90px]",
-    alt: "Forme dcorative",
+    top: "top-[2176px]",
+    left: "left-[433px]",
+    width: "w-[68px]",
+    height: "h-[82px]",
     src: "/forme-d-corative-7.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[2399px]",
+    left: "left-[108px]",
+    width: "w-[35px]",
+    height: "h-[138px]",
+    src: "/forme-d-corative-4.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[3093px]",
+    left: "left-[436px]",
+    width: "w-[65px]",
+    height: "h-[111px]",
+    src: "/forme-d-corative-10.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[3649px]",
+    left: "left-[108px]",
+    width: "w-12",
+    height: "h-[83px]",
+    src: "/forme-d-corative-1.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[-11676px]",
+    left: "left-[-5160px]",
+    width: "w-[120px]",
+    height: "h-[121px]",
+    src: "/forme-d-corative-2.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[-11676px]",
+    left: "left-[-5160px]",
+    width: "w-[153px]",
+    height: "h-[146px]",
+    src: "/forme-d-corative-4.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[-11676px]",
+    left: "left-[-5160px]",
+    width: "w-[88px]",
+    height: "h-[88px]",
+    src: "/forme-d-corative-11.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[-11676px]",
+    left: "left-[-5160px]",
+    width: "w-[120px]",
+    height: "h-[121px]",
+    src: "/forme-d-corative-2.svg",
+    alt: "Forme dcorative",
+  },
+];
+
+const additionalShapes = [
+  {
+    top: "top-[26px]",
+    left: "left-[334px]",
+    width: "w-[167px]",
+    height: "h-[200px]",
+    className: "rounded-[34px] object-cover",
+    src: "/polygon-3.png",
+    alt: "Polygon",
+  },
+  {
+    top: "top-[1656px]",
+    left: "left-[150px]",
+    width: "w-[135px]",
+    height: "h-[149px]",
+    src: "/forme-d-corative-9.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-0.5",
+    left: "left-[405px]",
+    width: "w-[76px]",
+    height: "h-[83px]",
+    src: "/forme-d-corative.svg",
+    alt: "Forme dcorative",
+  },
+  {
+    top: "top-[1622px]",
+    left: "left-[189px]",
+    width: "w-[88px]",
+    height: "h-[90px]",
+    src: "/forme-d-corative-8.svg",
+    alt: "Forme dcorative",
   },
 ];
 
 export const PageArticle = (): JSX.Element => {
   return (
     <main className="overflow-hidden [background:url(..//--v4-1-0-page-article-de-blog.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(243,241,247,1)_0%,rgba(243,241,247,1)_100%)] w-full min-w-[393px] min-h-[5525px] relative">
-      <div className="absolute top-[278px] left-[-108px] w-[617px] h-[8349px]">
-        {decorativeImages.map((image, index) => (
+      <div className="absolute top-[278px] left-[-108px] w-[617px] h-[8349px] pointer-events-none">
+        {decorativeShapes.map((shape, index) => (
           <img
             key={`decorative-${index}`}
-            className={image.className}
-            alt={image.alt}
-            src={image.src}
+            className={`absolute ${shape.top} ${shape.left} ${shape.width} ${shape.height}`}
+            alt={shape.alt}
+            src={shape.src}
+          />
+        ))}
+
+        {additionalShapes.map((shape, index) => (
+          <img
+            key={`additional-${index}`}
+            className={`absolute ${shape.top} ${shape.left} ${shape.width} ${shape.height} ${shape.className || ""}`}
+            alt={shape.alt}
+            src={shape.src}
           />
         ))}
       </div>
 
       <Header />
 
-      <div className="pt-[106px]">
-        <div className="px-4 py-8">
-          <h1 className="text-2xl font-bold mb-4">Article de Blog</h1>
-          <p className="text-gray-600">Contenu de l'article...</p>
-        </div>
-      </div>
+      <BottomNavigation />
+      <DernieresEvolutionsSection />
+      <EnBrefSection />
+      <ContenuWrapperSection />
+      <CitationSection />
+      <ContenuSection />
+      <ChiffresClesSection />
+      <AvisSection />
+      <SourcesReferencesSection />
+      <NewsletterSection useIconButton={false} />
+      <Footer logoSrc="/logo-principal-violet-7c5ed6-2x-1.png" />
     </main>
   );
 };

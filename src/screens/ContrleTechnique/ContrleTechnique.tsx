@@ -5,12 +5,14 @@ import {
   HomeIcon,
   MoreHorizontalIcon,
   ShoppingCartIcon,
+  StarIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/layout";
-import { GoogleRating, ExpertiseSection } from "../../components/shared";
+import { BottomNavigation, GoogleRating, ExpertiseSection } from "../../components/shared";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Checkbox } from "../../components/ui/checkbox";
@@ -196,9 +198,11 @@ export const ContrleTechnique = (): JSX.Element => {
               contrôle technique rigoureux, objectif et réglementaire à chaque
               étape.
             </p>
-            <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base">
-              Découvrir nos missions de contrôle
-            </Button>
+            <Link to="/services">
+              <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base">
+                Découvrir nos missions de contrôle
+              </Button>
+            </Link>
           </div>
 
           {/* Rating Badge */}
@@ -292,12 +296,14 @@ export const ContrleTechnique = (): JSX.Element => {
             </div>
 
             <div className="flex justify-end">
-              <Button
-                className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.
+              <Link to="/contact">
+                <Button
+                  className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.
 85px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base"
-              >
-                Demander une mission de contrôle
-              </Button>
+                >
+                  Demander une mission de contrôle
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -598,34 +604,7 @@ export const ContrleTechnique = (): JSX.Element => {
         </div>
       </footer>
 
-      {/* Bottom Navigation */}
-      <nav className="flex items-center justify-between fixed left-0 right-0 bottom-0 z-50 rounded-[16px_16px_0px_0px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[16px_16px_0px_0px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-        <Button
-          variant="ghost"
-          className="h-auto flex-1 flex flex-col items-center gap-1 p-4 border border-solid border-transparent shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(57deg,rgba(100,255,105,0)_0%,rgba(84,249,100,0.2)_100%),linear-gradient(180deg,rgba(170,127,251,0)_0%,rgba(170,127,251,0.2)_100%),linear-gradient(141deg,rgba(255,255,255,0)_0%,rgba(255,255,255,1)_100%)]"
-        >
-          <HomeIcon className="w-6 h-6" />
-          <span className="font-medium text-[#5d3ca4] text-xs text-center">
-            Site principal
-          </span>
-        </Button>
-
-        <Button
-          variant="ghost"
-          className="h-auto flex-1 flex flex-col items-center gap-1 p-4 border border-solid border-transparent backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)]"
-        >
-          <StarIcon className="w-6 h-6" />
-          <span className="font-medium text-[#5d3ca4] text-xs text-center">
-            Accès pro
-          </span>
-        </Button>
-
-        <div className="flex-shrink-0 p-4 border border-solid border-transparent backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)]">
-          <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base">
-            Obtenir un devis
-          </Button>
-        </div>
-      </nav>
+      <BottomNavigation />
     </div>
   );
 };

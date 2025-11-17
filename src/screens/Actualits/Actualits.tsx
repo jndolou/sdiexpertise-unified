@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { FooterSection } from "./sections/FooterSection";
-import { NavigationTabBarSection } from "./sections/NavigationTabBarSection";
 import { NewsFilterSection } from "./sections/NewsFilterSection";
 import { NewsForYouSection } from "./sections/NewsForYouSection";
 import { NewsHighlightsSection } from "./sections/NewsHighlightsSection";
@@ -144,7 +144,7 @@ export const Actualits = (): JSX.Element => {
       <ResourcesSection />
       <NewsletterSubscriptionSection />
       <FooterSection />
-      <NavigationTabBarSection />
+      <BottomNavigation />
     </div>
   );
 };

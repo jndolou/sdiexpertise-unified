@@ -1,11 +1,11 @@
 import React from "react";
 import { Header } from "../../components/layout";
+import { BottomNavigation } from "../../components/shared";
 import { AssuranceElementsSection } from "./sections/AssuranceElementsSection";
 import { ExploreParisSection } from "./sections/ExploreParisSection";
 import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { LatestPropertiesSection } from "./sections/LatestPropertiesSection";
-import { NavigationTabBarSection } from "./sections/NavigationTabBarSection";
 import { NewsletterSection } from "./sections/NewsletterSection";
 import { OurServicesSection } from "./sections/OurServicesSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -95,7 +95,7 @@ export const VilleMobile = (): JSX.Element => {
       <TestimonialsSection />
       <NewsletterSection />
       <FooterSection />
-      <NavigationTabBarSection />
+      <BottomNavigation />
     </div>
   );
 };

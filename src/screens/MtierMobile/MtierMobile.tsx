@@ -1,7 +1,6 @@
 import React from "react";
 import { Header } from "../../components/layout";
-import { ExpertiseSection } from "../../components/shared";
-import { Button } from "../../components/ui/button";
+import { BottomNavigation, ExpertiseSection } from "../../components/shared";
 import { ActualitsPourLesSubsection } from "./sections/ActualitsPourLesSubsection";
 import { FooterSubsection } from "./sections/FooterSubsection";
 import { HeroSectionSubsection } from "./sections/HeroSectionSubsection";
@@ -204,37 +203,7 @@ export const MtierMobile = (): JSX.Element => {
       <NewsletterSubsection />
       <FooterSubsection />
 
-      <nav className="flex w-[395px] items-center justify-between fixed -left-px -bottom-px rounded-[16px_16px_0px_0px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[16px_16px_0px_0px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none z-50">
-        <Button
-          variant="ghost"
-          className="flex flex-col items-center justify-center gap-1 p-4 relative flex-1 self-stretch grow mt-[-1.00px] ml-[-1.00px] border border-solid border-transparent shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] [border-image:linear-gradient(147deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)_1] bg-[linear-gradient(57deg,rgba(100,255,105,0)_0%,rgba(84,249,100,0.2)_100%),linear-gradient(180deg,rgba(170,127,251,0)_0%,rgba(170,127,251,0.2)_100%),linear-gradient(141deg,rgba(255,255,255,0)_0%,rgba(255,255,255,1)_100%)] h-auto rounded-none hover:bg-transparent"
-        >
-          <img className="relative w-6 h-6" alt="Home" src="/home.svg" />
-
-          <span className="relative w-fit ml-[-1.75px] [font-family:'Ubuntu',Helvetica] font-medium text-[#5d3ca4] text-xs text-center tracking-[0] leading-[normal] whitespace-nowrap">
-            Site principal
-          </span>
-        </Button>
-
-        <Button
-          variant="ghost"
-          className="flex flex-col items-center justify-center gap-1 p-4 relative flex-1 self-stretch grow mt-[-1.00px] ml-[-2.0px] border border-solid border-transparent backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] [border-image:linear-gradient(147deg,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_100%)_1] h-auto rounded-none hover:bg-transparent"
-        >
-          <img className="relative w-6 h-6" alt="Star" src="/star-3.svg" />
-
-          <span className="relative w-fit [font-family:'Ubuntu',Helvetica] font-medium text-[#5d3ca4] text-xs text-center tracking-[0] leading-[normal] whitespace-nowrap">
-            Accès pro
-          </span>
-        </Button>
-
-        <div className="inline-flex flex-col items-center justify-center p-4 relative self-stretch flex-[0_0_auto] mt-[-1.00px] ml-[-2.0px] border border-solid border-transparent backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] [border-image:linear-gradient(147deg,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_100%)_1]">
-          <Button className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 relative bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#faf8fc]">
-            <span className="relative w-fit [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
-              Obtenir un devis
-            </span>
-          </Button>
-        </div>
-      </nav>
+      <BottomNavigation className="z-50" />
     </div>
   );
 };
