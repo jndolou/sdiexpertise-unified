@@ -10,6 +10,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/layout";
 import { BottomNavigation, GoogleRating, ExpertiseSection } from "../../components/shared";
 import { Button } from "../../components/ui/button";
@@ -197,9 +198,11 @@ export const ContrleTechnique = (): JSX.Element => {
               contrôle technique rigoureux, objectif et réglementaire à chaque
               étape.
             </p>
-            <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base">
-              Découvrir nos missions de contrôle
-            </Button>
+            <Link to="/services">
+              <Button className="h-auto px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] font-bold text-[#1c1b1b] text-base">
+                Découvrir nos missions de contrôle
+              </Button>
+            </Link>
           </div>
 
           {/* Rating Badge */}
