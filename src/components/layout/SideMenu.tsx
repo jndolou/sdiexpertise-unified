@@ -64,7 +64,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
                 Page principale
               </span>
             </Link>
-            <button
+            <Link
+              to="/pro"
               onClick={() => setIsPro(true)}
               className={`flex-1 h-12 px-4 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all ${
                 isPro
@@ -76,7 +77,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
               <span className="font-[Ubuntu] font-medium text-sm">
                 Accès pro
               </span>
-            </button>
+            </Link>
           </div>
 
           <nav className="flex flex-col gap-1 flex-1">
