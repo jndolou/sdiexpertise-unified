@@ -34,10 +34,10 @@ const defaultCategories: Category[] = [
 ];
 
 const defaultLogos: Logo[] = [
-  { name: "My TFI", src: "/logo%20copie.png", alt: "My TFI" },
-  { name: "BFM Business", src: "/Logo_BFM_Business.svg.png", alt: "BFM Business" },
-  { name: "Marie Claire", src: "/logo-2.png", alt: "Marie Claire" },
-  { name: "Vici", src: "/logo.png", alt: "Vici" },
+  { name: "Logo 1", src: "/logo-2 copy.png", alt: "Logo 1" },
+  { name: "Logo 2", src: "/logo-3.png", alt: "Logo 2" },
+  { name: "Logo 3", src: "/logo-4.png", alt: "Logo 3" },
+  { name: "Logo 4", src: "/logo-5.png", alt: "Logo 4" },
 ];
 
 export const TrustSection = ({
@@ -92,19 +92,17 @@ export const TrustSection = ({
         )}
 
         {variant === "logos" && (
-          <div className="flex items-start gap-[15px] w-full overflow-x-auto pb-2 scrollbar-hide">
-            {displayLogos.map((logo, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 flex items-center justify-center h-[66px] px-6 rounded-2xl overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
-              >
+          <div className="flex flex-col h-[138px] items-center justify-end gap-[13px] px-4 py-0 relative self-stretch w-full overflow-hidden">
+            <div className="flex w-[927px] items-center gap-[13px] px-0 py-[15px] relative flex-[0_0_auto] ml-[-299.00px] mr-[-299.00px] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] overflow-x-auto scrollbar-hide">
+              {displayLogos.map((logo, index) => (
                 <img
+                  key={index}
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-full max-h-[50px] w-auto object-contain"
+                  className="relative w-[361px] h-[66px] object-contain flex-shrink-0"
                 />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>
