@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "../../ui/card";
 import { Button } from "../../ui/button";
 
@@ -7,14 +8,17 @@ const expertiseData = [
   {
     title: "Diagnostics immobiliers",
     description: "Diagnostics techniques complets pour vos transactions immobilières",
+    link: "/diagnostics",
   },
   {
     title: "Bureau d'études",
     description: "Études techniques et conseils pour vos projets",
+    link: "#",
   },
   {
     title: "Bureau de contrôle",
     description: "Contrôle et vérification de vos projets de construction",
+    link: "#",
   },
 ];
 
@@ -51,14 +55,16 @@ export const NosExpertisesSubsection = (): JSX.Element => {
                 </p>
               </div>
 
-              <Button
-                variant="ghost"
-                size="sm"
-                className="flex items-center gap-2 h-auto p-0 text-[#a97ffb] hover:text-[#9b6ff0] hover:bg-transparent [font-family:'Ubuntu',Helvetica] font-medium text-sm"
-              >
-                En savoir plus
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <Link to={expertise.link}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="flex items-center gap-2 h-auto p-0 text-[#a97ffb] hover:text-[#9b6ff0] hover:bg-transparent [font-family:'Ubuntu',Helvetica] font-medium text-sm"
+                >
+                  En savoir plus
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         ))}
