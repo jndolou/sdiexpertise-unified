@@ -18,7 +18,7 @@ const expertiseData = [
   {
     title: "Bureau de contrôle",
     description: "Contrôle et vérification de vos projets de construction",
-    link: "#",
+    link: "/controle-technique",
   },
 ];
 
