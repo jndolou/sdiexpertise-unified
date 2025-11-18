@@ -76,12 +76,6 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
             </div>
           </div>
         </div>
-
-        <img
-          className="relative self-stretch w-full h-[191px] rounded-[10px] border border-solid border-[#aa7ffb] object-cover"
-          alt="Map showing location"
-          src="/rectangle-216.png"
-        />
       </div>
     </section>
   );
