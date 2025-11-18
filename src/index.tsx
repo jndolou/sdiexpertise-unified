@@ -19,6 +19,7 @@ import { TousLesServices } from "./screens/TousLesServices";
 import { VilleMobile } from "./screens/VilleMobile";
 import { ProPage } from "./screens/ProPage";
 import { Commande } from "./screens/Commande";
+import { CommandePack } from "./screens/CommandePack";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -42,6 +43,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
           <Route path="/ville" element={<VilleMobile />} />
           <Route path="/pro" element={<ProPage />} />
           <Route path="/commande" element={<Commande />} />
+          <Route path="/commande-pack" element={<CommandePack />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>
