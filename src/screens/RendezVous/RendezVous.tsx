@@ -1,13 +1,7 @@
 import { MoreHorizontalIcon, ShoppingCartIcon, UserIcon } from "lucide-react";
 import React from "react";
 import { Button } from "../../components/ui/button";
-import { AppointmentConfirmationSection } from "./sections/AppointmentConfirmationSection";
-import { DateSelectionSection } from "./sections/DateSelectionSection";
 import { DiagnosticsSection } from "./sections/DiagnosticsSection";
-import { NavigationSection } from "./sections/NavigationSection";
-import { PaymentOptionsSection } from "./sections/PaymentOptionsSection";
-import { ProgressIndicatorSection } from "./sections/ProgressIndicatorSection";
-import { UserInfoSection } from "./sections/UserInfoSection";
 
 export const RendezVous = (): JSX.Element => {
   return (
@@ -50,23 +44,6 @@ export const RendezVous = (): JSX.Element => {
 
       <main className="flex flex-col w-full pt-[110px]">
         <DiagnosticsSection />
-
-        <footer className="flex w-full relative flex-col items-start gap-12 pt-12 pb-32 px-8 bg-transparent rounded-[16px_16px_0px_0px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[16px_16px_0px_0px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-          <div className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
-            <img
-              className="relative w-[219px] h-[60px] object-cover"
-              alt="Logo principal"
-              src="/logo-principal-violet-7c5ed6-2x-1.png"
-            />
-          </div>
-
-          <AppointmentConfirmationSection />
-          <NavigationSection />
-          <UserInfoSection />
-          <DateSelectionSection />
-          <ProgressIndicatorSection />
-          <PaymentOptionsSection />
-        </footer>
       </main>
     </div>
   );
