@@ -9,6 +9,13 @@ import {
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
 
 const progressSteps = [
   { id: 1, label: "Infos\nlogement", active: false },
@@ -58,7 +65,6 @@ const calendarDates = [
 export const Commande3 = (): JSX.Element => {
   const [selectedDate, setSelectedDate] = useState(10);
   const [expressOption, setExpressOption] = useState(false);
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   return (
     <div className="overflow-hidden bg-[#f3f1f7] w-full min-w-[393px] min-h-[836px] relative">
@@ -133,33 +139,24 @@ export const Commande3 = (): JSX.Element => {
                 </h1>
 
                 <div className="inline-flex flex-col items-end gap-[13px] w-full">
-                  <div className="flex flex-col items-start gap-1.5 w-full relative">
+                  <div className="flex flex-col items-start gap-1.5 w-full">
                     <label className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
                       Sélectionnez une date
                     </label>
 
-                    <button
-                      onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-                      className="relative flex items-center justify-between w-full h-11 px-3 py-2 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:pointer-events-none text-[#1c1b1b] text-sm z-10"
-                    >
-                      <span className="relative z-10">Jeudi 8 juillet</span>
-                      <svg
-                        className="relative z-10 w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
+                    <Select defaultValue="jeudi-8-juillet">
+                      <SelectTrigger className="w-full rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                        <SelectValue placeholder="Jeudi 8 juillet" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="jeudi-8-juillet">
+                          Jeudi 8 juillet
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                    {isCalendarOpen && (
-                      <div className="absolute top-full left-0 right-0 mt-2 z-50 flex flex-col items-center gap-4 w-full p-4 rounded-xl border border-solid border-[#aa7ffb] bg-white shadow-lg backdrop-blur-[15px]">
+                  <div className="flex flex-col items-center gap-4 w-full p-4 rounded-xl border border-solid border-[#aa7ffb] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)]">
                     <div className="flex items-center justify-between w-full">
                       <Button
                         variant="ghost"
@@ -208,8 +205,6 @@ export const Commande3 = (): JSX.Element => {
                         ))}
                       </div>
                     </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
