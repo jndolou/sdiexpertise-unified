@@ -19,7 +19,6 @@ import { TousLesServices } from "./screens/TousLesServices";
 import { VilleMobile } from "./screens/VilleMobile";
 import { ProPage } from "./screens/ProPage";
 import { Commande } from "./screens/Commande";
-import { Commande2 } from "./screens/Commande2";
 import { Commande3 } from "./screens/Commande3";
 import { CommandePack } from "./screens/CommandePack";
 import { CommandePaiement } from "./screens/CommandePaiement";
@@ -48,7 +47,6 @@ createRoot(document.getElementById("app") as HTMLElement).render(
           <Route path="/ville" element={<VilleMobile />} />
           <Route path="/pro" element={<ProPage />} />
           <Route path="/commande" element={<Commande />} />
-          <Route path="/commande-rdv" element={<Commande2 />} />
           <Route path="/commande-rendez-vous" element={<Commande3 />} />
           <Route path="/commande-pack" element={<CommandePack />} />
           <Route path="/commande-paiement" element={<CommandePaiement />} />
