@@ -132,8 +132,8 @@ export const Commande3 = (): JSX.Element => {
                   Votre rendez-vous :
                 </h1>
 
-                <div className="inline-flex flex-col items-end gap-[13px] w-full relative">
-                  <div className="flex flex-col items-start gap-1.5 w-full">
+                <div className="inline-flex flex-col items-end gap-[13px] w-full">
+                  <div className="flex flex-col items-start gap-1.5 w-full relative">
                     <label className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
                       Sélectionnez une date
                     </label>
@@ -157,10 +157,9 @@ export const Commande3 = (): JSX.Element => {
                         />
                       </svg>
                     </button>
-                  </div>
 
-                  {isCalendarOpen && (
-                    <div className="flex flex-col items-center gap-4 w-full p-4 rounded-xl border border-solid border-[#aa7ffb] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)]">
+                    {isCalendarOpen && (
+                      <div className="absolute top-full left-0 right-0 mt-2 z-50 flex flex-col items-center gap-4 w-full p-4 rounded-xl border border-solid border-[#aa7ffb] bg-white shadow-lg backdrop-blur-[15px]">
                     <div className="flex items-center justify-between w-full">
                       <Button
                         variant="ghost"
@@ -209,8 +208,9 @@ export const Commande3 = (): JSX.Element => {
                         ))}
                       </div>
                     </div>
+                      </div>
+                    )}
                   </div>
-                  )}
                 </div>
               </div>
             </div>
