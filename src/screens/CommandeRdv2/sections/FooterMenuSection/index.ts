@@ -1,1 +1,0 @@
-export { FooterMenuSection } from "./FooterMenuSection";

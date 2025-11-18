@@ -1,1 +1,0 @@
-export { DiagnosticsInfoSection } from "./DiagnosticsInfoSection";
