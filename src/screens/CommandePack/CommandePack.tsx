@@ -3,17 +3,16 @@ import React from "react";
 import { Button } from "../../components/ui/button";
 import { ActionButtonsSection } from "./sections/ActionButtonsSection";
 import { DiagnosticDetailsSection } from "./sections/DiagnosticDetailsSection";
-import { MainContentSection } from "./sections/MainContentSection";
-import { OverviewSection } from "./sections/OverviewSection";
-import { PricingSection } from "./sections/PricingSection";
 import { PromoCodeSection } from "./sections/PromoCodeSection";
-import { RecommendedPackSection } from "./sections/RecommendedPackSection";
-import { SummarySection } from "./sections/SummarySection";
+import { HeaderNavSection } from "./sections/HeaderNavSection";
+import { PromoInputSection } from "./sections/PromoInputSection";
 
 export const CommandePack = (): JSX.Element => {
   return (
-    <div className="overflow-hidden bg-[#f3f1f7] w-full min-w-[393px] flex flex-col relative">
-      <main className="flex flex-col w-full items-start gap-3 pt-[18px] pb-8 px-4 mt-[18px]">
+    <div className="overflow-hidden bg-[#f3f1f7] w-full min-w-[393px] flex flex-col relative min-h-screen">
+      <HeaderNavSection />
+
+      <main className="flex flex-col w-full items-start gap-6 pt-6 pb-8 px-4 mt-[72px]">
         <nav className="flex w-full items-center justify-between gap-4 relative">
           <Button
             variant="ghost"
@@ -34,10 +33,9 @@ export const CommandePack = (): JSX.Element => {
 
         <DiagnosticDetailsSection />
         <PromoCodeSection />
-        <RecommendedPackSection />
+        <PromoInputSection />
         <ActionButtonsSection />
       </main>
-
     </div>
   );
 };
