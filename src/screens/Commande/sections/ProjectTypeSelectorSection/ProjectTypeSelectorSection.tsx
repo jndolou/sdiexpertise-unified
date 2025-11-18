@@ -1,7 +1,8 @@
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, Pencil } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
+import { Button } from "../../../../components/ui/button";
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -16,9 +17,12 @@ const projectTypes = [
 
 export const ProjectTypeSelectorSection = (): JSX.Element => {
   const [selectedProject, setSelectedProject] = useState("louer");
+  const [propertyType, setPropertyType] = useState("Appartement : T2");
+  const [surface, setSurface] = useState("70 m2");
+  const [constructionYear, setConstructionYear] = useState("<1935");
 
   return (
-    <section className="flex flex-col w-full items-start gap-4 relative">
+    <section className="flex flex-col w-full items-start gap-4 relative px-4">
       <div className="flex flex-col items-start gap-[13px] relative w-full">
         <div className="flex flex-col w-full items-start gap-3.5 relative">
           <h2 className="relative self-stretch [font-family:'Ubuntu',Helvetica] font-bold text-dark text-lg tracking-[0] leading-[21.6px]">
@@ -74,6 +78,109 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 * uniquement en Île de France (75, 77, 78, 91, 92, 93, 94, 95)
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col w-full items-start gap-4 relative mt-4">
+          <h3 className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-lg tracking-[0] leading-[21.6px]">
+            Données détectées de votre bien
+          </h3>
+
+          <div className="flex flex-col w-full items-start gap-1.5">
+            <Label
+              htmlFor="property-type"
+              className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
+            >
+              Type de logement*
+            </Label>
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-1 flex items-center gap-2 pl-3 pr-2 py-0 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                <Input
+                  id="property-type"
+                  type="text"
+                  value={propertyType}
+                  onChange={(e) => setPropertyType(e.target.value)}
+                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-10 h-10 rounded-lg flex-shrink-0"
+              >
+                <Pencil className="w-5 h-5 text-[#1c1b1b]" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex flex-col w-full items-start gap-1.5">
+            <Label
+              htmlFor="surface"
+              className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
+            >
+              Superficie*
+            </Label>
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-1 flex items-center gap-2 pl-3 pr-2 py-0 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                <Input
+                  id="surface"
+                  type="text"
+                  value={surface}
+                  onChange={(e) => setSurface(e.target.value)}
+                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-10 h-10 rounded-lg flex-shrink-0"
+              >
+                <Pencil className="w-5 h-5 text-[#1c1b1b]" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex flex-col w-full items-start gap-1.5">
+            <Label
+              htmlFor="construction-year"
+              className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
+            >
+              Année de construction*
+            </Label>
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-1 flex items-center gap-2 pl-3 pr-2 py-0 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                <Input
+                  id="construction-year"
+                  type="text"
+                  value={constructionYear}
+                  onChange={(e) => setConstructionYear(e.target.value)}
+                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-10 h-10 rounded-lg flex-shrink-0"
+              >
+                <Pencil className="w-5 h-5 text-[#1c1b1b]" />
+              </Button>
+            </div>
+          </div>
+
+          <p className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-xs tracking-[0] leading-5">
+            Les champs marqués d'un * sont obligatoires.
+          </p>
+
+          <div className="flex items-center justify-between w-full mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#e8deff] to-[#f3f1f7]">
+            <div className="flex flex-col gap-1">
+              <p className="[font-family:'Open_Sans',Helvetica] font-semibold text-[#1c1b1b] text-lg tracking-[0] leading-5">
+                Prix : <span className="text-[#7e3287]">300€</span>
+              </p>
+            </div>
+            <Button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7e3287] hover:bg-[#6b2b75] text-white [font-family:'Ubuntu',Helvetica] font-medium text-sm">
+              Continuer
+              <span className="text-xl">→</span>
+            </Button>
           </div>
         </div>
       </div>
