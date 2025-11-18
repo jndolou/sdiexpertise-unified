@@ -55,8 +55,6 @@ export const Commande2 = (): JSX.Element => {
         <PaymentConfirmationSection />
         <StandardTimeSlotsSection />
       </main>
-
-      <nav className="flex items-start justify-between w-full"></nav>
     </div>
   );
 };
