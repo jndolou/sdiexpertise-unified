@@ -23,6 +23,7 @@ import { Commande2 } from "./screens/Commande2";
 import { Commande3 } from "./screens/Commande3";
 import { CommandePack } from "./screens/CommandePack";
 import { CommandePaiement } from "./screens/CommandePaiement";
+import { CommandeValidation } from "./screens/CommandeValidation";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -50,6 +51,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
           <Route path="/commande-rendez-vous" element={<Commande3 />} />
           <Route path="/commande-pack" element={<CommandePack />} />
           <Route path="/commande-paiement" element={<CommandePaiement />} />
+          <Route path="/commande-validation" element={<CommandeValidation />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>
