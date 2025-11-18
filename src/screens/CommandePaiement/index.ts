@@ -1,0 +1,1 @@
+export { CommandePaiement } from "./CommandePaiement";
