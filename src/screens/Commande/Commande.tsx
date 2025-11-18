@@ -8,8 +8,8 @@ export const Commande = (): JSX.Element => {
     <div className="overflow-hidden [background:url(..//commande-1.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(243,241,247,1)_0%,rgba(243,241,247,1)_100%)] w-full min-w-[393px] min-h-[844px] relative">
       <img
         className="absolute top-[195px] left-0 w-[393px] h-[649px]"
-        alt="Formes décoratives"
-        src="/forme-d-corative.svg"
+        alt="Formes dcoratives"
+        src="/formes-d-coratives.png"
       />
 
       <header className="flex w-[395px] items-center justify-between pt-[50px] pb-4 px-4 fixed -top-px -left-px rounded-[0px_0px_16px_16px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[0px_0px_16px_16px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none z-50">
