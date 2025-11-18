@@ -171,15 +171,15 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
             Les champs marqués d'un * sont obligatoires.
           </p>
 
-          <div className="flex items-center justify-between w-full mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#e8deff] to-[#f3f1f7]">
-            <div className="flex flex-col gap-1">
+          <div className="flex items-center justify-between w-full p-4 rounded-2xl backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+            <div className="flex flex-col gap-1 relative z-10">
               <p className="[font-family:'Open_Sans',Helvetica] font-semibold text-[#1c1b1b] text-lg tracking-[0] leading-5">
                 Prix : <span className="text-[#7e3287]">300€</span>
               </p>
             </div>
-            <Button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7e3287] hover:bg-[#6b2b75] text-white [font-family:'Ubuntu',Helvetica] font-medium text-sm">
+            <Button className="relative z-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7e3287] hover:bg-[#6b2b75] text-white [font-family:'Ubuntu',Helvetica] font-medium text-base shadow-[0px_4px_12px_rgba(126,50,135,0.3)]">
               Continuer
-              <span className="text-xl">→</span>
+              <span className="text-xl leading-none">→</span>
             </Button>
           </div>
         </div>
