@@ -1,1 +1,0 @@
-export { PaymentMethodSection } from "./PaymentMethodSection";
