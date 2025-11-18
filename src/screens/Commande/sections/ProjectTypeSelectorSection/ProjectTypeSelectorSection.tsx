@@ -1,5 +1,6 @@
 import { SearchIcon, Pencil } from "lucide-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { Button } from "../../../../components/ui/button";
@@ -16,6 +17,7 @@ const projectTypes = [
 ];
 
 export const ProjectTypeSelectorSection = (): JSX.Element => {
+  const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState("louer");
   const [propertyType, setPropertyType] = useState("Appartement : T2");
   const [surface, setSurface] = useState("70 m2");
@@ -177,7 +179,10 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 Prix : <span className="text-[#7e3287]">300€</span>
               </p>
             </div>
-            <Button className="relative z-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7e3287] hover:bg-[#6b2b75] text-white [font-family:'Ubuntu',Helvetica] font-medium text-base shadow-[0px_4px_12px_rgba(126,50,135,0.3)]">
+            <Button
+              onClick={() => navigate('/commande-pack')}
+              className="relative z-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7e3287] hover:bg-[#6b2b75] text-white [font-family:'Ubuntu',Helvetica] font-medium text-base shadow-[0px_4px_12px_rgba(126,50,135,0.3)]"
+            >
               Continuer
               <span className="text-xl leading-none">→</span>
             </Button>
