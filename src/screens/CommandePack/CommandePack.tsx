@@ -6,7 +6,6 @@ import { DiagnosticDetailsSection } from "./sections/DiagnosticDetailsSection";
 import { MainContentSection } from "./sections/MainContentSection";
 import { OverviewSection } from "./sections/OverviewSection";
 import { PricingSection } from "./sections/PricingSection";
-import { PromoCodeSection } from "./sections/PromoCodeSection";
 import { RecommendedPackSection } from "./sections/RecommendedPackSection";
 import { SummarySection } from "./sections/SummarySection";
 
@@ -33,7 +32,7 @@ export const CommandePack = (): JSX.Element => {
         </nav>
 
         <DiagnosticDetailsSection />
-        <PromoCodeSection />
+        <PricingSection />
         <RecommendedPackSection />
         <ActionButtonsSection />
       </main>
