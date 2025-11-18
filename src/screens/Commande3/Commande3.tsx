@@ -9,13 +9,6 @@ import {
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
 
 const progressSteps = [
   { id: 1, label: "Infos\nlogement", active: false },
