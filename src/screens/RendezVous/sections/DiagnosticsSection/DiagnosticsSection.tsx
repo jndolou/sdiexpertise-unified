@@ -120,93 +120,92 @@ export const DiagnosticsSection = (): JSX.Element => {
                   Choisissez un créneaux :
                 </h3>
 
-                <div className="flex flex-col items-start gap-4 w-full">
-                  <div className="flex items-start justify-between w-full">
-                    <div className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
-                      Créneaux standard
-                    </div>
-                    <div className="flex items-center gap-[3px]">
-                      <div className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
-                        Créneaux express
+                <div className="inline-flex items-start gap-1.5">
+                  <div className="flex flex-col w-[177px] items-start gap-[13px]">
+                    <div className="gap-[9px] w-full flex flex-col items-start">
+                      <div className="w-full z-[3] mt-[-1.00px] [font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
+                        Créneaux standard
                       </div>
-                      <div className="inline-flex h-[18px] items-center justify-center gap-[5px] px-2 py-1.5 bg-[#aa7ffb] rounded-[62px] overflow-hidden">
-                        <div className="[font-family:'Open_Sans',Helvetica] font-bold text-[#f3f1f5] text-[10px] tracking-[0] leading-[13px] whitespace-nowrap">
-                          + 25€
-                        </div>
-                      </div>
+
+                      <Button
+                        variant="ghost"
+                        className={`w-full h-11 justify-center rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none ${
+                          selectedSlot === "9h-11h"
+                            ? "bg-[linear-gradient(0deg,rgba(193,160,255,1)_0%,rgba(193,160,255,1)_100%)]"
+                            : "bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]"
+                        }`}
+                        onClick={() => setSelectedSlot("9h-11h")}
+                      >
+                        <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-5">
+                          9h - 11h
+                        </span>
+                      </Button>
+
+                      <Button
+                        variant="ghost"
+                        className={`w-full h-11 justify-center rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none ${
+                          selectedSlot === "11h-13h"
+                            ? "bg-[linear-gradient(0deg,rgba(193,160,255,1)_0%,rgba(193,160,255,1)_100%)]"
+                            : "bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]"
+                        }`}
+                        onClick={() => setSelectedSlot("11h-13h")}
+                      >
+                        <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-5">
+                          11 - 13h
+                        </span>
+                      </Button>
+
+                      <Button
+                        variant="ghost"
+                        className={`w-full h-11 justify-center rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none ${
+                          selectedSlot === "15h-17h"
+                            ? "bg-[linear-gradient(0deg,rgba(193,160,255,1)_0%,rgba(193,160,255,1)_100%)]"
+                            : "bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]"
+                        }`}
+                        onClick={() => setSelectedSlot("15h-17h")}
+                      >
+                        <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-5">
+                          15 - 17h
+                        </span>
+                      </Button>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-1.5 w-full">
-                    <div className="flex flex-col w-[177px] items-start gap-2.5">
-                      <button
-                        onClick={() => setSelectedSlot("9h-11h")}
-                        className={`flex items-center justify-center h-[60px] w-full rounded-2xl border-2 transition-all ${
-                          selectedSlot === "9h-11h"
-                            ? "bg-[#c1a0ff] border-[#875fda]"
-                            : "bg-white border-[#875fda]"
-                        }`}
-                      >
-                        <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
-                          9h - 11h
-                        </span>
-                      </button>
+                  <div className="flex flex-col w-[177px] items-start gap-[9px]">
+                    <div className="flex w-full items-start gap-[3px]">
+                      <span className="w-[126px] mt-[-1.00px] [font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
+                        Créneaux express
+                      </span>
 
-                      <button
-                        onClick={() => setSelectedSlot("11h-13h")}
-                        className={`flex items-center justify-center h-[60px] w-full rounded-2xl border-2 transition-all ${
-                          selectedSlot === "11h-13h"
-                            ? "bg-[#c1a0ff] border-[#875fda]"
-                            : "bg-white border-[#875fda]"
-                        }`}
-                      >
-                        <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
-                          11 - 13h
+                      <div className="h-[18px] gap-[5px] px-2 py-1.5 bg-[#aa7ffb] rounded-[62px] overflow-hidden shadow-[inset_-1.13e-16px_-1.85px_1.85px_#a171ff] inline-flex items-center justify-center">
+                        <span className="mt-[-3.50px] mb-[-1.50px] [font-family:'Open_Sans',Helvetica] font-bold text-[#f3f1f5] text-[10px] tracking-[0] leading-[13px] whitespace-nowrap">
+                          + 25€
                         </span>
-                      </button>
-
-                      <button
-                        onClick={() => setSelectedSlot("15h-17h")}
-                        className={`flex items-center justify-center h-[60px] w-full rounded-2xl border-2 transition-all ${
-                          selectedSlot === "15h-17h"
-                            ? "bg-[#c1a0ff] border-[#875fda]"
-                            : "bg-white border-[#875fda]"
-                        }`}
-                      >
-                        <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
-                          15 - 17h
-                        </span>
-                      </button>
+                      </div>
                     </div>
 
-                    <div className="flex flex-col w-[177px] items-start gap-2.5">
-                      <button
+                    <div className="gap-1.5 w-full flex flex-col items-start">
+                      <Button
+                        variant="ghost"
+                        className="w-full h-11 justify-center rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
                         onClick={() => setSelectedSlot("7h-9h")}
-                        className={`flex items-center justify-center h-[60px] w-full rounded-2xl border-2 transition-all ${
-                          selectedSlot === "7h-9h"
-                            ? "bg-[#c1a0ff] border-[#875fda]"
-                            : "bg-white border-[#875fda]"
-                        }`}
                       >
-                        <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
+                        <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-center text-sm tracking-[0] leading-5">
                           7h - 9h
                         </span>
-                      </button>
+                      </Button>
 
-                      <button
+                      <Button
+                        variant="ghost"
+                        className="w-full h-11 justify-center rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
                         onClick={() => setSelectedSlot("17h30-20h")}
-                        className={`flex items-center justify-center h-[60px] w-full rounded-2xl border-2 transition-all ${
-                          selectedSlot === "17h30-20h"
-                            ? "bg-[#c1a0ff] border-[#875fda]"
-                            : "bg-white border-[#875fda]"
-                        }`}
                       >
-                        <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
+                        <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-center text-sm tracking-[0] leading-5">
                           17h 30 - 20h
                         </span>
-                      </button>
+                      </Button>
 
-                      <p className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
+                      <p className="w-full [font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]">
                         Des créneaux réservés à nos clients express pour aller plus vite, tôt le matin ou en soirée.
                       </p>
                     </div>
