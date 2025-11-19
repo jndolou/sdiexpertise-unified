@@ -1,11 +1,16 @@
 import { ShoppingCartIcon } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 
 export const ActionButtonsSection = (): JSX.Element => {
+  const navigate = useNavigate();
+
   return (
     <section className="flex w-full items-center justify-between gap-4">
-      <Button className="flex-1 h-12 flex items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f5f3f7] text-[#1c1b1b] [font-family:'Ubuntu',Helvetica] font-bold text-base">
+      <Button
+        onClick={() => navigate('/commande-paiement')}
+        className="flex-1 h-12 flex items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f5f3f7] text-[#1c1b1b] [font-family:'Ubuntu',Helvetica] font-bold text-base">
         <ShoppingCartIcon className="w-[17.92px] h-[15.21px]" />
         Commander
       </Button>
