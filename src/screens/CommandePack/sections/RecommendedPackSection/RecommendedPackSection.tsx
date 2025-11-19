@@ -139,31 +139,29 @@ export const RecommendedPackSection = (): JSX.Element => {
               Je choisis le pack
             </span>
           </Button>
-
-          <div className="w-full h-px bg-[#d0c4e5] my-2" />
-
-          <div className="flex items-center gap-3 w-full">
-            <div className="flex-1">
-              <label className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-[18.2px] mb-2 block">
-                Code promo :
-              </label>
-              <input
-                type="text"
-                placeholder=""
-                className="w-full h-[45px] px-4 py-2.5 bg-white rounded-2xl border border-[#e0e0e0] [font-family:'Open_Sans',Helvetica] text-sm focus:outline-none focus:ring-2 focus:ring-[#5d3ca4]"
-              />
-            </div>
-            <button
-              type="button"
-              className="h-[45px] w-[45px] mt-7 flex items-center justify-center hover:opacity-80 transition-opacity"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#1C1B1B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
         </CardContent>
       </Card>
+
+      <div className="flex items-center gap-3 w-full mt-4">
+        <div className="flex-1">
+          <label className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-[18.2px] mb-2 block">
+            Code promo :
+          </label>
+          <input
+            type="text"
+            placeholder=""
+            className="w-full h-[45px] px-4 py-2.5 bg-white rounded-2xl border border-[#e0e0e0] [font-family:'Open_Sans',Helvetica] text-sm focus:outline-none focus:ring-2 focus:ring-[#5d3ca4]"
+          />
+        </div>
+        <button
+          type="button"
+          className="h-[45px] w-[45px] mt-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#1C1B1B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
   );
 };
