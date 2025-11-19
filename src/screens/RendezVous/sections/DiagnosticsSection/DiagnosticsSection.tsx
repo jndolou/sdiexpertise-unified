@@ -1,5 +1,6 @@
 import { ArrowRightIcon, CalendarIcon } from "lucide-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { CustomCalendar } from "../../../../components/CustomCalendar";
 import { Checkbox } from "../../../../components/ui/checkbox";
@@ -30,6 +31,7 @@ const formatDate = (date: Date | undefined): string => {
 };
 
 export const DiagnosticsSection = (): JSX.Element => {
+  const navigate = useNavigate();
   const [date, setDate] = useState<Date | undefined>(new Date(2025, 6, 10));
   const [isExpressChecked, setIsExpressChecked] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -240,7 +242,9 @@ export const DiagnosticsSection = (): JSX.Element => {
               </div>
             </div>
 
-            <Button className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0eef2]">
+            <Button
+              onClick={() => navigate('/commande-validation')}
+              className="inline-flex h-12 items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0eef2]">
               <span className="w-[146px] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
                 Payer et confirmer
               </span>
