@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon, SearchIcon } from "lucide-react";
 import { Button } from "../../ui/button";
@@ -94,6 +94,7 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
   const [isLocationPopoverOpen, setIsLocationPopoverOpen] = useState(false);
   const [addressSuggestions, setAddressSuggestions] = useState<AddressSuggestion[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
+  const locationPopoverRef = useRef<HTMLDivElement>(null);
 
   const filterServices = (query: string) => {
     if (!query) return servicesByCategory;
@@ -132,10 +133,40 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (locationQuery.length >= 3) {
+        fetchAddressSuggestions(locationQuery);
+      } else {
+        setAddressSuggestions([]);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [locationQuery]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (locationPopoverRef.current && !locationPopoverRef.current.contains(event.target as Node)) {
+        setIsLocationPopoverOpen(false);
+      }
+    };
+
+    if (isLocationPopoverOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isLocationPopoverOpen]);
+
   const handleLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setLocationQuery(value);
-    fetchAddressSuggestions(value);
+    if (value.length >= 3) {
+      setIsLocationPopoverOpen(true);
+    }
   };
 
   const handleLocationSelect = (suggestion: AddressSuggestion) => {
@@ -184,71 +215,62 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
               </ToggleGroup>
 
               <div className="flex flex-col items-start gap-1 relative self-stretch w-full flex-[0_0_auto] z-0">
-                <Popover open={isLocationPopoverOpen} onOpenChange={setIsLocationPopoverOpen}>
-                  <PopoverTrigger asChild>
-                    <div className="flex items-start gap-2 pl-3 pr-2 py-0 relative self-stretch w-full flex-[0_0_auto] rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none cursor-pointer">
-                      <div className="inline-flex h-11 items-center px-0 py-4 relative flex-[0_0_auto]">
-                        <img
-                          className="relative w-6 h-6 mt-[-6.00px] mb-[-6.00px]"
-                          alt="Left icon"
-                          src="/left-icon.svg"
-                        />
-                      </div>
-
-                      <Input
-                        placeholder="Ville, code postal..."
-                        value={locationQuery}
-                        onChange={handleLocationInputChange}
-                        onFocus={() => {
-                          setIsLocationPopoverOpen(true);
-                          if (locationQuery.length >= 3) {
-                            fetchAddressSuggestions(locationQuery);
-                          }
-                        }}
-                        className="flex-col h-11 justify-center px-0 py-1.5 flex-1 grow rounded overflow-hidden border-none bg-transparent shadow-none [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm tracking-[0] leading-5 placeholder:text-[#1c1b1b80] focus-visible:ring-0 focus-visible:ring-offset-0"
+                <div className="relative w-full" ref={locationPopoverRef}>
+                  <div className="flex items-start gap-2 pl-3 pr-2 py-0 relative self-stretch w-full flex-[0_0_auto] rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                    <div className="inline-flex h-11 items-center px-0 py-4 relative flex-[0_0_auto]">
+                      <img
+                        className="relative w-6 h-6 mt-[-6.00px] mb-[-6.00px]"
+                        alt="Left icon"
+                        src="/left-icon.svg"
                       />
                     </div>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    className="w-[calc(100vw-40px)] max-w-[355px] p-0 bg-[#ffffff1a] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] rounded-2xl border-[none] shadow-[0px_1.85px_1.85px_#fffdfd33,inset_0px_-1.85px_1.85px_#ffffff33] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(103deg,rgba(255,255,255,1)_1%,rgba(170,127,251,1)_24%,rgba(170,127,251,1)_71%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
-                    align="start"
-                    side="bottom"
-                    sideOffset={8}
-                  >
-                    <ScrollArea className="max-h-[300px] rounded-2xl">
-                      <div className="flex flex-col gap-1 p-3">
-                        {isLoadingSuggestions ? (
-                          <div className="py-4 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
-                            Chargement...
-                          </div>
-                        ) : addressSuggestions.length > 0 ? (
-                          addressSuggestions.map((suggestion, index) => (
-                            <button
-                              key={index}
-                              onClick={() => handleLocationSelect(suggestion)}
-                              className="flex flex-col items-start gap-1 p-3 rounded-lg hover:bg-[#ffffff33] transition-colors text-left"
-                            >
-                              <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-[normal]">
-                                {suggestion.properties.label}
-                              </span>
-                              <span className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
-                                {suggestion.properties.postcode} {suggestion.properties.city}
-                              </span>
-                            </button>
-                          ))
-                        ) : locationQuery.length >= 3 ? (
-                          <div className="py-4 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
-                            Aucun résultat trouvé
-                          </div>
-                        ) : (
-                          <div className="py-4 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
-                            Saisissez au moins 3 caractères
-                          </div>
-                        )}
-                      </div>
-                    </ScrollArea>
-                  </PopoverContent>
-                </Popover>
+
+                    <Input
+                      placeholder="Ville, code postal..."
+                      value={locationQuery}
+                      onChange={handleLocationInputChange}
+                      onFocus={() => {
+                        if (locationQuery.length >= 3) {
+                          setIsLocationPopoverOpen(true);
+                        }
+                      }}
+                      className="flex-col h-11 justify-center px-0 py-1.5 flex-1 grow rounded overflow-hidden border-none bg-transparent shadow-none [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm tracking-[0] leading-5 placeholder:text-[#1c1b1b80] focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                  </div>
+
+                  {isLocationPopoverOpen && (locationQuery.length >= 3 || isLoadingSuggestions) && (
+                    <div className="absolute top-[calc(100%+8px)] left-0 w-full max-w-[355px] p-0 bg-[#ffffffee] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] rounded-2xl border border-[#aa7ffb33] shadow-[0px_4px_12px_rgba(0,0,0,0.1)] z-50">
+                      <ScrollArea className="max-h-[300px] rounded-2xl">
+                        <div className="flex flex-col gap-1 p-3">
+                          {isLoadingSuggestions ? (
+                            <div className="py-4 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
+                              Chargement...
+                            </div>
+                          ) : addressSuggestions.length > 0 ? (
+                            addressSuggestions.map((suggestion, index) => (
+                              <button
+                                key={index}
+                                onClick={() => handleLocationSelect(suggestion)}
+                                className="flex flex-col items-start gap-1 p-3 rounded-lg hover:bg-[#aa7ffb1a] transition-colors text-left"
+                              >
+                                <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm tracking-[0] leading-[normal]">
+                                  {suggestion.properties.label}
+                                </span>
+                                <span className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
+                                  {suggestion.properties.postcode} {suggestion.properties.city}
+                                </span>
+                              </button>
+                            ))
+                          ) : (
+                            <div className="py-4 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
+                              Aucun résultat trouvé
+                            </div>
+                          )}
+                        </div>
+                      </ScrollArea>
+                    </div>
+                  )}
+                </div>
 
                 <p className="relative w-fit [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-[10px] tracking-[0] leading-5 whitespace-nowrap">
                   * uniquement en Île de France (75, 77, 78, 91, 92, 93, 94, 95)
