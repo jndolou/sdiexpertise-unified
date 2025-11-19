@@ -234,7 +234,7 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
               </div>
 
               <Button asChild className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] h-12 relative hover:bg-[#faf8fc] hover:opacity-90 mt-4">
-                <Link to="/tous-les-services">
+                <Link to="/pro">
                   <span className="relative w-fit [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
                     Découvrir l'univers pro
                   </span>
