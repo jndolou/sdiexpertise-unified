@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 
 export const ConfirmationSection = (): JSX.Element => {
+  const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState("onsite");
 
   const paymentOptions = [
@@ -86,7 +88,9 @@ export const ConfirmationSection = (): JSX.Element => {
         </div>
       </div>
 
-      <Button className="h-auto flex w-56 items-center justify-center gap-2 px-4 py-3 relative bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#faf8fc]">
+      <Button
+        onClick={() => navigate('/rendez-vous')}
+        className="h-auto flex w-56 items-center justify-center gap-2 px-4 py-3 relative bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#faf8fc]">
         <span className="relative w-[159px] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
           Prendre rendez-vous
         </span>
