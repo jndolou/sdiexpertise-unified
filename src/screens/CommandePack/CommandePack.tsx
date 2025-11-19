@@ -1,6 +1,7 @@
 import { ArrowLeftIcon, EyeIcon } from "lucide-react";
 import React from "react";
 import { Button } from "../../components/ui/button";
+import { Header } from "../../components/layout/Header";
 import { ActionButtonsSection } from "./sections/ActionButtonsSection";
 import { DiagnosticDetailsSection } from "./sections/DiagnosticDetailsSection";
 import { MainContentSection } from "./sections/MainContentSection";
@@ -12,7 +13,8 @@ import { SummarySection } from "./sections/SummarySection";
 export const CommandePack = (): JSX.Element => {
   return (
     <div className="overflow-hidden bg-[#f3f1f7] w-full min-w-[393px] flex flex-col relative">
-      <main className="flex flex-col w-full items-start gap-3 pt-[18px] pb-8 px-4 mt-[18px]">
+      <Header />
+      <main className="flex flex-col w-full items-start gap-3 pt-[110px] pb-8 px-4">
         <nav className="flex w-full items-center justify-between gap-4 relative">
           <Button
             variant="ghost"
