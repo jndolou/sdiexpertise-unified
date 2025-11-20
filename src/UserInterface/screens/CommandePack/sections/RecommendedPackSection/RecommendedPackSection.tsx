@@ -68,7 +68,7 @@ export const RecommendedPackSection = (): JSX.Element => {
           >
             <PopoverTrigger asChild>
               <button
-                className="flex items-start gap-2 p-2.5 bg-[#e5d9ff] rounded-lg w-full text-left cursor-pointer hover:bg-[#dcc9ff] transition-colors"
+                className="flex items-start gap-2 p-[5px] bg-[#e5d9ff] rounded-lg w-full text-left cursor-pointer hover:bg-[#dcc9ff] transition-colors"
                 onClick={() => setOpenPopoverId(openPopoverId === 0 ? null : 0)}
               >
                 <div className="flex-shrink-0 mt-0.5">
