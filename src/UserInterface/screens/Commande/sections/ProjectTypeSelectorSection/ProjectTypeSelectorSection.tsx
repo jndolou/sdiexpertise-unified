@@ -94,29 +94,6 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
           </h3>
 
           <div className="flex flex-col w-full items-start gap-1.5">
-            <ToggleGroup
-              type="single"
-              value={selectedPropertyType}
-              onValueChange={(value) => {
-                if (value) setSelectedPropertyType(value);
-              }}
-              className="items-center justify-center grid grid-cols-2 gap-2 w-full"
-            >
-              {propertyTypes.map((type) => (
-                <ToggleGroupItem
-                  key={type.value}
-                  value={type.value}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg overflow-hidden border-[none] shadow-[inset_1.13e-16px_0.85px_0.85px_#ffffff,inset_-1.13e-16px_-0.85px_0.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] data-[state=on]:bg-[linear-gradient(0deg,rgba(193,160,255,1)_0%,rgba(193,160,255,1)_100%)] data-[state=off]:bg-[linear-gradient(138deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-lg before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none h-auto"
-                >
-                  <span className="relative [font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm text-center tracking-[0] leading-[normal] whitespace-nowrap">
-                    {type.label}
-                  </span>
-                </ToggleGroupItem>
-              ))}
-            </ToggleGroup>
-          </div>
-
-          <div className="flex flex-col w-full items-start gap-1.5">
             <Label
               htmlFor="property-type-input"
               className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
