@@ -5,7 +5,7 @@ import { ProjectTypeSelectorSection } from "./sections/ProjectTypeSelectorSectio
 
 export const Commande = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_75%] w-full min-w-[393px] min-h-[844px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_95%] w-full min-w-[393px] min-h-[844px] relative">
       <Header />
 
       <main className="relative w-full pt-[100px]">
