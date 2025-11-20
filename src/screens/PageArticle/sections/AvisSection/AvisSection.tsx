@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button";
 
 const reactionButtons = [
   {
+    id: "jaime",
     icon: "/group.png",
     label: "J'aime",
     count: 34,
@@ -11,6 +12,7 @@ const reactionButtons = [
     iconMarginTop: "mt-[-2.50px]",
   },
   {
+    id: "bravo",
     icon: "/group-1.png",
     label: "Bravo",
     count: 12,
@@ -19,6 +21,7 @@ const reactionButtons = [
     iconMarginTop: "mt-[-3.50px]",
   },
   {
+    id: "instructif",
     icon: "/vector.svg",
     label: "Instructif",
     count: 4,
@@ -29,6 +32,22 @@ const reactionButtons = [
 ];
 
 export const AvisSection = (): JSX.Element => {
+  const [reactions, setReactions] = useState<Record<string, { count: number; isActive: boolean }>>(
+    reactionButtons.reduce((acc, button) => ({
+      ...acc,
+      [button.id]: { count: button.count, isActive: false }
+    }), {})
+  );
+
+  const handleReactionClick = (id: string) => {
+    setReactions(prev => ({
+      ...prev,
+      [id]: {
+        count: prev[id].isActive ? prev[id].count - 1 : prev[id].count + 1,
+        isActive: !prev[id].isActive
+      }
+    }));
+  };
   return (
     <section className="flex flex-col w-full items-start gap-5 pt-[65px] pb-[45px] px-4">
       <div className="flex items-start gap-2.5 w-full">
@@ -54,22 +73,34 @@ export const AvisSection = (): JSX.Element => {
             </div>
 
             <div className="flex w-full items-start gap-3 flex-wrap">
-              {reactionButtons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  className="inline-flex flex-col h-auto items-center justify-center gap-[5px] px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0edf4]"
-                >
-                  <img
-                    className={`${button.iconWidth} ${button.iconHeight} ${button.iconMarginTop}`}
-                    alt={button.label}
-                    src={button.icon}
-                  />
-                  <span className="mb-[-1.50px] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-xs tracking-[0] leading-[14.4px] whitespace-nowrap">
-                    {button.label} • {button.count}
-                  </span>
-                </Button>
-              ))}
+              {reactionButtons.map((button) => {
+                const isActive = reactions[button.id].isActive;
+                const currentCount = reactions[button.id].count;
+
+                return (
+                  <Button
+                    key={button.id}
+                    variant="ghost"
+                    onClick={() => handleReactionClick(button.id)}
+                    className={`inline-flex flex-col h-auto items-center justify-center gap-[5px] px-4 py-3 rounded-[62px] overflow-hidden transition-all ${
+                      isActive
+                        ? "bg-[#aa7ffb] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#8b5dd9,3.63e-16px_2.93px_11.87px_#7e328799] hover:bg-[#9a6fea]"
+                        : "bg-[#faf8fc] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0edf4]"
+                    }`}
+                  >
+                    <img
+                      className={`${button.iconWidth} ${button.iconHeight} ${button.iconMarginTop} ${isActive ? 'brightness-0 invert' : ''}`}
+                      alt={button.label}
+                      src={button.icon}
+                    />
+                    <span className={`mb-[-1.50px] [font-family:'Ubuntu',Helvetica] font-bold text-xs tracking-[0] leading-[14.4px] whitespace-nowrap ${
+                      isActive ? "text-white" : "text-[#1c1b1b]"
+                    }`}>
+                      {button.label} • {currentCount}
+                    </span>
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>
