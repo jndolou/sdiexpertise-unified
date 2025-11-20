@@ -19,7 +19,7 @@ export const AccueilMobile = (): JSX.Element => {
     <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] relative">
       <img
         className="absolute top-[306px] left-[-79px] w-[557px] h-[5207px] pointer-events-none"
-        alt=""
+        alt="Formes décoratives"
       />
 
       <Header />

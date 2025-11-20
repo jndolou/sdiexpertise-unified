@@ -132,52 +132,52 @@ export const ContrleTechnique = (): JSX.Element => {
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <img
           className="absolute top-[-1946px] left-[-206px] w-[60px] h-[86px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-7.svg"
         />
         <img
           className="absolute top-[-535px] left-[-206px] w-[50px] h-[86px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-8.svg"
         />
         <img
           className="absolute top-[618px] left-[-206px] w-[50px] h-[86px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-11.svg"
         />
         <img
           className="absolute top-[-3984px] left-[130px] w-[58px] h-[142px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-3.svg"
         />
         <img
           className="absolute top-[-2963px] left-[-206px] w-[83px] h-[142px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-3.svg"
         />
         <img
           className="absolute top-[-1221px] left-[119px] w-[69px] h-[142px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-3.svg"
         />
         <img
           className="absolute top-[-3861px] left-[-206px] w-[59px] h-[116px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-1.svg"
         />
         <img
           className="absolute top-[-3518px] left-32 w-[60px] h-[116px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-1.svg"
         />
         <img
           className="absolute top-[-2330px] left-32 w-[60px] h-[116px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-1.svg"
         />
         <img
           className="absolute top-[264px] left-32 w-[60px] h-[116px]"
-          alt=""
+          alt="Forme décorative"
           src="/forme-d-corative-1.svg"
         />
       </div>
