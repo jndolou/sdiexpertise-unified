@@ -2,6 +2,7 @@ import React from "react";
 
 const contentBlocks = [
   {
+    id: "ptz-definition",
     title: "Le prêt à taux zéro, qu'est-ce que c'est ?",
     content: `Le prêt à taux zéro, ou PTZ, est un dispositif gouvernemental visant à faciliter l'accession à la propriété pour les ménages aux revenus modestes. En essence, le PTZ est un prêt accordé par l'État, exempt de tout taux d'intérêt. Concrètement, les emprunteurs ne remboursent que le montant initial emprunté, sans frais d'intérêt supplémentaires.
 
@@ -10,6 +11,7 @@ Il convient de souligner que l'éligibilité au PTZ n'est pas universelle et dé
 Les personnes qui n'ont pas été propriétaires de leur résidence principale au cours des 2 dernières années précédant leur demande peuvent actuellement bénéficier du PTZ. Il peut financer jusqu'à 40 % du montant total de l'achat immobilier et doit obligatoirement être couplé à une assurance emprunteur. Ces conditions précises soulignent l'orientation du PTZ vers un soutien ciblé aux primo-accédants, renforçant ainsi son rôle dans la promotion de l'accession à la propriété.`,
   },
   {
+    id: "ptz-2024",
     title: "PTZ 2024, un total revirement",
     content: `Le prêt à taux zéro, ou PTZ, est un dispositif gouvernemental visant à faciliter l'accession à la propriété pour les ménages aux revenus modestes. En essence, le PTZ est un prêt accordé par l'État, exempt de tout taux d'intérêt. Concrètement, les emprunteurs ne remboursent que le montant initial emprunté, sans frais d'intérêt supplémentaires.
 
@@ -26,7 +28,7 @@ export const ContenuWrapperSection = (): JSX.Element => {
             key={index}
             className="flex flex-col items-start gap-7 w-full"
           >
-            <h2 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
+            <h2 id={block.id} className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
               {block.title}
             </h2>
 

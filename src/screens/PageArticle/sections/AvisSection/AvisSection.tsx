@@ -35,7 +35,7 @@ export const AvisSection = (): JSX.Element => {
         <div className="flex flex-col w-full items-start gap-8">
           <div className="inline-flex flex-col items-start gap-6">
             <div className="inline-flex flex-col items-start gap-2">
-              <h2 className="w-full font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
+              <h2 id="avis" className="w-full font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
                 Qu&apos;avez-vous pensé de cet article ?
               </h2>
 

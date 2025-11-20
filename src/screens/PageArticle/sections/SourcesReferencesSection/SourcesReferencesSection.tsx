@@ -10,7 +10,7 @@ export const SourcesReferencesSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-start gap-2.5 pt-[23px] pb-[60px] px-4 relative">
       <div className="flex flex-col items-start gap-[13px] relative self-stretch w-full flex-[0_0_auto]">
-        <h2 className="relative self-stretch mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
+        <h2 id="sources" className="relative self-stretch mt-[-1.00px] font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
           Sources &amp; références
         </h2>
 

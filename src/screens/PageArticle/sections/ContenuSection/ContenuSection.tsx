@@ -3,6 +3,7 @@ import { Button } from "../../../../components/ui/button";
 
 const contentBlocks = [
   {
+    id: "economies-energie",
     title: "Des économies sur vos\nfactures d'énergie",
     description:
       "En identifiant les points faibles de votre habitation, notre diagnostic vous permet de réaliser des économies significatives sur vos dépenses énergétiques.",
@@ -11,6 +12,7 @@ const contentBlocks = [
     imagePosition: "right",
   },
   {
+    id: "valoriser-bien",
     title: "Valorisez votre bien immobilier sur le marché",
     description:
       "Un bon DPE augmente l'attractivité de votre bien auprès des acheteurs et locataires potentiels, facilitant ainsi vos transactions immobilières.",
@@ -32,7 +34,7 @@ export const ContenuSection = (): JSX.Element => {
             <div className="flex flex-col items-start gap-5 w-full">
               <div className="flex flex-col items-start gap-8 w-full">
                 <div className="flex flex-col items-start gap-[15px] w-full">
-                  <h2 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)] whitespace-pre-line">
+                  <h2 id={block.id} className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)] whitespace-pre-line">
                     {block.title}
                   </h2>
                 </div>

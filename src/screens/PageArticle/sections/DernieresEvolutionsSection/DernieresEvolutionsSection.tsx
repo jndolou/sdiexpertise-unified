@@ -27,7 +27,7 @@ export const DernieresEvolutionsSection = (): JSX.Element => {
             </div>
           </div>
 
-          <h1 className="w-full [font-family:'Ubuntu',Helvetica] font-bold text-dark text-[32px] tracking-[0] leading-[38.4px]">
+          <h1 id="titre-principal" className="w-full [font-family:'Ubuntu',Helvetica] font-bold text-dark text-[32px] tracking-[0] leading-[38.4px]">
             Dernières évolutions réglementaires en diagnostic immobilier
           </h1>
         </div>

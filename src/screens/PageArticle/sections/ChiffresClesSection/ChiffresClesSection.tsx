@@ -13,7 +13,7 @@ export const ChiffresClesSection = (): JSX.Element => {
               src="/group-2.png"
             />
 
-            <h3 className="w-full max-w-[317px] [font-family:'Ubuntu',Helvetica] font-bold text-dark text-2xl text-center tracking-[0] leading-[28.8px]">
+            <h3 id="chiffres-cles" className="w-full max-w-[317px] [font-family:'Ubuntu',Helvetica] font-bold text-dark text-2xl text-center tracking-[0] leading-[28.8px]">
               80 % des logements sont classés D ou moins au DPE.
             </h3>
 
