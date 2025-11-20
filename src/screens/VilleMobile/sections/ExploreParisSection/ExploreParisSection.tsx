@@ -34,14 +34,12 @@ export const ExploreParisSection = (): JSX.Element => {
               value={postalCode}
               onChange={(value, suggestion) => {
                 setPostalCode(value);
-                if (suggestion?.postcode) {
-                  setSearchQuery(suggestion.postcode);
+                if (suggestion) {
+                  setSearchQuery(suggestion.label);
                 }
               }}
               onSelect={(suggestion) => {
-                if (suggestion.postcode) {
-                  setSearchQuery(suggestion.postcode);
-                }
+                setSearchQuery(suggestion.label);
               }}
               placeholder="Code postal ou adresse"
             />

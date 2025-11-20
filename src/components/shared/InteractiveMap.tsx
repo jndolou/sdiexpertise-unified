@@ -79,14 +79,17 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
     const searchLocation = async () => {
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=fr&limit=10`
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=fr&limit=10&addressdetails=1`
         );
         const data = await response.json();
 
         const idfResults = data.filter((item: any) => {
           const address = item.address || {};
           const postcode = address.postcode || '';
-          return postcode && (
+          const lat = parseFloat(item.lat);
+          const lon = parseFloat(item.lon);
+
+          const isInIDF = postcode && (
             postcode.startsWith('75') ||
             postcode.startsWith('77') ||
             postcode.startsWith('78') ||
@@ -96,6 +99,12 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             postcode.startsWith('94') ||
             postcode.startsWith('95')
           );
+
+          const isInIDFBounds =
+            lat >= 48.12 && lat <= 49.24 &&
+            lon >= 1.45 && lon <= 3.56;
+
+          return isInIDF || isInIDFBounds;
         });
 
         if (idfResults && idfResults.length > 0) {
