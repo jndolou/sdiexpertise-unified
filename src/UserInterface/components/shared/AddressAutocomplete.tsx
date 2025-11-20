@@ -1,6 +1,7 @@
 import { SearchIcon } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import { Input } from "../ui/input";
+import { deepCityService } from "../../../Infrastructure/Services/DeepCityService";
 
 interface AddressSuggestion {
   label: string;
@@ -10,10 +11,17 @@ interface AddressSuggestion {
   coordinates?: [number, number];
 }
 
+interface PropertyData {
+  type_bien: string | null;
+  surface: number | null;
+  annee_construction: string | null;
+}
+
 interface AddressAutocompleteProps {
   value: string;
   onChange: (value: string, suggestion?: AddressSuggestion) => void;
   onSelect?: (suggestion: AddressSuggestion) => void;
+  onPropertyDataFetched?: (data: PropertyData) => void;
   placeholder?: string;
   className?: string;
 }
@@ -22,6 +30,7 @@ export const AddressAutocomplete = ({
   value,
   onChange,
   onSelect,
+  onPropertyDataFetched,
   placeholder = "Code postal ou adresse",
   className = "",
 }: AddressAutocompleteProps): JSX.Element => {
@@ -102,11 +111,24 @@ export const AddressAutocomplete = ({
     onChange(e.target.value);
   };
 
-  const handleSuggestionClick = (suggestion: AddressSuggestion) => {
+  const handleSuggestionClick = async (suggestion: AddressSuggestion) => {
     onChange(suggestion.label, suggestion);
     setShowSuggestions(false);
     if (onSelect) {
       onSelect(suggestion);
+    }
+
+    if (onPropertyDataFetched) {
+      try {
+        const propertyData = await deepCityService.getPropertyData(suggestion.label);
+        onPropertyDataFetched({
+          type_bien: propertyData.type_bien,
+          surface: propertyData.surface,
+          annee_construction: propertyData.annee_construction,
+        });
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données immobilières:', error);
+      }
     }
   };
 

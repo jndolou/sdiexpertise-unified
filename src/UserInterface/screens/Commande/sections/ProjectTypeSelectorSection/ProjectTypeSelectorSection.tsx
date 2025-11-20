@@ -29,8 +29,39 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
   const [selectedProject, setSelectedProject] = useState("louer");
   const [location, setLocation] = useState("32 avenue du Générale Michel Bizot");
   const [selectedPropertyType, setSelectedPropertyType] = useState("appartement");
+  const [propertyTypeDetail, setPropertyTypeDetail] = useState("Appartement : T2");
   const [surface, setSurface] = useState("70 m2");
   const [constructionYear, setConstructionYear] = useState("<1935");
+
+  const handlePropertyDataFetched = (data: {
+    type_bien: string | null;
+    surface: number | null;
+    annee_construction: string | null;
+  }) => {
+    if (data.type_bien) {
+      const normalizedType = data.type_bien.toLowerCase();
+      if (normalizedType.includes('appartement')) {
+        setSelectedPropertyType('appartement');
+        setPropertyTypeDetail(data.type_bien);
+      } else if (normalizedType.includes('maison')) {
+        setSelectedPropertyType('maison');
+        setPropertyTypeDetail(data.type_bien);
+      } else if (normalizedType.includes('commercial')) {
+        setSelectedPropertyType('local-commercial');
+        setPropertyTypeDetail(data.type_bien);
+      } else {
+        setPropertyTypeDetail(data.type_bien);
+      }
+    }
+
+    if (data.surface) {
+      setSurface(`${data.surface} m2`);
+    }
+
+    if (data.annee_construction) {
+      setConstructionYear(data.annee_construction);
+    }
+  };
 
   return (
     <section className="flex flex-col w-full items-start gap-4 relative px-4">
@@ -79,6 +110,7 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 onSelect={(suggestion) => {
                   console.log('Adresse sélectionnée:', suggestion);
                 }}
+                onPropertyDataFetched={handlePropertyDataFetched}
               />
 
               <p className="relative self-stretch [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-[10px] tracking-[0] leading-5">
@@ -105,8 +137,8 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 <Input
                   id="property-type-input"
                   type="text"
-                  value="Appartement : T2"
-                  readOnly
+                  value={propertyTypeDetail}
+                  onChange={(e) => setPropertyTypeDetail(e.target.value)}
                   className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
