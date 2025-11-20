@@ -1,10 +1,26 @@
 import { SearchIcon } from "lucide-react";
-import React from "react";
-import { Badge } from "../../../../components/ui/badge";
+import React, { useState } from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Input } from "../../../../components/ui/input";
+import { InteractiveMap } from "../../../../components/shared";
 
 export const ExploreParisSection = (): JSX.Element => {
+  const [postalCode, setPostalCode] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (postalCode.trim()) {
+      setSearchQuery(postalCode.trim());
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch(e as any);
+    }
+  };
+
   return (
     <section className="flex flex-col w-full items-start gap-[25px] pt-[60px] pb-0 px-4">
       <div className="inline-flex flex-col items-start gap-5 w-full">
@@ -34,6 +50,9 @@ export const ExploreParisSection = (): JSX.Element => {
               <Input
                 type="text"
                 placeholder="Code postal"
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+                onKeyPress={handleKeyPress}
                 className="flex-1 h-auto border-0 bg-transparent px-0 py-1.5 [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm tracking-[0] leading-5 placeholder:text-[#1c1b1b80] focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
@@ -41,29 +60,9 @@ export const ExploreParisSection = (): JSX.Element => {
         </div>
       </div>
 
-      <Card
-        className="w-full h-[232px] rounded-2xl border border-solid border-[#aa7ffb] overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/frame-435.png)" }}
-      >
-        <CardContent className="flex flex-col items-start gap-2.5 px-[52px] py-[39px] h-full">
-          <div className="flex flex-col w-[110px] h-12 items-start gap-[3px] p-[5px] bg-[#ffffffcc] rounded-[11px] border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[11px] before:[background:linear-gradient(126deg,rgba(255,255,255,1)_0%,rgba(170,127,251,1)_31%,rgba(170,127,251,1)_62%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none relative">
-            <Badge className="h-auto bg-violet-clair rounded-[62px] overflow-hidden shadow-[inset_-1.13e-16px_-1.85px_1.85px_#a171ff] px-1.5 py-1 hover:bg-violet-clair">
-              <span className="font-tags-mobile font-[number:var(--tags-mobile-font-weight)] text-[#f3f1f5] text-[length:var(--tags-mobile-font-size)] tracking-[var(--tags-mobile-letter-spacing)] leading-[var(--tags-mobile-line-height)] whitespace-nowrap [font-style:var(--tags-mobile-font-style)]">
-                8e arrondissement
-              </span>
-            </Badge>
-
-            <div className="inline-flex items-center gap-[9px]">
-              <span className="[font-family:'Open_Sans',Helvetica] font-normal text-dark text-xs tracking-[0] leading-[15.6px]">
-                12 900 €/m2
-              </span>
-              <img
-                className="w-[11.96px] h-[10.46px]"
-                alt="Vector"
-                src="/vector-2.svg"
-              />
-            </div>
-          </div>
+      <Card className="w-full h-[232px] rounded-2xl border border-solid border-[#aa7ffb] overflow-hidden bg-cover bg-center bg-no-repeat">
+        <CardContent className="p-0 h-full">
+          <InteractiveMap searchQuery={searchQuery} />
         </CardContent>
       </Card>
     </section>
