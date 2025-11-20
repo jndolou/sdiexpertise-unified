@@ -38,21 +38,41 @@ export const ContactPage = (): JSX.Element => {
   });
 
   const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   };
 
+  const validatePhone = (phone: string): boolean => {
+    const phoneRegex = /^(?:0[1-9]|(?:\+|00)33[1-9])(?:[\s.-]?\d{2}){4}$/;
+    return phoneRegex.test(phone);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    let hasError = false;
+
     if (!validateEmail(formData.email)) {
       setEmailError("Veuillez entrer une adresse email valide");
+      hasError = true;
+    } else {
+      setEmailError("");
+    }
+
+    if (!validatePhone(formData.phone)) {
+      setPhoneError("Veuillez entrer un numéro de téléphone français valide (ex: 01 23 45 67 89 ou +33 1 23 45 67 89)");
+      hasError = true;
+    } else {
+      setPhoneError("");
+    }
+
+    if (hasError) {
       return;
     }
 
-    setEmailError("");
     console.log("Form submitted:", formData);
   };
 
@@ -71,6 +91,14 @@ export const ContactPage = (): JSX.Element => {
         setEmailError("Veuillez entrer une adresse email valide");
       } else {
         setEmailError("");
+      }
+    }
+
+    if (name === "phone") {
+      if (value && !validatePhone(value)) {
+        setPhoneError("Veuillez entrer un numéro de téléphone français valide (ex: 01 23 45 67 89 ou +33 1 23 45 67 89)");
+      } else {
+        setPhoneError("");
       }
     }
   };
@@ -169,8 +197,15 @@ export const ContactPage = (): JSX.Element => {
                     onChange={handleChange}
                     placeholder="01 23 45 67 89"
                     required
-                    className="h-12 px-4 bg-white/50 rounded-lg border-none shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ebebeb]"
+                    className={`h-12 px-4 bg-white/50 rounded-lg border-none shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ebebeb] ${
+                      phoneError ? "ring-2 ring-red-500" : ""
+                    }`}
                   />
+                  {phoneError && (
+                    <p className="text-red-500 text-sm font-paragraphe-2-mobile">
+                      {phoneError}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-2">
