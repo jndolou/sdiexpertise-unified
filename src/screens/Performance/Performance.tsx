@@ -259,17 +259,17 @@ export const Performance = (): JSX.Element => {
                 </div>
               </CardContent>
 
-              <div className="absolute top-[-39px] left-[-37px] w-[74px] h-[78px] flex items-center justify-center">
+              <div className="absolute top-[-39px] left-1/2 -translate-x-1/2 w-[74px] h-[78px] flex items-center justify-center">
                 <img
                   className="absolute inset-0 w-full h-full"
                   alt="Polygon"
                   src="/polygon-7.svg"
                 />
                 <img
-                  className="relative w-6 h-6 z-10 mx-auto"
+                  className="absolute w-6 h-6 z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   alt="Icon"
                   src={card.icon}
-                  style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)', marginLeft: 'auto', marginRight: 'auto' }}
+                  style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)' }}
                 />
               </div>
             </Card>
