@@ -20,6 +20,8 @@ const formFields = [
 export const PaymentMethodSection = (): JSX.Element => {
   const [phoneValue, setPhoneValue] = useState("06 36 96 25 45");
   const [phoneError, setPhoneError] = useState("");
+  const [emailValue, setEmailValue] = useState("jean.lebon@gmail.com");
+  const [emailError, setEmailError] = useState("");
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -45,6 +47,19 @@ export const PaymentMethodSection = (): JSX.Element => {
       setPhoneError("Format de téléphone invalide");
     } else {
       setPhoneError("");
+    }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmailValue(value);
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (value && !emailRegex.test(value)) {
+      setEmailError("Format d'email invalide");
+    } else {
+      setEmailError("");
     }
   };
   return (
@@ -108,9 +123,9 @@ export const PaymentMethodSection = (): JSX.Element => {
                         <Input
                           id={`field-${index}`}
                           type={field.type}
-                          value={field.type === "tel" ? phoneValue : undefined}
-                          defaultValue={field.type !== "tel" ? field.value : undefined}
-                          onChange={field.type === "tel" ? handlePhoneChange : undefined}
+                          value={field.type === "tel" ? phoneValue : field.type === "email" ? emailValue : undefined}
+                          defaultValue={field.type !== "tel" && field.type !== "email" ? field.value : undefined}
+                          onChange={field.type === "tel" ? handlePhoneChange : field.type === "email" ? handleEmailChange : undefined}
                           className="w-fit mt-[-1.00px] [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 whitespace-nowrap border-0 bg-transparent p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
                         />
                       </div>
@@ -119,6 +134,9 @@ export const PaymentMethodSection = (): JSX.Element => {
                 </div>
                 {field.type === "tel" && phoneError && (
                   <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                )}
+                {field.type === "email" && emailError && (
+                  <p className="text-xs text-red-500 mt-1">{emailError}</p>
                 )}
               </div>
             </div>
