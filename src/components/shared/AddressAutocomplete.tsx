@@ -117,7 +117,7 @@ export const AddressAutocomplete = ({
   };
 
   return (
-    <div ref={wrapperRef} className="relative w-full">
+    <div ref={wrapperRef} className="relative w-full z-[100]">
       <div className="flex items-center gap-2 pl-3 pr-2 py-0 w-full h-11 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none relative">
         <SearchIcon className="w-6 h-6 text-dark z-10" />
         <Input
@@ -132,8 +132,8 @@ export const AddressAutocomplete = ({
       </div>
 
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute w-full mt-2 z-50 rounded-xl overflow-hidden border-[none] shadow-lg backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.9)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-          <ul className="max-h-[300px] overflow-y-auto z-10 relative">
+        <div className="absolute w-full mt-2 z-[9999] rounded-xl overflow-hidden border-[none] shadow-lg backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.9)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+          <ul className="max-h-[300px] overflow-y-auto z-[9999] relative">
             {suggestions.map((suggestion, index) => (
               <li
                 key={index}
@@ -161,7 +161,7 @@ export const AddressAutocomplete = ({
       )}
 
       {isLoading && value.length >= 3 && (
-        <div className="absolute w-full mt-2 z-50 rounded-xl overflow-hidden border-[none] shadow-lg backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.9)_100%)]">
+        <div className="absolute w-full mt-2 z-[9999] rounded-xl overflow-hidden border-[none] shadow-lg backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.9)_100%)]">
           <div className="px-4 py-3">
             <p className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm tracking-[0] leading-5">
               Recherche en cours...
