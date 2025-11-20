@@ -12,7 +12,7 @@ import { RegulationsSection } from "./sections/RegulationsSection";
 
 export const ProjetMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(..//-projet---mobile.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(243,241,247,1)_0%,rgba(243,241,247,1)_100%)] w-full min-w-[393px] min-h-[6191px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_cover] w-full min-w-[393px] min-h-[6191px] relative">
       <img
         className="absolute top-[191px] left-0 w-[393px] h-[6000px]"
         alt="Formes dcoratives"
