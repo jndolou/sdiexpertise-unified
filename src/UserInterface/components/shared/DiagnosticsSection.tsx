@@ -1,0 +1,133 @@
+import { ArrowRightIcon } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { Diagnostic } from "../../../Domain/Models";
+import { useCases } from "../../../Infrastructure/DependencyInjection";
+
+interface DiagnosticsSectionProps {
+  title?: string;
+  subtitle?: string;
+  subtitleHighlight?: string;
+  diagnostics?: Diagnostic[];
+  showButton?: boolean;
+  buttonText?: string;
+  className?: string;
+  paddingTop?: string;
+  paddingBottom?: string;
+  useScrollArea?: boolean;
+}
+
+export const DiagnosticsSection = ({
+  title = "Nos diagnostics incontournables",
+  subtitle = "Des diagnostics précis, pour des décisions ",
+  subtitleHighlight = "sereines",
+  diagnostics: propDiagnostics,
+  showButton = true,
+  buttonText = "Tous les diagnostics",
+  className = "",
+  paddingTop = "pt-0",
+  paddingBottom = "pb-[65px]",
+  useScrollArea = true,
+}: DiagnosticsSectionProps): JSX.Element => {
+  const [diagnostics, setDiagnostics] = useState<Diagnostic[]>(propDiagnostics || []);
+
+  useEffect(() => {
+    if (!propDiagnostics) {
+      useCases.getFeaturedDiagnostics.execute().then(setDiagnostics);
+    }
+  }, [propDiagnostics]);
+  const diagnosticCards = diagnostics.map((diagnostic, index) => (
+    <Card
+      key={index}
+      className="flex-shrink-0 w-[222px] bg-[#ffffff1a] rounded-2xl overflow-hidden border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ececec] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(163deg,rgba(255,255,255,1)_0%,rgba(135,94,218,1)_26%,rgba(135,94,218,1)_74%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
+    >
+      <CardContent className="p-4 flex flex-col gap-[15px]">
+        <img
+          className="w-full h-[158px] object-cover"
+          alt={diagnostic.title}
+          src={diagnostic.image}
+        />
+
+        <div className="flex flex-col gap-2">
+          {diagnostic.badge && (
+            <Badge className="inline-flex items-center justify-center gap-2 p-1.5 w-fit bg-[#a97ffb] rounded-[62px] overflow-hidden shadow-[inset_-1.13e-16px_-1.85px_1.85px_#a171ff] hover:bg-[#a97ffb]">
+              <span className="[font-family:'Ubuntu',Helvetica] font-medium text-[#f3f1f5] text-[9px] tracking-[0] leading-[normal] whitespace-nowrap">
+                {diagnostic.badge}
+              </span>
+            </Badge>
+          )}
+
+          <h3 className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-lg tracking-[0] leading-[21.6px]">
+            {diagnostic.title}
+          </h3>
+
+          <p className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-xs tracking-[0] leading-[15.6px]">
+            {diagnostic.description}
+          </p>
+
+          <div className="flex items-center justify-end gap-2">
+            <span className="[font-family:'Pecita-Book',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-[16.8px]">
+              {diagnostic.price}
+            </span>
+
+            <Button
+              size="icon"
+              className="h-12 w-12 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[3.63e-16px_5.93px_11.87px_#33333324,inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] hover:bg-[#faf8fc]"
+            >
+              <ArrowRightIcon className="w-6 h-6 text-[#1c1b1b]" />
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  ));
+
+  return (
+    <section
+      className={`w-full ${paddingTop} ${paddingBottom} px-4 flex flex-col items-start gap-2.5 ${className}`}
+    >
+      <div className="flex flex-col items-start gap-8 w-full">
+        <header className="flex flex-col items-start justify-center gap-[15px] w-full">
+          <h2 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-[#1c1b1b] text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
+            {title}
+          </h2>
+
+          <p className="font-paragraphe-1 font-[number:var(--paragraphe-1-font-weight)] text-[length:var(--paragraphe-1-font-size)] leading-[var(--paragraphe-1-line-height)] tracking-[var(--paragraphe-1-letter-spacing)] [font-style:var(--paragraphe-1-font-style)]">
+            <span className="text-[#1c1b1b]">{subtitle}</span>
+            <span className="[font-family:'Pecita',Helvetica] text-[#7E3287]">
+              {subtitleHighlight}
+            </span>
+          </p>
+        </header>
+
+        {useScrollArea ? (
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex gap-[15px] pb-4">{diagnosticCards}</div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        ) : (
+          <div className="w-full overflow-x-auto scrollbar-hide">
+            <div className="flex gap-[15px] pb-4">{diagnosticCards}</div>
+          </div>
+        )}
+
+        {showButton && (
+          <div className="flex flex-col items-end w-full">
+            <Link to="/services">
+              <Button className="h-auto inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0eef4]">
+                <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
+                  {buttonText}
+                </span>
+                <ArrowRightIcon className="w-6 h-6 text-[#1c1b1b]" />
+              </Button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
