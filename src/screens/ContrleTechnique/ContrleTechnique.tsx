@@ -127,7 +127,7 @@ const resourceCards = [
 
 export const ContrleTechnique = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-screen relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-screen relative">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <img

@@ -131,7 +131,7 @@ const additionalShapes = [
 
 export const PageArticle = (): JSX.Element => {
   return (
-    <main className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-[5525px] relative">
+    <main className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-[5525px] relative">
       <div className="absolute top-[278px] left-[-108px] w-[617px] h-[8349px] pointer-events-none">
         {decorativeShapes.map((shape, index) => (
           <img

@@ -170,7 +170,7 @@ const decorativeShapes = [
 
 export const MtierMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-[9586px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-[9586px] relative">
       <div className="absolute top-[306px] left-[-79px] w-[557px] h-[8068px]">
         {decorativeShapes.map((shape, index) => (
           <img

@@ -87,7 +87,7 @@ const headerIcons = [
 
 export const VilleMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] relative">
       <div className="absolute top-[187px] left-[-88px] w-[549px] flex flex-col pointer-events-none">
         {decorativeShapes.map((shape, index) => (
           <img

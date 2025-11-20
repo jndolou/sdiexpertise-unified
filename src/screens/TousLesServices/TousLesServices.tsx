@@ -86,7 +86,7 @@ const decorativeShapes = [
 
 export const TousLesServices = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-[4091px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-[4091px] relative">
       <div className="absolute top-[244px] left-[-74px] w-[519px] h-[2222px]">
         {decorativeShapes.map((shape, index) => (
           <img

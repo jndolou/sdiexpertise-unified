@@ -104,7 +104,7 @@ const decorativeShapes = [
 
 export const Diagnostics = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] relative">
       <div className="absolute top-[407px] left-[-79px] w-[557px] h-[7967px] pointer-events-none">
         {decorativeShapes.map((shape, index) => (
           <img

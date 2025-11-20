@@ -72,7 +72,7 @@ const bottomNavItems = [
 
 export const PageRessources = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-screen relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-screen relative">
       <div className="absolute top-0 left-0 w-px h-px pointer-events-none">
         <img
           className="absolute top-[-4117px] left-[-197px] w-[43px] h-28"
