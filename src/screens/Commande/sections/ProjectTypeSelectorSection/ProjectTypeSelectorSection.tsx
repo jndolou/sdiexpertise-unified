@@ -8,7 +8,6 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "../../../../components/ui/toggle-group";
-import { InteractiveMap } from "../../../../components/Map";
 
 const projectTypes = [
   { value: "vendre", label: "Vendre" },
@@ -23,7 +22,6 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
   const [propertyType, setPropertyType] = useState("Appartement : T2");
   const [surface, setSurface] = useState("70 m2");
   const [constructionYear, setConstructionYear] = useState("<1935");
-  const [locationInput, setLocationInput] = useState("32 avenue du Générale Michel Bizot");
 
   return (
     <section className="flex flex-col w-full items-start gap-4 relative px-4">
@@ -73,8 +71,7 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 <Input
                   id="location-input"
                   type="text"
-                  value={locationInput}
-                  onChange={(e) => setLocationInput(e.target.value)}
+                  defaultValue="32 avenue du Générale Michel Bizot"
                   className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
@@ -84,13 +81,6 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="w-full mt-4">
-          <InteractiveMap
-            address={locationInput}
-            className="w-full h-[300px]"
-          />
         </div>
 
         <div className="flex flex-col w-full items-start gap-4 relative mt-4">
