@@ -204,6 +204,9 @@ export const ContrleTechnique = (): JSX.Element => {
               </Button>
             </Link>
           </div>
+
+          {/* Rating Badge */}
+          <GoogleRating variant="card" />
         </section>
 
         {/* Why Section */}
