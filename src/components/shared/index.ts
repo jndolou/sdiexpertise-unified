@@ -11,3 +11,4 @@ export { TrustSection } from "./TrustSection";
 export { WhyCreateProSection } from "./WhyCreateProSection";
 export { MeetUsSection } from "./MeetUsSection";
 export { InteractiveMap } from "./InteractiveMap";
+export { AddressAutocomplete } from "./AddressAutocomplete";
