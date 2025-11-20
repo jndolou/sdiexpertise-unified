@@ -321,7 +321,7 @@ export const ContrleTechnique = (): JSX.Element => {
                 className="bg-[#ffffff1a] border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ececec] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(163deg,rgba(255,255,255,1)_0%,rgba(224,127,63,1)_26%,rgba(224,127,63,1)_74%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
               >
                 <CardContent className="p-[12px_16px] space-y-[13px]">
-                  <img className="w-auto h-auto" alt="Vector" src={card.icon} />
+                  <img className="w-auto h-auto brightness-0 saturate-100 [filter:brightness(0)_saturate(100%)_invert(44%)_sepia(74%)_saturate(1014%)_hue-rotate(350deg)_brightness(97%)_contrast(88%)]" alt="Vector" src={card.icon} />
 
                   <div className="space-y-[17px]">
                     <div className="space-y-2.5">
