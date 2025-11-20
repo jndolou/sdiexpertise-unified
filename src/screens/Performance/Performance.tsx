@@ -173,7 +173,7 @@ const resources = [
 
 export const Performance = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_55%] w-full min-w-[393px] min-h-screen relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_75%] w-full min-w-[393px] min-h-screen relative">
       <div className="absolute top-0 left-0 w-px h-px pointer-events-none">
         {decorativeShapes.map((shape, index) => (
           <img
