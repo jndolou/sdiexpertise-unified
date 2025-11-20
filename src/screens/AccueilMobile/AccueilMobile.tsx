@@ -24,7 +24,7 @@ export const AccueilMobile = (): JSX.Element => {
 
       <Header />
 
-      <main className="relative w-full pt-[130px]">
+      <main className="relative w-full pt-[110px]">
         <HeroSectionSubsection />
 
         <JeLoueJeVendLaSubsection />

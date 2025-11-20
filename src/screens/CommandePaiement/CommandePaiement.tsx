@@ -15,7 +15,7 @@ export const CommandePaiement = (): JSX.Element => {
     <div className="w-full min-w-[393px] flex flex-col relative [background:url(/grid.jpeg)_center_/_180%]">
       <Header />
 
-      <main className="flex flex-col w-full items-center gap-[9px] px-4 py-8 pt-[130px] z-[2]">
+      <main className="flex flex-col w-full items-center gap-[9px] px-4 py-8 pt-[110px] z-[2]">
         <PaymentMethodSection />
         <ConfirmationSection />
       </main>

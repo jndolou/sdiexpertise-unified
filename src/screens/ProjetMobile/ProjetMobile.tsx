@@ -21,7 +21,7 @@ export const ProjetMobile = (): JSX.Element => {
 
       <Header />
 
-      <div className="pt-[130px]">
+      <div className="pt-[110px]">
         <KeyInformationSection />
       </div>
       <AboutUsSection />
