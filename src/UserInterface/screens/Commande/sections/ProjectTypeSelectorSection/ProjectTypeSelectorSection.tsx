@@ -67,6 +67,8 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
       if (data.annee_construction) {
         setConstructionYear(data.annee_construction);
       }
+    } else {
+      setHasDetectedData(false);
     }
   };
 
