@@ -76,17 +76,17 @@ export const PageRessources = (): JSX.Element => {
       <div className="absolute top-0 left-0 w-px h-px pointer-events-none">
         <img
           className="absolute top-[-4117px] left-[-197px] w-[43px] h-28"
-          alt="Forme décorative"
+          alt=""
           src="/forme-d-corative-3.svg"
         />
         <img
           className="absolute top-[-3652px] left-[129px] w-[67px] h-[138px]"
-          alt="Forme décorative"
+          alt=""
           src="/forme-d-corative-4.svg"
         />
         <img
           className="absolute top-[-3094px] left-[-197px] w-[41px] h-[82px]"
-          alt="Forme décorative"
+          alt=""
           src="/forme-d-corative-8.svg"
         />
         <img

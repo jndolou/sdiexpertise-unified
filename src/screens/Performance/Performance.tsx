@@ -179,7 +179,7 @@ export const Performance = (): JSX.Element => {
           <img
             key={`shape-${index}`}
             className={`absolute ${shape.top} ${shape.left} w-auto h-auto`}
-            alt="Forme décorative"
+            alt=""
             src={shape.src}
           />
         ))}
