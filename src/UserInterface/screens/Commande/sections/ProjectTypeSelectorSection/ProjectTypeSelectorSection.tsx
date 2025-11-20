@@ -27,11 +27,11 @@ const propertyTypes = [
 export const ProjectTypeSelectorSection = (): JSX.Element => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState("louer");
-  const [location, setLocation] = useState("32 avenue du Générale Michel Bizot");
+  const [location, setLocation] = useState("");
   const [selectedPropertyType, setSelectedPropertyType] = useState("appartement");
-  const [propertyTypeDetail, setPropertyTypeDetail] = useState("Appartement : T2");
-  const [surface, setSurface] = useState("70 m2");
-  const [constructionYear, setConstructionYear] = useState("<1935");
+  const [propertyTypeDetail, setPropertyTypeDetail] = useState("");
+  const [surface, setSurface] = useState("");
+  const [constructionYear, setConstructionYear] = useState("");
   const [hasDetectedData, setHasDetectedData] = useState(false);
 
   const handlePropertyDataFetched = (data: {
