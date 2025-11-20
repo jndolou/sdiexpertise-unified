@@ -73,7 +73,7 @@ export const YourPartnerSection = (): JSX.Element => {
               >
                 <CardContent className="flex flex-col items-start gap-[15px] p-4 h-full">
                   <img
-                    className={`relative ${card.iconWidth} ${card.iconHeight}`}
+                    className={`relative ${card.iconWidth} ${card.iconHeight} brightness-0 saturate-100 invert-[28%] sepia-[94%] saturate-[1958%] hue-rotate-[256deg] brightness-[94%] contrast-[92%]`}
                     alt={card.title}
                     src={card.icon}
                   />
