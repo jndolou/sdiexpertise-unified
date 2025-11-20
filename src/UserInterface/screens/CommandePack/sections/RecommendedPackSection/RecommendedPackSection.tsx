@@ -62,6 +62,47 @@ export const RecommendedPackSection = (): JSX.Element => {
 
       <Card className="inline-flex flex-col items-start gap-3.5 w-full relative border-none shadow-none">
         <CardContent className="flex flex-col w-full items-center gap-[15px] px-5 pt-[21px] pb-2.5 relative bg-[#efe7ff] rounded-2xl overflow-hidden border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ececec] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(163deg,rgba(255,255,255,1)_0%,rgba(170,127,251,1)_26%,rgba(170,127,251,1)_74%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none p-0">
+          <Popover
+            open={openPopoverId === 0}
+            onOpenChange={(open) => setOpenPopoverId(open ? 0 : null)}
+          >
+            <PopoverTrigger asChild>
+              <button
+                className="flex items-start gap-2 p-2.5 bg-[#e5d9ff] rounded-lg w-full text-left cursor-pointer hover:bg-[#dcc9ff] transition-colors"
+                onClick={() => setOpenPopoverId(openPopoverId === 0 ? null : 0)}
+              >
+                <div className="flex-shrink-0 mt-0.5">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0C7.17157 0 6.5 0.671573 6.5 1.5V2C4.84315 2.58577 3.58577 4.13137 3.58577 6C3.58577 7.1 3.9 8.1 4.4 8.9V12C4.4 12.5523 4.84772 13 5.4 13H10.6C11.1523 13 11.6 12.5523 11.6 12V8.9C12.1 8.1 12.4143 7.1 12.4143 6C12.4143 4.13137 11.1569 2.58577 9.5 2V1.5C9.5 0.671573 8.82843 0 8 0Z" fill="#7C5ED6"/>
+                    <path d="M6 14C6 14.5523 6.44772 15 7 15H9C9.55228 15 10 14.5523 10 14V13.5H6V14Z" fill="#7C5ED6"/>
+                    <path d="M7.5 3C7.5 2.72386 7.72386 2.5 8 2.5C9.38071 2.5 10.5 3.61929 10.5 5C10.5 5.27614 10.7239 5.5 11 5.5C11.2761 5.5 11.5 5.27614 11.5 5C11.5 3.067 9.933 1.5 8 1.5C7.72386 1.5 7.5 1.72386 7.5 2C7.5 2.27614 7.5 2.72386 7.5 3Z" fill="white"/>
+                  </svg>
+                </div>
+                <p className="text-xs [font-family:'Open_Sans',Helvetica] text-[#1c1b1b] leading-[16.8px] flex-1 font-bold">
+                  Conseil
+                </p>
+              </button>
+            </PopoverTrigger>
+            <PopoverContent
+              className="w-[calc(100vw-2rem)] max-w-[361px] p-4 bg-white rounded-xl shadow-lg border border-[#e0e0e0]"
+              align="start"
+              sideOffset={8}
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 mt-0.5">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0C7.17157 0 6.5 0.671573 6.5 1.5V2C4.84315 2.58577 3.58577 4.13137 3.58577 6C3.58577 7.1 3.9 8.1 4.4 8.9V12C4.4 12.5523 4.84772 13 5.4 13H10.6C11.1523 13 11.6 12.5523 11.6 12V8.9C12.1 8.1 12.4143 7.1 12.4143 6C12.4143 4.13137 11.1569 2.58577 9.5 2V1.5C9.5 0.671573 8.82843 0 8 0Z" fill="#7C5ED6"/>
+                    <path d="M6 14C6 14.5523 6.44772 15 7 15H9C9.55228 15 10 14.5523 10 14V13.5H6V14Z" fill="#7C5ED6"/>
+                    <path d="M7.5 3C7.5 2.72386 7.72386 2.5 8 2.5C9.38071 2.5 10.5 3.61929 10.5 5C10.5 5.27614 10.7239 5.5 11 5.5C11.2761 5.5 11.5 5.27614 11.5 5C11.5 3.067 9.933 1.5 8 1.5C7.72386 1.5 7.5 1.72386 7.5 2C7.5 2.27614 7.5 2.72386 7.5 3Z" fill="white"/>
+                  </svg>
+                </div>
+                <p className="text-sm [font-family:'Open_Sans',Helvetica] text-[#1c1b1b] leading-[18.2px] flex-1">
+                  <span className="font-bold">Conseil :</span> retirer un élément n'impacte pas le prix : le pack reste à 350 € car vous bénéficiez d'un tarif avantageux, même en retirant un diagnostic.
+                </p>
+              </div>
+            </PopoverContent>
+          </Popover>
+
           {packItems.map((item) => (
             <div key={item.id} className="flex flex-col w-full">
               <div className="flex h-[23px] items-center justify-between w-full">
@@ -100,49 +141,6 @@ export const RecommendedPackSection = (): JSX.Element => {
                   </Button>
                 )}
               </div>
-
-              {item.advice && (
-                <Popover
-                  open={openPopoverId === item.id}
-                  onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}
-                >
-                  <PopoverTrigger asChild>
-                    <button
-                      className="flex items-start gap-2 mt-2 p-2.5 bg-[#e5d9ff] rounded-lg w-full text-left cursor-pointer hover:bg-[#dcc9ff] transition-colors"
-                      onClick={() => setOpenPopoverId(openPopoverId === item.id ? null : item.id)}
-                    >
-                      <div className="flex-shrink-0 mt-0.5">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M8 0C7.17157 0 6.5 0.671573 6.5 1.5V2C4.84315 2.58577 3.58577 4.13137 3.58577 6C3.58577 7.1 3.9 8.1 4.4 8.9V12C4.4 12.5523 4.84772 13 5.4 13H10.6C11.1523 13 11.6 12.5523 11.6 12V8.9C12.1 8.1 12.4143 7.1 12.4143 6C12.4143 4.13137 11.1569 2.58577 9.5 2V1.5C9.5 0.671573 8.82843 0 8 0Z" fill="#7C5ED6"/>
-                          <path d="M6 14C6 14.5523 6.44772 15 7 15H9C9.55228 15 10 14.5523 10 14V13.5H6V14Z" fill="#7C5ED6"/>
-                          <path d="M7.5 3C7.5 2.72386 7.72386 2.5 8 2.5C9.38071 2.5 10.5 3.61929 10.5 5C10.5 5.27614 10.7239 5.5 11 5.5C11.2761 5.5 11.5 5.27614 11.5 5C11.5 3.067 9.933 1.5 8 1.5C7.72386 1.5 7.5 1.72386 7.5 2C7.5 2.27614 7.5 2.72386 7.5 3Z" fill="white"/>
-                        </svg>
-                      </div>
-                      <p className="text-xs [font-family:'Open_Sans',Helvetica] text-[#1c1b1b] leading-[16.8px] flex-1 font-bold">
-                        Conseil
-                      </p>
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    className="w-[calc(100vw-2rem)] max-w-[361px] p-4 bg-white rounded-xl shadow-lg border border-[#e0e0e0]"
-                    align="start"
-                    sideOffset={8}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 mt-0.5">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M8 0C7.17157 0 6.5 0.671573 6.5 1.5V2C4.84315 2.58577 3.58577 4.13137 3.58577 6C3.58577 7.1 3.9 8.1 4.4 8.9V12C4.4 12.5523 4.84772 13 5.4 13H10.6C11.1523 13 11.6 12.5523 11.6 12V8.9C12.1 8.1 12.4143 7.1 12.4143 6C12.4143 4.13137 11.1569 2.58577 9.5 2V1.5C9.5 0.671573 8.82843 0 8 0Z" fill="#7C5ED6"/>
-                          <path d="M6 14C6 14.5523 6.44772 15 7 15H9C9.55228 15 10 14.5523 10 14V13.5H6V14Z" fill="#7C5ED6"/>
-                          <path d="M7.5 3C7.5 2.72386 7.72386 2.5 8 2.5C9.38071 2.5 10.5 3.61929 10.5 5C10.5 5.27614 10.7239 5.5 11 5.5C11.2761 5.5 11.5 5.27614 11.5 5C11.5 3.067 9.933 1.5 8 1.5C7.72386 1.5 7.5 1.72386 7.5 2C7.5 2.27614 7.5 2.72386 7.5 3Z" fill="white"/>
-                        </svg>
-                      </div>
-                      <p className="text-sm [font-family:'Open_Sans',Helvetica] text-[#1c1b1b] leading-[18.2px] flex-1">
-                        <span className="font-bold">Conseil :</span> {item.advice}
-                      </p>
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              )}
             </div>
           ))}
 
