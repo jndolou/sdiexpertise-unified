@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { Button } from "../../../../components/ui/button";
+import { AddressAutocomplete } from "../../../../components/shared/AddressAutocomplete";
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -19,6 +20,7 @@ const projectTypes = [
 export const ProjectTypeSelectorSection = (): JSX.Element => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState("louer");
+  const [location, setLocation] = useState("32 avenue du Générale Michel Bizot");
   const [propertyType, setPropertyType] = useState("Appartement : T2");
   const [surface, setSurface] = useState("70 m2");
   const [constructionYear, setConstructionYear] = useState("<1935");
@@ -63,18 +65,14 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
 
           <div className="flex flex-col items-start gap-0.5 relative self-stretch w-full">
             <div className="flex flex-col items-start gap-1 relative self-stretch w-full">
-              <div className="flex items-center gap-2 pl-3 pr-2 py-0 relative self-stretch w-full rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-                <div className="inline-flex h-11 items-center px-0 py-4 relative">
-                  <SearchIcon className="relative w-6 h-6 text-[#1c1b1b]" />
-                </div>
-
-                <Input
-                  id="location-input"
-                  type="text"
-                  defaultValue="32 avenue du Générale Michel Bizot"
-                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
-                />
-              </div>
+              <AddressAutocomplete
+                value={location}
+                onChange={(value) => setLocation(value)}
+                placeholder="Code postal ou adresse"
+                onSelect={(suggestion) => {
+                  console.log('Adresse sélectionnée:', suggestion);
+                }}
+              />
 
               <p className="relative self-stretch [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-[10px] tracking-[0] leading-5">
                 * uniquement en Île de France (75, 77, 78, 91, 92, 93, 94, 95)
