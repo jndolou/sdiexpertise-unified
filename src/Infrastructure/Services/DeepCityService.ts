@@ -29,7 +29,6 @@ interface ParcelData {
 
 export class DeepCityService {
   private readonly BASE_URL = 'https://api.deepcity.io/v1';
-  private readonly API_KEY = import.meta.env.VITE_DEEPCITY_API_KEY;
 
   async getPropertyData(address: string): Promise<DeepCityPropertyData> {
     try {
@@ -56,12 +55,7 @@ export class DeepCityService {
   private async geocodeAddress(address: string): Promise<string | null> {
     try {
       const response = await fetch(
-        `${this.BASE_URL}/geocoding?address=${encodeURIComponent(address)}`,
-        {
-          headers: {
-            'Authorization': `Bearer ${this.API_KEY}`,
-          },
-        }
+        `${this.BASE_URL}/geocoding?address=${encodeURIComponent(address)}`
       );
 
       if (!response.ok) {
@@ -79,12 +73,7 @@ export class DeepCityService {
   private async getParcelData(parcelId: string): Promise<ParcelData | null> {
     try {
       const response = await fetch(
-        `${this.BASE_URL}/parcels/${parcelId}?include=energy,building,cadastre`,
-        {
-          headers: {
-            'Authorization': `Bearer ${this.API_KEY}`,
-          },
-        }
+        `${this.BASE_URL}/parcels/${parcelId}?include=energy,building,cadastre`
       );
 
       if (!response.ok) {
