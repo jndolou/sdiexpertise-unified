@@ -2,15 +2,68 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 
-export const ConfirmationSection = (): JSX.Element => {
+interface ConfirmationSectionProps {
+  formData: {
+    prenom: string;
+    nom: string;
+    email: string;
+    telephone: string;
+    consent: boolean;
+  };
+  formErrors: {
+    email: string;
+    telephone: string;
+  };
+}
+
+export const ConfirmationSection = ({
+  formData,
+  formErrors,
+}: ConfirmationSectionProps): JSX.Element => {
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState("onsite");
+  const [validationError, setValidationError] = useState("");
 
   const paymentOptions = [
     { value: "card", label: "Carte bancaire" },
     { value: "onsite", label: "Paiement sur place" },
     { value: "transfer", label: "Paiement par virement bancaire" },
   ];
+
+  const handleSubmit = () => {
+    if (!formData.prenom.trim()) {
+      setValidationError("Le prénom est obligatoire");
+      return;
+    }
+
+    if (!formData.nom.trim()) {
+      setValidationError("Le nom est obligatoire");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      setValidationError("L'email est obligatoire");
+      return;
+    }
+
+    if (formErrors.email) {
+      setValidationError("Veuillez corriger le format de l'email");
+      return;
+    }
+
+    if (formErrors.telephone) {
+      setValidationError("Veuillez corriger le format du téléphone");
+      return;
+    }
+
+    if (!formData.consent) {
+      setValidationError("Vous devez accepter d'être recontacté");
+      return;
+    }
+
+    setValidationError("");
+    navigate('/rendez-vous');
+  };
 
   return (
     <section className="inline-flex flex-col items-end gap-6 relative">
@@ -88,8 +141,12 @@ export const ConfirmationSection = (): JSX.Element => {
         </div>
       </div>
 
+      {validationError && (
+        <p className="text-sm text-red-500 font-medium">{validationError}</p>
+      )}
+
       <Button
-        onClick={() => navigate('/rendez-vous')}
+        onClick={handleSubmit}
         className="h-auto flex w-56 items-center justify-center gap-2 px-4 py-3 relative bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#faf8fc]">
         <span className="relative w-[159px] [font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px]">
           Prendre rendez-vous

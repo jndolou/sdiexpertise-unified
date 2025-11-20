@@ -1,6 +1,7 @@
 import { SearchIcon } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import { Input } from "../ui/input";
+import { deepCityService } from "../../../Infrastructure/Services/DeepCityService";
 
 interface AddressSuggestion {
   label: string;
@@ -10,10 +11,17 @@ interface AddressSuggestion {
   coordinates?: [number, number];
 }
 
+interface PropertyData {
+  type_bien: string | null;
+  surface: number | null;
+  annee_construction: string | null;
+}
+
 interface AddressAutocompleteProps {
   value: string;
   onChange: (value: string, suggestion?: AddressSuggestion) => void;
   onSelect?: (suggestion: AddressSuggestion) => void;
+  onPropertyDataFetched?: (data: PropertyData) => void;
   placeholder?: string;
   className?: string;
 }
@@ -22,6 +30,7 @@ export const AddressAutocomplete = ({
   value,
   onChange,
   onSelect,
+  onPropertyDataFetched,
   placeholder = "Code postal ou adresse",
   className = "",
 }: AddressAutocompleteProps): JSX.Element => {
@@ -99,15 +108,43 @@ export const AddressAutocomplete = ({
   }, [value]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    const newValue = e.target.value;
+    onChange(newValue);
+
+    if (newValue.length < 3 && onPropertyDataFetched) {
+      onPropertyDataFetched({
+        type_bien: null,
+        surface: null,
+        annee_construction: null,
+      });
+    }
   };
 
-  const handleSuggestionClick = (suggestion: AddressSuggestion) => {
+  const fetchPropertyData = async (address: string) => {
+    if (onPropertyDataFetched && address.length >= 10) {
+      try {
+        console.log('Fetching property data for address:', address);
+        const propertyData = await deepCityService.getPropertyData(address);
+        onPropertyDataFetched({
+          type_bien: propertyData.type_bien,
+          surface: propertyData.surface,
+          annee_construction: propertyData.annee_construction,
+        });
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données immobilières:', error);
+      }
+    }
+  };
+
+  const handleSuggestionClick = async (suggestion: AddressSuggestion) => {
+    console.log('Adresse sélectionnée:', suggestion);
     onChange(suggestion.label, suggestion);
     setShowSuggestions(false);
     if (onSelect) {
       onSelect(suggestion);
     }
+
+    await fetchPropertyData(suggestion.label);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

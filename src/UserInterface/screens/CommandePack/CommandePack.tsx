@@ -1,5 +1,6 @@
 import { ArrowLeftIcon, EyeIcon } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { Header } from "../../components/layout/Header";
 import { ActionButtonsSection } from "./sections/ActionButtonsSection";
@@ -11,6 +12,8 @@ import { RecommendedPackSection } from "./sections/RecommendedPackSection";
 import { SummarySection } from "./sections/SummarySection";
 
 export const CommandePack = (): JSX.Element => {
+  const navigate = useNavigate();
+
   return (
     <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] flex flex-col relative">
       <Header />
@@ -20,6 +23,7 @@ export const CommandePack = (): JSX.Element => {
             variant="ghost"
             size="icon"
             className="h-auto w-auto p-0 hover:bg-transparent"
+            onClick={() => navigate('/commande')}
           >
             <ArrowLeftIcon className="w-6 h-6 text-[#5d3ca4]" />
           </Button>
