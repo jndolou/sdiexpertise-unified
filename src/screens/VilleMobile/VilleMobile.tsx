@@ -14,7 +14,7 @@ import { YourQuoteSection } from "./sections/YourQuoteSection";
 
 export const VilleMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_30%] w-full min-w-[393px] relative pb-28">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_55%] w-full min-w-[393px] relative pb-28">
       <div className="absolute top-[187px] left-[-88px] w-[549px] h-[4311px] flex flex-col">
         <img
           className="ml-[88px] w-[64.75px] h-[138.35px] mt-[3.8px]"

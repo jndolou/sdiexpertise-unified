@@ -12,7 +12,7 @@ import { SummarySection } from "./sections/SummarySection";
 
 export const CommandePack = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_30%] w-full min-w-[393px] flex flex-col relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_55%] w-full min-w-[393px] flex flex-col relative">
       <Header />
       <main className="flex flex-col w-full items-start gap-3 pt-[110px] pb-8 px-4">
         <nav className="flex w-full items-center justify-between gap-4 relative">

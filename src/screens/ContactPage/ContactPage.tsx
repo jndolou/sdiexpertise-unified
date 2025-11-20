@@ -52,7 +52,7 @@ export const ContactPage = (): JSX.Element => {
   };
 
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_30%] w-full min-w-[393px] min-h-screen relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_55%] w-full min-w-[393px] min-h-screen relative">
       <Header />
 
       <main className="relative w-full pt-32 pb-32 px-4">
