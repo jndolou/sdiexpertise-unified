@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Checkbox } from "../../../../components/ui/checkbox";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
@@ -11,13 +11,42 @@ const steps = [
 ];
 
 const formFields = [
-  { label: "Prénom*", value: "Jean" },
-  { label: "Nom*", value: "Lebon" },
-  { label: "Email*", value: "jean.lebon@gmail.com" },
-  { label: "Téléphone", value: "06 36 96 25 45" },
+  { label: "Prénom*", value: "Jean", type: "text" },
+  { label: "Nom*", value: "Lebon", type: "text" },
+  { label: "Email*", value: "jean.lebon@gmail.com", type: "email" },
+  { label: "Téléphone", value: "06 36 96 25 45", type: "tel" },
 ];
 
 export const PaymentMethodSection = (): JSX.Element => {
+  const [phoneValue, setPhoneValue] = useState("06 36 96 25 45");
+  const [phoneError, setPhoneError] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 10) {
+      value = value.slice(0, 10);
+    }
+
+    let formatted = "";
+    for (let i = 0; i < value.length; i++) {
+      if (i > 0 && i % 2 === 0) {
+        formatted += " ";
+      }
+      formatted += value[i];
+    }
+
+    setPhoneValue(formatted);
+
+    const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+    const cleanValue = formatted.replace(/\s/g, "");
+
+    if (cleanValue && !phoneRegex.test(cleanValue)) {
+      setPhoneError("Format de téléphone invalide");
+    } else {
+      setPhoneError("");
+    }
+  };
   return (
     <section className="flex flex-col items-start gap-[25px] w-full">
       <div className="flex flex-col items-end gap-[21px] w-full">
@@ -78,13 +107,19 @@ export const PaymentMethodSection = (): JSX.Element => {
                       <div className="self-stretch w-full flex items-start">
                         <Input
                           id={`field-${index}`}
-                          defaultValue={field.value}
+                          type={field.type}
+                          value={field.type === "tel" ? phoneValue : undefined}
+                          defaultValue={field.type !== "tel" ? field.value : undefined}
+                          onChange={field.type === "tel" ? handlePhoneChange : undefined}
                           className="w-fit mt-[-1.00px] [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 whitespace-nowrap border-0 bg-transparent p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
+                {field.type === "tel" && phoneError && (
+                  <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                )}
               </div>
             </div>
           ))}
