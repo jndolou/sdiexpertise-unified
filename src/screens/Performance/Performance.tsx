@@ -237,7 +237,7 @@ export const Performance = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="flex flex-col gap-3.5">
+        <section className="flex flex-col gap-[50px]">
           {benefitCards.map((card, index) => (
             <Card
               key={index}
