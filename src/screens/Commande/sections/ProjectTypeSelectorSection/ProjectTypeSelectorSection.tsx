@@ -17,11 +17,18 @@ const projectTypes = [
   { value: "autre", label: "Autre" },
 ];
 
+const propertyTypes = [
+  { value: "appartement", label: "Appartement" },
+  { value: "maison", label: "Maison" },
+  { value: "local-commercial", label: "Local commercial" },
+  { value: "autre", label: "Autre" },
+];
+
 export const ProjectTypeSelectorSection = (): JSX.Element => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState("louer");
   const [location, setLocation] = useState("32 avenue du Générale Michel Bizot");
-  const [propertyType, setPropertyType] = useState("Appartement : T2");
+  const [selectedPropertyType, setSelectedPropertyType] = useState("appartement");
   const [surface, setSurface] = useState("70 m2");
   const [constructionYear, setConstructionYear] = useState("<1935");
 
@@ -93,24 +100,26 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
             >
               Type de logement*
             </Label>
-            <div className="flex items-center gap-2 w-full">
-              <div className="flex-1 flex items-center gap-2 pl-3 pr-2 py-0 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-                <Input
-                  id="property-type"
-                  type="text"
-                  value={propertyType}
-                  onChange={(e) => setPropertyType(e.target.value)}
-                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
-                />
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="w-10 h-10 rounded-lg flex-shrink-0"
-              >
-                <Pencil className="w-5 h-5 text-[#1c1b1b]" />
-              </Button>
-            </div>
+            <ToggleGroup
+              type="single"
+              value={selectedPropertyType}
+              onValueChange={(value) => {
+                if (value) setSelectedPropertyType(value);
+              }}
+              className="grid grid-cols-2 gap-2 w-full"
+            >
+              {propertyTypes.map((type) => (
+                <ToggleGroupItem
+                  key={type.value}
+                  value={type.value}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg overflow-hidden border-[none] shadow-[inset_1.13e-16px_0.85px_0.85px_#ffffff,inset_-1.13e-16px_-0.85px_0.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] data-[state=on]:bg-[linear-gradient(0deg,rgba(193,160,255,1)_0%,rgba(193,160,255,1)_100%)] data-[state=off]:bg-[linear-gradient(138deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-lg before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none h-auto"
+                >
+                  <span className="relative [font-family:'Ubuntu',Helvetica] font-medium text-[#1c1b1b] text-sm text-center tracking-[0] leading-[normal] whitespace-nowrap">
+                    {type.label}
+                  </span>
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
           </div>
 
           <div className="flex flex-col w-full items-start gap-1.5">
