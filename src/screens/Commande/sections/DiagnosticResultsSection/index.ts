@@ -1,0 +1,1 @@
+export { DiagnosticResultsSection } from "./DiagnosticResultsSection";

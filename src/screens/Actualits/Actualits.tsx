@@ -68,7 +68,7 @@ const paginationNumbers = [
 
 export const Actualits = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(..//-actualit-s.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(243,241,247,1)_0%,rgba(243,241,247,1)_100%)] w-full min-w-[393px] min-h-[4370px] relative pb-[100px]">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] min-h-[4370px] relative pb-[100px]">
       <div className="absolute top-[232px] left-[-75px] w-[527px] h-[8142px]">
         {decorativeShapes.map((shape, index) => (
           <img

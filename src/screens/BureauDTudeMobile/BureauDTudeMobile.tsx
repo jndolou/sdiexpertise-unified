@@ -88,7 +88,7 @@ const decorativeImages = [
 
 export const BureauDTudeMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(..//--bureau-d--tude--mobile.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(243,241,247,0.93)_0%,rgba(243,241,247,0.93)_100%)] w-full min-w-[393px] min-h-screen relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] min-h-screen relative">
       <div className="absolute top-[382px] left-[-82px] w-[543px] h-[4211px] pointer-events-none">
         {decorativeImages.map((img, index) => (
           <img

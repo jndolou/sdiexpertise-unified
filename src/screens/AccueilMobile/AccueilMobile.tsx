@@ -16,7 +16,7 @@ import { VotreProjetSubsection } from "../../components/sections/VotreProjetSubs
 
 export const AccueilMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden bg-[linear-gradient(0deg,rgba(243,241,247,1)_0%,rgba(243,241,247,1)_100%)] w-full min-w-[393px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] relative">
       <img
         className="absolute top-[306px] left-[-79px] w-[557px] h-[5207px] pointer-events-none"
         alt="Formes décoratives"

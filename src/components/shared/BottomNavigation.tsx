@@ -53,10 +53,12 @@ export const BottomNavigation = ({ className = "" }: BottomNavigationProps): JSX
       })}
 
       <div className="inline-flex flex-col items-center justify-center p-4 self-stretch flex-[0_0_auto] mt-[-1.00px] ml-[-2.0px] border border-solid border-transparent backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] [border-image:linear-gradient(147deg,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_100%)_1]">
-        <Button className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] h-12 hover:bg-[#f0eef4]">
-          <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
-            Obtenir un devis
-          </span>
+        <Button asChild className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#faf8fc] rounded-[62px] overflow-hidden shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] h-12 hover:bg-[#f0eef4]">
+          <Link to="/commande">
+            <span className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
+              Obtenir un devis
+            </span>
+          </Link>
         </Button>
       </div>
     </nav>

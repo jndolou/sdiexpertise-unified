@@ -146,10 +146,12 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
                     </span>
                   </Button>
                 </Link>
-                <Button className="h-12 rounded-[62px] bg-[#faf8fc] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0ebf5]">
-                  <span className="font-[Ubuntu] font-bold text-[#1c1b1b] text-sm">
-                    Obtenir un devis
-                  </span>
+                <Button asChild className="h-12 rounded-[62px] bg-[#faf8fc] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb,3.63e-16px_2.93px_11.87px_#33333324] hover:bg-[#f0ebf5]">
+                  <Link to="/commande">
+                    <span className="font-[Ubuntu] font-bold text-[#1c1b1b] text-sm">
+                      Obtenir un devis
+                    </span>
+                  </Link>
                 </Button>
               </>
             ) : (
