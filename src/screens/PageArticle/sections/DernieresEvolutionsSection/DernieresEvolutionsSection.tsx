@@ -3,7 +3,7 @@ import { Badge } from "../../../../components/ui/badge";
 
 export const DernieresEvolutionsSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-start gap-5 pt-8 pb-0 px-4 overflow-hidden">
+    <section className="flex flex-col w-full items-start gap-5 pb-0 px-4 overflow-hidden">
       <div className="flex flex-col items-start gap-[18px] w-full">
         <div className="flex flex-col items-start gap-2.5 w-full">
           <div className="inline-flex flex-col items-start gap-6">
