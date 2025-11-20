@@ -266,10 +266,10 @@ export const Performance = (): JSX.Element => {
                   src="/polygon-7.svg"
                 />
                 <img
-                  className="relative w-6 h-6 z-10"
+                  className="relative w-6 h-6 z-10 mx-auto"
                   alt="Icon"
                   src={card.icon}
-                  style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)' }}
+                  style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)', marginLeft: 'auto', marginRight: 'auto' }}
                 />
               </div>
             </Card>
