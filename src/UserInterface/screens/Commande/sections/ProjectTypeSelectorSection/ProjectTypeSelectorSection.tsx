@@ -32,34 +32,41 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
   const [propertyTypeDetail, setPropertyTypeDetail] = useState("Appartement : T2");
   const [surface, setSurface] = useState("70 m2");
   const [constructionYear, setConstructionYear] = useState("<1935");
+  const [hasDetectedData, setHasDetectedData] = useState(false);
 
   const handlePropertyDataFetched = (data: {
     type_bien: string | null;
     surface: number | null;
     annee_construction: string | null;
   }) => {
-    if (data.type_bien) {
-      const normalizedType = data.type_bien.toLowerCase();
-      if (normalizedType.includes('appartement')) {
-        setSelectedPropertyType('appartement');
-        setPropertyTypeDetail(data.type_bien);
-      } else if (normalizedType.includes('maison')) {
-        setSelectedPropertyType('maison');
-        setPropertyTypeDetail(data.type_bien);
-      } else if (normalizedType.includes('commercial')) {
-        setSelectedPropertyType('local-commercial');
-        setPropertyTypeDetail(data.type_bien);
-      } else {
-        setPropertyTypeDetail(data.type_bien);
+    const hasData = data.type_bien || data.surface || data.annee_construction;
+
+    if (hasData) {
+      setHasDetectedData(true);
+
+      if (data.type_bien) {
+        const normalizedType = data.type_bien.toLowerCase();
+        if (normalizedType.includes('appartement')) {
+          setSelectedPropertyType('appartement');
+          setPropertyTypeDetail(data.type_bien);
+        } else if (normalizedType.includes('maison')) {
+          setSelectedPropertyType('maison');
+          setPropertyTypeDetail(data.type_bien);
+        } else if (normalizedType.includes('commercial')) {
+          setSelectedPropertyType('local-commercial');
+          setPropertyTypeDetail(data.type_bien);
+        } else {
+          setPropertyTypeDetail(data.type_bien);
+        }
       }
-    }
 
-    if (data.surface) {
-      setSurface(`${data.surface} m2`);
-    }
+      if (data.surface) {
+        setSurface(`${data.surface} m2`);
+      }
 
-    if (data.annee_construction) {
-      setConstructionYear(data.annee_construction);
+      if (data.annee_construction) {
+        setConstructionYear(data.annee_construction);
+      }
     }
   };
 
@@ -120,10 +127,11 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex flex-col w-full items-start gap-4 relative mt-4">
-          <h3 className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-lg tracking-[0] leading-[21.6px]">
-            Données détectées de votre bien
-          </h3>
+        {hasDetectedData && (
+          <div className="flex flex-col w-full items-start gap-4 relative mt-4">
+            <h3 className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-lg tracking-[0] leading-[21.6px]">
+              Données détectées de votre bien
+            </h3>
 
           <div className="flex flex-col w-full items-start gap-1.5">
             <Label
@@ -209,6 +217,8 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
           <p className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-xs tracking-[0] leading-5">
             Les champs marqués d'un * sont obligatoires.
           </p>
+          </div>
+        )}
 
           <div className="flex items-center justify-between w-full p-4 rounded-2xl backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
             <div className="flex flex-col gap-1 relative z-10">
@@ -224,7 +234,6 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
               <span className="text-xl leading-none">→</span>
             </Button>
           </div>
-        </div>
       </div>
     </section>
   );
