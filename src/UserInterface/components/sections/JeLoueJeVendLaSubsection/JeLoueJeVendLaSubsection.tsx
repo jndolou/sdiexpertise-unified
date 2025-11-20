@@ -332,7 +332,7 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
                   side="bottom"
                   sideOffset={8}
                 >
-                  <ScrollArea className="max-h-[400px] rounded-2xl">
+                  <ScrollArea className="max-h-[400px] overflow-auto rounded-2xl">
                     <div className="flex flex-col gap-4 p-4">
                       {filteredServices.length > 0 ? (
                         filteredServices.map((category, categoryIndex) => (
