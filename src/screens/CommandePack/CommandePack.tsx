@@ -14,7 +14,7 @@ export const CommandePack = (): JSX.Element => {
   return (
     <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] flex flex-col relative">
       <Header />
-      <main className="flex flex-col w-full items-start gap-3 pt-[110px] pb-8 px-4">
+      <main className="flex flex-col w-full items-start gap-3 pt-[130px] pb-8 px-4">
         <nav className="flex w-full items-center justify-between gap-4 relative">
           <Button
             variant="ghost"

@@ -8,7 +8,7 @@ export const Commande = (): JSX.Element => {
     <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] min-h-[844px] relative">
       <Header />
 
-      <main className="relative w-full pt-[100px]">
+      <main className="relative w-full pt-[130px]">
         <DiagnosticResultsSection />
         <ProjectTypeSelectorSection />
       </main>

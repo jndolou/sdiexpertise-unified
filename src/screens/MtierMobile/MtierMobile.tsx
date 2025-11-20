@@ -184,7 +184,7 @@ export const MtierMobile = (): JSX.Element => {
 
       <Header />
 
-      <div className="pt-[106px]">
+      <div className="pt-[130px]">
         <HeroSectionSubsection />
       </div>
 

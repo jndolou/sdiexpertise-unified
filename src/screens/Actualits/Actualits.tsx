@@ -112,7 +112,7 @@ export const Actualits = (): JSX.Element => {
 
       <Header />
 
-      <div className="pt-[110px]">
+      <div className="pt-[130px]">
         <NewsFilterSection />
       </div>
       <NewsHighlightsSection />

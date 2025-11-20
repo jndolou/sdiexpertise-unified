@@ -42,7 +42,7 @@ const statsData = [
 
 export const HeroSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-[25px] pt-[120px] pb-0 px-0 relative">
+    <section className="flex flex-col w-full items-center gap-[25px] pt-[130px] pb-0 px-0 relative">
       <div className="flex flex-col w-[360px] items-start gap-5 relative flex-[0_0_auto]">
         <h1 className="relative self-stretch mt-[-1.00px] font-titre-1-mobile font-[number:var(--titre-1-mobile-font-weight)] text-dark text-[length:var(--titre-1-mobile-font-size)] text-center tracking-[var(--titre-1-mobile-letter-spacing)] leading-[var(--titre-1-mobile-line-height)] [font-style:var(--titre-1-mobile-font-style)]">
           Argenteuil en chiffres

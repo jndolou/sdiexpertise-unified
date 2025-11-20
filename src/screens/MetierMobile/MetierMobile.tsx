@@ -20,7 +20,7 @@ export const MetierMobile = (): JSX.Element => {
 
       <Header />
 
-      <main className="relative w-full pt-[110px]">
+      <main className="relative w-full pt-[130px]">
         <HeroSectionSubsection />
 
         <LmentsDeRassuranceSubsection />
