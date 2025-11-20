@@ -12,7 +12,7 @@ import { VotreDevisEnSubsection } from "../../components/sections/VotreDevisEnSu
 
 export const MetierMobile = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] relative">
       <img
         className="absolute top-[306px] left-[-79px] w-[557px] h-[5207px] pointer-events-none"
         alt="Formes décoratives"

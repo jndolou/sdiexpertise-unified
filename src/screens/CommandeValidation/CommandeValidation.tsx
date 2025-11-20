@@ -9,7 +9,7 @@ export const CommandeValidation = (): JSX.Element => {
   const navigate = useNavigate();
 
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_150%] w-full min-w-[393px] min-h-[836px] relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_180%] w-full min-w-[393px] min-h-[836px] relative">
       <Header />
 
       <main className="flex flex-col items-center gap-[9px] px-4 py-8 pt-[120px]">

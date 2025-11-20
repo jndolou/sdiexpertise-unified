@@ -12,7 +12,7 @@ import { UserInfoSection } from "./sections/UserInfoSection";
 
 export const CommandePaiement = (): JSX.Element => {
   return (
-    <div className="w-full min-w-[393px] flex flex-col relative [background:url(/grid.jpeg)_center_/_150%]">
+    <div className="w-full min-w-[393px] flex flex-col relative [background:url(/grid.jpeg)_center_/_180%]">
       <Header />
 
       <main className="flex flex-col w-full items-center gap-[9px] px-4 py-8 pt-[110px] z-[2]">
