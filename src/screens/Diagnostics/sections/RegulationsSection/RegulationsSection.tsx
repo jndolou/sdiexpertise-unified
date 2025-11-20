@@ -76,13 +76,19 @@ export const RegulationsSection = (): JSX.Element => {
                         index === 0 ? "21px" : index === 1 ? "28px" : "auto",
                       height:
                         index === 0 ? "27.56px" : index === 1 ? "28px" : "auto",
+                      filter: 'brightness(0) saturate(100%) invert(46%) sepia(47%) saturate(1254%) hue-rotate(236deg) brightness(91%) contrast(89%)'
                     }}
                     alt="Icon"
                     src={item.icon}
                   />
                 </>
               ) : (
-                <img className="w-[86px] h-20" alt="Icon" src={item.icon} />
+                <img
+                  className="w-[86px] h-20"
+                  alt="Icon"
+                  src={item.icon}
+                  style={{ filter: 'brightness(0) saturate(100%) invert(46%) sepia(47%) saturate(1254%) hue-rotate(236deg) brightness(91%) contrast(89%)' }}
+                />
               )}
             </div>
           </div>
