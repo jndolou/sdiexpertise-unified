@@ -399,62 +399,62 @@ export const ContrleTechnique = (): JSX.Element => {
             </div>
           </CardContent>
         </Card>
+      </main>
 
-        {/* Newsletter Section */}
-        <Card className="border border-solid border-[#e07f3f] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]">
-          <CardContent className="p-4 space-y-4">
-            <h2 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
-              Inscrivez-vous à notre newsletter !
-            </h2>
+      {/* Newsletter Section */}
+      <Card className="mx-4 mb-8 border border-solid border-[#e07f3f] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]">
+        <CardContent className="p-4 space-y-4">
+          <h2 className="font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
+            Inscrivez-vous à notre newsletter !
+          </h2>
 
-            <div className="bg-[#ffe5d4] rounded-[9px] px-[13px] py-2">
-              <p className="font-medium text-xs">
-                <span className="text-[#1c1b1b]">10%*</span>
-                <span className="text-[#b55a1e]">
-                  {" "}
-                  pour vous, des (bons) conseils et des promos !
-                </span>
-              </p>
-            </div>
-
-            <div className="flex items-start gap-[13px]">
-              <Checkbox className="mt-1 bg-white border-[#ebdcfb]" />
-              <p className="font-paragraphe-2-mobile font-[number:var(--paragraphe-2-mobile-font-weight)] text-dark text-[length:var(--paragraphe-2-mobile-font-size)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] leading-[var(--paragraphe-2-mobile-line-height)] [font-style:var(--paragraphe-2-mobile-font-style)]">
-                J'accepte d'être recontacté.e et je consens au traitement de mes
-                données personnelles
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="flex-1 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(224,127,63,1)_37%,rgba(224,127,63,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-                <div className="flex items-center gap-2 pl-3 pr-2 py-4">
-                  <img
-                    className="w-[24.25px] h-6"
-                    alt="Left icon"
-                    src="/left-icon.svg"
-                  />
-                  <Input
-                    placeholder="Entrez votre adresse email"
-                    className="border-0 bg-transparent font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-[#1c1b1b80] text-[length:var(--paragraphe-2-desktop-font-size)] tracking-[var(--paragraphe-2-desktop-letter-spacing)] leading-[var(--paragraphe-2-desktop-line-height)] [font-style:var(--paragraphe-2-desktop-font-style)]"
-                  />
-                </div>
-              </div>
-              <img className="h-[71.73px]" alt="Bouton" src="/bouton.svg" />
-            </div>
-
-            <p className="text-xs">
-              <span className="text-[#1c1b1b] font-paragraphe-2-mobile [font-style:var(--paragraphe-2-mobile-font-style)] font-[number:var(--paragraphe-2-mobile-font-weight)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] text-[length:var(--paragraphe-2-mobile-font-size)] leading-[var(--paragraphe-2-mobile-line-height)]">
-                Votre adresse email sera uniquement utilisée pour vous envoyer
-                nos newsletters. Vous pourrez vous désabonner via le lien
-                intégré dans la newsletter.{" "}
-              </span>
-              <span className="text-[#b55a1e] font-paragraphe-2-mobile [font-style:var(--paragraphe-2-mobile-font-style)] font-[number:var(--paragraphe-2-mobile-font-weight)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] text-[length:var(--paragraphe-2-mobile-font-size)] leading-[var(--paragraphe-2-mobile-line-height)]">
-                En savoir plus sur la gestion de vos données et vos droits.
+          <div className="bg-[#ffe5d4] rounded-[9px] px-[13px] py-2">
+            <p className="font-medium text-xs">
+              <span className="text-[#1c1b1b]">10%*</span>
+              <span className="text-[#b55a1e]">
+                {" "}
+                pour vous, des (bons) conseils et des promos !
               </span>
             </p>
-          </CardContent>
-        </Card>
-      </main>
+          </div>
+
+          <div className="flex items-start gap-[13px]">
+            <Checkbox className="mt-1 bg-white border-[#ebdcfb]" />
+            <p className="font-paragraphe-2-mobile font-[number:var(--paragraphe-2-mobile-font-weight)] text-dark text-[length:var(--paragraphe-2-mobile-font-size)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] leading-[var(--paragraphe-2-mobile-line-height)] [font-style:var(--paragraphe-2-mobile-font-style)]">
+              J'accepte d'être recontacté.e et je consens au traitement de mes
+              données personnelles
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <div className="flex-1 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(224,127,63,1)_37%,rgba(224,127,63,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+              <div className="flex items-center gap-2 pl-3 pr-2 py-4">
+                <img
+                  className="w-[24.25px] h-6"
+                  alt="Left icon"
+                  src="/left-icon.svg"
+                />
+                <Input
+                  placeholder="Entrez votre adresse email"
+                  className="border-0 bg-transparent font-paragraphe-2-desktop font-[number:var(--paragraphe-2-desktop-font-weight)] text-[#1c1b1b80] text-[length:var(--paragraphe-2-desktop-font-size)] tracking-[var(--paragraphe-2-desktop-letter-spacing)] leading-[var(--paragraphe-2-desktop-line-height)] [font-style:var(--paragraphe-2-desktop-font-style)]"
+                />
+              </div>
+            </div>
+            <img className="h-[71.73px]" alt="Bouton" src="/bouton.svg" />
+          </div>
+
+          <p className="text-xs">
+            <span className="text-[#1c1b1b] font-paragraphe-2-mobile [font-style:var(--paragraphe-2-mobile-font-style)] font-[number:var(--paragraphe-2-mobile-font-weight)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] text-[length:var(--paragraphe-2-mobile-font-size)] leading-[var(--paragraphe-2-mobile-line-height)]">
+              Votre adresse email sera uniquement utilisée pour vous envoyer
+              nos newsletters. Vous pourrez vous désabonner via le lien
+              intégré dans la newsletter.{" "}
+            </span>
+            <span className="text-[#b55a1e] font-paragraphe-2-mobile [font-style:var(--paragraphe-2-mobile-font-style)] font-[number:var(--paragraphe-2-mobile-font-weight)] tracking-[var(--paragraphe-2-mobile-letter-spacing)] text-[length:var(--paragraphe-2-mobile-font-size)] leading-[var(--paragraphe-2-mobile-line-height)]">
+              En savoir plus sur la gestion de vos données et vos droits.
+            </span>
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Footer */}
       <footer className="flex flex-col items-start gap-12 pt-12 pb-32 px-8 bg-transparent rounded-[16px_16px_0px_0px] overflow-hidden border-[none] shadow-[inset_1.13e-16px_1.85px_1.85px_#ffffff,inset_-1.13e-16px_-1.85px_1.85px_#ebebeb] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-[16px_16px_0px_0px] before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
