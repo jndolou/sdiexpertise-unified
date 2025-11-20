@@ -94,6 +94,7 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
   const [isLocationPopoverOpen, setIsLocationPopoverOpen] = useState(false);
   const [addressSuggestions, setAddressSuggestions] = useState<AddressSuggestion[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
+  const [selectedServiceIndex, setSelectedServiceIndex] = useState(-1);
   const locationPopoverRef = useRef<HTMLDivElement>(null);
 
   const filterServices = (query: string) => {
@@ -111,6 +112,50 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
   };
 
   const filteredServices = filterServices(searchQuery);
+
+  const flattenedServices = filteredServices.flatMap(category =>
+    category.items.map(item => ({ ...item, category: category.category }))
+  );
+
+  const handleServiceKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isPopoverOpen || flattenedServices.length === 0) return;
+
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setSelectedServiceIndex(prev =>
+          prev < flattenedServices.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setSelectedServiceIndex(prev => (prev > 0 ? prev - 1 : -1));
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (selectedServiceIndex >= 0 && selectedServiceIndex < flattenedServices.length) {
+          const selectedService = flattenedServices[selectedServiceIndex];
+          setSearchQuery(selectedService.label);
+          setIsPopoverOpen(false);
+          setSelectedServiceIndex(-1);
+        }
+        break;
+      case "Escape":
+        e.preventDefault();
+        setIsPopoverOpen(false);
+        setSelectedServiceIndex(-1);
+        break;
+      case "Tab":
+        e.preventDefault();
+        if (selectedServiceIndex >= 0 && selectedServiceIndex < flattenedServices.length) {
+          const selectedService = flattenedServices[selectedServiceIndex];
+          setSearchQuery(selectedService.label);
+        } else if (flattenedServices.length > 0) {
+          setSearchQuery(flattenedServices[0].label);
+        }
+        break;
+    }
+  };
 
   const fetchAddressSuggestions = async (query: string) => {
     if (query.length < 3) {
@@ -320,8 +365,12 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
                     <Input
                       placeholder="Chercher un service"
                       value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
+                      onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                        setSelectedServiceIndex(-1);
+                      }}
                       onFocus={() => setIsPopoverOpen(true)}
+                      onKeyDown={handleServiceKeyDown}
                       className="flex-col h-11 justify-center px-0 py-1.5 flex-1 grow rounded overflow-hidden border-none bg-transparent shadow-none [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-base tracking-[0] leading-5 placeholder:text-[#1c1b1b80] focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                   </div>
@@ -335,28 +384,37 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
                   <ScrollArea className="max-h-[400px] overflow-auto rounded-2xl">
                     <div className="flex flex-col gap-4 p-4">
                       {filteredServices.length > 0 ? (
-                        filteredServices.map((category, categoryIndex) => (
-                          <div key={categoryIndex} className="flex flex-col gap-2">
-                            <h3 className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
-                              {category.category}
-                            </h3>
-                            <div className="flex flex-col gap-1">
-                              {category.items.map((item, itemIndex) => (
-                                <Link
-                                  key={itemIndex}
-                                  to={item.link}
-                                  onClick={() => {
-                                    setIsPopoverOpen(false);
-                                    setSearchQuery("");
-                                  }}
-                                  className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[normal] hover:text-[#5d3ca4] hover:bg-[#aa7ffb1a] transition-colors px-3 py-2 rounded-lg"
-                                >
-                                  {item.label}
-                                </Link>
-                              ))}
+                        (() => {
+                          let globalIndex = 0;
+                          return filteredServices.map((category, categoryIndex) => (
+                            <div key={categoryIndex} className="flex flex-col gap-2">
+                              <h3 className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
+                                {category.category}
+                              </h3>
+                              <div className="flex flex-col gap-1">
+                                {category.items.map((item, itemIndex) => {
+                                  const currentIndex = globalIndex++;
+                                  const isSelected = currentIndex === selectedServiceIndex;
+                                  return (
+                                    <button
+                                      key={itemIndex}
+                                      onClick={() => {
+                                        setSearchQuery(item.label);
+                                        setIsPopoverOpen(false);
+                                        setSelectedServiceIndex(-1);
+                                      }}
+                                      className={`[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[normal] hover:text-[#5d3ca4] hover:bg-[#aa7ffb1a] transition-colors px-3 py-2 rounded-lg text-left ${
+                                        isSelected ? "bg-[#aa7ffb2a] text-[#5d3ca4]" : ""
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </button>
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        ))
+                          ));
+                        })()
                       ) : (
                         <div className="py-8 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
                           Aucun service trouvé
