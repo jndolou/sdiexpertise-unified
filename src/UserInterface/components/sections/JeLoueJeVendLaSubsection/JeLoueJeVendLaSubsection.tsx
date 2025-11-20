@@ -327,32 +327,41 @@ export const JeLoueJeVendLaSubsection = (): JSX.Element => {
                   </div>
                 </PopoverTrigger>
                 <PopoverContent
-                  className="w-[calc(100vw-40px)] max-w-[355px] p-0 bg-[#ffffff1a] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] rounded-2xl border-[none] shadow-[0px_1.85px_1.85px_#fffdfd33,inset_0px_-1.85px_1.85px_#ffffff33] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(103deg,rgba(255,255,255,1)_1%,rgba(170,127,251,1)_24%,rgba(170,127,251,1)_71%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
+                  className="w-[calc(100vw-40px)] max-w-[355px] p-0 bg-[#ffffffee] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] rounded-2xl border border-[#aa7ffb33] shadow-[0px_4px_12px_rgba(0,0,0,0.1)]"
                   align="start"
                   side="bottom"
                   sideOffset={8}
                 >
                   <ScrollArea className="max-h-[400px] rounded-2xl">
                     <div className="flex flex-col gap-4 p-4">
-                      {filteredServices.map((category, categoryIndex) => (
-                        <div key={categoryIndex} className="flex flex-col gap-2">
-                          <h3 className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
-                            {category.category}
-                          </h3>
-                          <div className="flex flex-col gap-2">
-                            {category.items.map((item, itemIndex) => (
-                              <Link
-                                key={itemIndex}
-                                to={item.link}
-                                onClick={() => setIsPopoverOpen(false)}
-                                className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[normal] hover:text-[#5d3ca4] transition-colors"
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
+                      {filteredServices.length > 0 ? (
+                        filteredServices.map((category, categoryIndex) => (
+                          <div key={categoryIndex} className="flex flex-col gap-2">
+                            <h3 className="[font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-xs tracking-[0] leading-[normal]">
+                              {category.category}
+                            </h3>
+                            <div className="flex flex-col gap-1">
+                              {category.items.map((item, itemIndex) => (
+                                <Link
+                                  key={itemIndex}
+                                  to={item.link}
+                                  onClick={() => {
+                                    setIsPopoverOpen(false);
+                                    setSearchQuery("");
+                                  }}
+                                  className="[font-family:'Ubuntu',Helvetica] font-bold text-[#1c1b1b] text-base tracking-[0] leading-[normal] hover:text-[#5d3ca4] hover:bg-[#aa7ffb1a] transition-colors px-3 py-2 rounded-lg"
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
+                        ))
+                      ) : (
+                        <div className="py-8 text-center [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b80] text-sm">
+                          Aucun service trouvé
                         </div>
-                      ))}
+                      )}
                     </div>
                   </ScrollArea>
                 </PopoverContent>
