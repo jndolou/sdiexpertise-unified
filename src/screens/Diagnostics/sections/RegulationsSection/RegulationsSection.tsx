@@ -61,11 +61,11 @@ export const RegulationsSection = (): JSX.Element => {
               </CardContent>
             </Card>
 
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex w-[86px] h-20 items-center justify-center gap-2.5 px-[26px] py-[21px] z-20">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex w-[86px] h-20 items-center justify-center gap-2.5 px-[26px] py-[21px]">
               {item.polygonBg ? (
                 <>
                   <img
-                    className="absolute top-px left-1.5 w-[74px] h-[78px] z-0"
+                    className="absolute top-px left-1.5 w-[74px] h-[78px]"
                     alt="Polygon"
                     src={item.polygonBg}
                   />
@@ -84,7 +84,7 @@ export const RegulationsSection = (): JSX.Element => {
                 </>
               ) : (
                 <img
-                  className="w-[86px] h-20 relative z-10"
+                  className="w-[86px] h-20"
                   alt="Icon"
                   src={item.icon}
                   style={{ filter: 'brightness(0) saturate(100%) invert(46%) sepia(47%) saturate(1254%) hue-rotate(236deg) brightness(91%) contrast(89%)' }}
