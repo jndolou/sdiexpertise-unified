@@ -6,7 +6,7 @@ import { DiagnosticsSection } from "./sections/DiagnosticsSection";
 
 export const RendezVous = (): JSX.Element => {
   return (
-    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_95%] w-full min-w-[393px] min-h-screen flex flex-col relative">
+    <div className="overflow-hidden [background:url(/grid.jpeg)_center_/_120%] w-full min-w-[393px] min-h-screen flex flex-col relative">
       <Header />
 
       <main className="flex flex-col w-full pt-[110px]">
