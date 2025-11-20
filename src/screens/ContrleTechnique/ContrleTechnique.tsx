@@ -223,7 +223,7 @@ export const ContrleTechnique = (): JSX.Element => {
         </section>
 
         {/* Benefits Cards */}
-        <section className="space-y-3.5">
+        <section className="space-y-[64px]">
           {benefitCards.map((card, index) => (
             <Card
               key={index}
