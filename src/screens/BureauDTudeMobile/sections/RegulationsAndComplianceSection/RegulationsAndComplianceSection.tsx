@@ -53,9 +53,10 @@ export const RegulationsAndComplianceSection = (): JSX.Element => {
                 src="/polygon-7.svg"
               />
               <img
-                className={`relative ${card.iconWidth} ${card.iconHeight} z-10`}
+                className={`relative ${card.iconWidth} ${card.iconHeight} z-10 brightness-0 saturate-100 invert-[0.4] sepia-[1] hue-rotate-[180deg] saturate-[3]`}
                 alt={card.title}
                 src={card.icon}
+                style={{ filter: 'brightness(0) saturate(100%) invert(34%) sepia(58%) saturate(1165%) hue-rotate(176deg) brightness(89%) contrast(88%)' }}
               />
             </div>
 

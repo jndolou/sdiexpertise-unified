@@ -55,6 +55,7 @@ export const ClientCaseGuideSection = (): JSX.Element => {
                   className={`${card.iconClass}`}
                   alt="Icon"
                   src={card.icon}
+                  style={{ filter: 'brightness(0) saturate(100%) invert(34%) sepia(58%) saturate(1165%) hue-rotate(176deg) brightness(89%) contrast(88%)' }}
                 />
 
                 <div className="flex flex-col items-start justify-center gap-[17px] w-full">

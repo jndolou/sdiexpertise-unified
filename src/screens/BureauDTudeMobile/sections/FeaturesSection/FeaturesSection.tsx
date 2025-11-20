@@ -31,6 +31,7 @@ export const FeaturesSection = (): JSX.Element => {
                     className="w-[19px] h-[19px] flex-shrink-0"
                     alt="Checkmark"
                     src="/checkmark.svg"
+                    style={{ filter: 'brightness(0) saturate(100%) invert(34%) sepia(58%) saturate(1165%) hue-rotate(176deg) brightness(89%) contrast(88%)' }}
                   />
                   <div className="flex-1 [font-family:'Open_Sans',Helvetica] font-normal text-dark text-base tracking-[0] leading-[19.2px]">
                     {feature}
