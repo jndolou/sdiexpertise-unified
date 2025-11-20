@@ -5,23 +5,10 @@ interface DeepCityPropertyData {
   adresse: string;
 }
 
-interface BanAddressResult {
+interface CadastreApiResponse {
   features?: Array<{
-    geometry?: {
-      coordinates?: [number, number];
-    };
     properties?: {
-      label?: string;
-      postcode?: string;
-      city?: string;
-    };
-  }>;
-}
-
-interface DeepCityResponse {
-  properties?: Array<{
-    cadastral?: {
-      id?: string;
+      idu?: string;
     };
   }>;
 }
@@ -56,13 +43,13 @@ export class DeepCityService {
 
   async getPropertyData(address: string): Promise<DeepCityPropertyData> {
     try {
-      const coordinates = await this.geocodeAddress(address);
+      const parcelId = await this.geocodeAddress(address);
 
-      if (!coordinates) {
+      if (!parcelId) {
         return this.getEmptyResponse(address);
       }
 
-      const propertyData = await this.getPropertyByCoordinates(coordinates);
+      const propertyData = await this.getPropertyByCoordinates(parcelId);
 
       return {
         type_bien: this.extractPropertyType(propertyData),
@@ -76,24 +63,41 @@ export class DeepCityService {
     }
   }
 
-  private async geocodeAddress(address: string): Promise<[number, number] | null> {
+  private async geocodeAddress(address: string): Promise<string | null> {
     try {
-      const response = await fetch(
+      const banResponse = await fetch(
         `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(address)}&limit=1`
       );
 
-      if (!response.ok) {
+      if (!banResponse.ok) {
         return null;
       }
 
-      const data: BanAddressResult = await response.json();
-      const coordinates = data.features?.[0]?.geometry?.coordinates;
+      const banData = await banResponse.json();
+      const coordinates = banData.features?.[0]?.geometry?.coordinates;
 
       if (!coordinates || coordinates.length !== 2) {
         return null;
       }
 
-      return coordinates;
+      const [lon, lat] = coordinates;
+      const geomParam = encodeURIComponent(JSON.stringify({
+        type: 'Point',
+        coordinates: [lon, lat]
+      }));
+
+      const cadastreResponse = await fetch(
+        `https://apicarto.ign.fr/api/cadastre/parcelle?geom=${geomParam}`
+      );
+
+      if (!cadastreResponse.ok) {
+        return null;
+      }
+
+      const cadastreData: CadastreApiResponse = await cadastreResponse.json();
+      const parcelId = cadastreData.features?.[0]?.properties?.idu;
+
+      return parcelId || null;
     } catch (error) {
       console.error('Erreur geocoding:', error);
       return null;
@@ -101,12 +105,11 @@ export class DeepCityService {
   }
 
   private async getPropertyByCoordinates(
-    coordinates: [number, number]
+    parcelId: string
   ): Promise<DeepCityPropertyResponse | null> {
     try {
-      const [lon, lat] = coordinates;
       const response = await fetch(
-        `${this.BASE_URL}/properties?lat=${lat}&lon=${lon}&radius=10`
+        `${this.BASE_URL}/properties?parcel_id=${encodeURIComponent(parcelId)}`
       );
 
       if (!response.ok) {
