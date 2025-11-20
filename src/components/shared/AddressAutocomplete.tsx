@@ -56,7 +56,7 @@ export const AddressAutocomplete = ({
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(value)}&limit=5&postcode=75*&postcode=77*&postcode=78*&postcode=91*&postcode=92*&postcode=93*&postcode=94*&postcode=95*`
+          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(value)}&limit=20`
         );
         const data = await response.json();
 
@@ -74,6 +74,7 @@ export const AddressAutocomplete = ({
               postcode.startsWith('95')
             );
           })
+          .slice(0, 5)
           .map((feature: any) => ({
             label: feature.properties.label,
             city: feature.properties.city,
