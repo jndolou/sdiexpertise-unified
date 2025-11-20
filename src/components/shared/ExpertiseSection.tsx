@@ -64,7 +64,7 @@ export const ExpertiseSection = ({
       {showGoogleRating && <GoogleRating variant="card" />}
 
       <div className="flex flex-col h-[138px] items-center justify-end gap-[13px] px-4 py-0 relative self-stretch w-full overflow-hidden">
-        <div className="flex flex-col w-[927px] items-center gap-[13px] px-0 py-[15px] relative flex-[0_0_auto] ml-[-299.00px] mr-[-299.00px] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)]">
+        <div className="flex flex-col w-[927px] items-center gap-[13px] px-0 py-[15px] relative flex-[0_0_auto] ml-[-299.00px] mr-[-299.00px]">
           <h2 className="relative w-[361px] font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
             {title}
           </h2>
