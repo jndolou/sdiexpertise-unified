@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface InteractiveMapProps {
   center?: [number, number];
@@ -14,113 +14,102 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   onLocationChange,
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<google.maps.Map | null>(null);
-  const markerRef = useRef<google.maps.Marker | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const mapInstanceRef = useRef<any>(null);
+  const markerRef = useRef<any>(null);
 
   useEffect(() => {
-    const checkGoogleMaps = () => {
-      if ((window as any).google && (window as any).google.maps) {
-        setIsLoaded(true);
-        return true;
-      }
-      return false;
-    };
+    if (!mapRef.current) return;
 
-    if (checkGoogleMaps()) {
-      return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    link.crossOrigin = '';
+
+    if (!document.querySelector('link[href*="leaflet.css"]')) {
+      document.head.appendChild(link);
     }
 
-    const interval = setInterval(() => {
-      if (checkGoogleMaps()) {
-        clearInterval(interval);
-      }
-    }, 100);
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+    script.crossOrigin = '';
+    script.async = true;
 
-    return () => clearInterval(interval);
-  }, []);
+    const initMap = () => {
+      const L = (window as any).L;
+      if (!L || !mapRef.current || mapInstanceRef.current) return;
+
+      const map = L.map(mapRef.current).setView(center, zoom);
+      mapInstanceRef.current = map;
+
+      L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: '© Google'
+      }).addTo(map);
+
+      const marker = L.marker(center).addTo(map);
+      marker.bindPopup('<b>Argenteuil</b><br>Nous intervenons ici').openPopup();
+      markerRef.current = marker;
+
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    };
+
+    if ((window as any).L) {
+      initMap();
+    } else {
+      script.onload = initMap;
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [center, zoom]);
 
   useEffect(() => {
-    if (!isLoaded || !mapRef.current || mapInstanceRef.current) return;
+    if (!searchQuery || !mapInstanceRef.current) return;
 
-    const google = (window as any).google;
+    const searchLocation = async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`
+        );
+        const data = await response.json();
 
-    const map = new google.maps.Map(mapRef.current, {
-      center: { lat: center[0], lng: center[1] },
-      zoom: zoom,
-      mapTypeControl: true,
-      streetViewControl: false,
-      fullscreenControl: false,
-      zoomControl: true,
-    });
+        if (data && data.length > 0) {
+          const { lat, lon, display_name } = data[0];
+          const latNum = parseFloat(lat);
+          const lonNum = parseFloat(lon);
 
-    mapInstanceRef.current = map;
+          const L = (window as any).L;
+          mapInstanceRef.current.setView([latNum, lonNum], 13);
 
-    const marker = new google.maps.Marker({
-      position: { lat: center[0], lng: center[1] },
-      map: map,
-      title: 'Argenteuil',
-      animation: google.maps.Animation.DROP,
-    });
+          if (markerRef.current) {
+            markerRef.current.remove();
+          }
 
-    const infoWindow = new google.maps.InfoWindow({
-      content: '<div style="padding: 8px;"><b>Argenteuil</b><br>Nous intervenons ici</div>',
-    });
+          const marker = L.marker([latNum, lonNum]).addTo(mapInstanceRef.current);
+          marker.bindPopup(`<b>${display_name}</b>`).openPopup();
+          markerRef.current = marker;
 
-    infoWindow.open(map, marker);
-    markerRef.current = marker;
-
-    setTimeout(() => {
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter({ lat: center[0], lng: center[1] });
-    }, 300);
-  }, [isLoaded, center, zoom]);
-
-  useEffect(() => {
-    if (!searchQuery || !isLoaded || !mapInstanceRef.current) return;
-
-    const google = (window as any).google;
-    const geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode({ address: searchQuery }, (results: any, status: any) => {
-      if (status === 'OK' && results && results[0]) {
-        const location = results[0].geometry.location;
-        const lat = location.lat();
-        const lng = location.lng();
-
-        mapInstanceRef.current?.setCenter({ lat, lng });
-        mapInstanceRef.current?.setZoom(13);
-
-        if (markerRef.current) {
-          markerRef.current.setMap(null);
+          if (onLocationChange) {
+            onLocationChange({ lat: latNum, lon: lonNum, name: display_name });
+          }
         }
-
-        const marker = new google.maps.Marker({
-          position: { lat, lng },
-          map: mapInstanceRef.current,
-          title: results[0].formatted_address,
-          animation: google.maps.Animation.DROP,
-        });
-
-        const infoWindow = new google.maps.InfoWindow({
-          content: `<div style="padding: 8px;"><b>${results[0].formatted_address}</b></div>`,
-        });
-
-        infoWindow.open(mapInstanceRef.current, marker);
-        markerRef.current = marker;
-
-        if (onLocationChange) {
-          onLocationChange({
-            lat,
-            lon: lng,
-            name: results[0].formatted_address,
-          });
-        }
+      } catch (error) {
+        console.error('Erreur lors de la recherche:', error);
       }
-    });
-  }, [searchQuery, isLoaded, onLocationChange]);
+    };
 
-  return (
-    <div ref={mapRef} className="w-full h-full rounded-2xl" style={{ minHeight: '232px' }} />
-  );
+    searchLocation();
+  }, [searchQuery, onLocationChange]);
+
+  return <div ref={mapRef} className="w-full h-full rounded-2xl" style={{ minHeight: '232px' }} />;
 };
