@@ -5,45 +5,69 @@ interface DeepCityPropertyData {
   adresse: string;
 }
 
-interface GeocodingResult {
-  parcel_id?: string;
-  lat?: number;
-  lon?: number;
+interface BanAddressResult {
+  features?: Array<{
+    geometry?: {
+      coordinates?: [number, number];
+    };
+    properties?: {
+      label?: string;
+      postcode?: string;
+      city?: string;
+    };
+  }>;
 }
 
-interface ParcelData {
-  energy?: {
-    type_logement?: string;
-    surface_habitable?: number;
-    annee_construction?: number;
-  };
-  building?: {
-    type?: string;
-    surface?: number;
-    year?: number;
-  };
-  cadastre?: {
-    type?: string;
-  };
+interface DeepCityResponse {
+  properties?: Array<{
+    cadastral?: {
+      id?: string;
+    };
+  }>;
+}
+
+interface DeepCityPropertyResponse {
+  properties?: Array<{
+    energy?: {
+      residential?: Array<{
+        buildingType?: string;
+        habitableHousingSurface?: number;
+        habitableBuildingSurface?: number;
+        constructionPeriod?: string;
+      }>;
+    };
+    buildings?: Array<{
+      building?: {
+        constructionYear?: number;
+        usage?: string;
+        footprintArea?: number;
+      };
+    }>;
+    transactions?: Array<{
+      localType?: string;
+      totalSurface?: number;
+      mutationDate?: string;
+    }>;
+  }>;
 }
 
 export class DeepCityService {
-  private readonly BASE_URL = 'https://api.deepcity.io/v1';
+  private readonly BASE_URL = 'https://api.deepcity.fr/v1';
 
   async getPropertyData(address: string): Promise<DeepCityPropertyData> {
     try {
-      const parcelId = await this.geocodeAddress(address);
+      const coordinates = await this.geocodeAddress(address);
 
-      if (!parcelId) {
+      if (!coordinates) {
         return this.getEmptyResponse(address);
       }
 
-      const parcelData = await this.getParcelData(parcelId);
+      const propertyData = await this.getPropertyByCoordinates(coordinates);
 
       return {
-        type_bien: this.extractPropertyType(parcelData),
-        surface: this.extractSurface(parcelData),
-        annee_construction: this.extractConstructionYear(parcelData),
+        type_bien: this.extractPropertyType(propertyData),
+        surface: this.extractSurface(propertyData),
+        annee_construction: this.extractConstructionYear(propertyData),
         adresse: address,
       };
     } catch (error) {
@@ -52,28 +76,37 @@ export class DeepCityService {
     }
   }
 
-  private async geocodeAddress(address: string): Promise<string | null> {
+  private async geocodeAddress(address: string): Promise<[number, number] | null> {
     try {
       const response = await fetch(
-        `${this.BASE_URL}/geocoding?address=${encodeURIComponent(address)}`
+        `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(address)}&limit=1`
       );
 
       if (!response.ok) {
         return null;
       }
 
-      const data: GeocodingResult = await response.json();
-      return data.parcel_id || null;
+      const data: BanAddressResult = await response.json();
+      const coordinates = data.features?.[0]?.geometry?.coordinates;
+
+      if (!coordinates || coordinates.length !== 2) {
+        return null;
+      }
+
+      return coordinates;
     } catch (error) {
       console.error('Erreur geocoding:', error);
       return null;
     }
   }
 
-  private async getParcelData(parcelId: string): Promise<ParcelData | null> {
+  private async getPropertyByCoordinates(
+    coordinates: [number, number]
+  ): Promise<DeepCityPropertyResponse | null> {
     try {
+      const [lon, lat] = coordinates;
       const response = await fetch(
-        `${this.BASE_URL}/parcels/${parcelId}?include=energy,building,cadastre`
+        `${this.BASE_URL}/properties?lat=${lat}&lon=${lon}&radius=10`
       );
 
       if (!response.ok) {
@@ -82,52 +115,71 @@ export class DeepCityService {
 
       return await response.json();
     } catch (error) {
-      console.error('Erreur récupération parcel:', error);
+      console.error('Erreur récupération données propriété:', error);
       return null;
     }
   }
 
-  private extractPropertyType(data: ParcelData | null): string | null {
-    if (!data) return null;
+  private extractPropertyType(data: DeepCityPropertyResponse | null): string | null {
+    if (!data || !data.properties || data.properties.length === 0) return null;
 
-    if (data.energy?.type_logement) {
-      return this.normalizePropertyType(data.energy.type_logement);
+    const property = data.properties[0];
+
+    if (property.energy?.residential?.[0]?.buildingType) {
+      return this.normalizePropertyType(property.energy.residential[0].buildingType);
     }
 
-    if (data.building?.type) {
-      return this.normalizePropertyType(data.building.type);
+    if (property.buildings?.[0]?.building?.usage) {
+      return this.normalizePropertyType(property.buildings[0].building.usage);
     }
 
-    if (data.cadastre?.type) {
-      return this.normalizePropertyType(data.cadastre.type);
-    }
-
-    return null;
-  }
-
-  private extractSurface(data: ParcelData | null): number | null {
-    if (!data) return null;
-
-    if (data.energy?.surface_habitable) {
-      return data.energy.surface_habitable;
-    }
-
-    if (data.building?.surface) {
-      return data.building.surface;
+    if (property.transactions?.[0]?.localType) {
+      return this.normalizePropertyType(property.transactions[0].localType);
     }
 
     return null;
   }
 
-  private extractConstructionYear(data: ParcelData | null): string | null {
-    if (!data) return null;
+  private extractSurface(data: DeepCityPropertyResponse | null): number | null {
+    if (!data || !data.properties || data.properties.length === 0) return null;
 
-    if (data.energy?.annee_construction) {
-      return String(data.energy.annee_construction);
+    const property = data.properties[0];
+
+    if (property.energy?.residential?.[0]?.habitableHousingSurface) {
+      return Math.round(property.energy.residential[0].habitableHousingSurface);
     }
 
-    if (data.building?.year) {
-      return String(data.building.year);
+    if (property.energy?.residential?.[0]?.habitableBuildingSurface) {
+      return Math.round(property.energy.residential[0].habitableBuildingSurface);
+    }
+
+    if (property.transactions?.[0]?.totalSurface) {
+      return property.transactions[0].totalSurface;
+    }
+
+    if (property.buildings?.[0]?.building?.footprintArea) {
+      return Math.round(property.buildings[0].building.footprintArea);
+    }
+
+    return null;
+  }
+
+  private extractConstructionYear(data: DeepCityPropertyResponse | null): string | null {
+    if (!data || !data.properties || data.properties.length === 0) return null;
+
+    const property = data.properties[0];
+
+    if (property.energy?.residential?.[0]?.constructionPeriod) {
+      return property.energy.residential[0].constructionPeriod;
+    }
+
+    if (property.buildings?.[0]?.building?.constructionYear) {
+      return String(property.buildings[0].building.constructionYear);
+    }
+
+    if (property.transactions?.[0]?.mutationDate) {
+      const year = new Date(property.transactions[0].mutationDate).getFullYear();
+      return String(year);
     }
 
     return null;
