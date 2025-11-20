@@ -28,7 +28,7 @@ export const FeaturesSection = (): JSX.Element => {
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-[7px] w-full">
                   <img
-                    className="w-[19px] h-[19px] flex-shrink-0"
+                    className="w-[19px] h-[19px] flex-shrink-0 [filter:brightness(0)_saturate(100%)_invert(42%)_sepia(96%)_saturate(376%)_hue-rotate(173deg)_brightness(95%)_contrast(93%)]"
                     alt="Checkmark"
                     src="/checkmark.svg"
                   />

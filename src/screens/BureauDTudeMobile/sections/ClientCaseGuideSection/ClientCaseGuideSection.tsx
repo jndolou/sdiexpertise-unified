@@ -52,7 +52,7 @@ export const ClientCaseGuideSection = (): JSX.Element => {
             >
               <CardContent className="flex flex-col items-start gap-[13px] p-4">
                 <img
-                  className={`${card.iconClass}`}
+                  className={`${card.iconClass} [filter:brightness(0)_saturate(100%)_invert(42%)_sepia(96%)_saturate(376%)_hue-rotate(173deg)_brightness(95%)_contrast(93%)]`}
                   alt="Icon"
                   src={card.icon}
                 />
