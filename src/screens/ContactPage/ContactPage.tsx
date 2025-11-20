@@ -37,18 +37,42 @@ export const ContactPage = (): JSX.Element => {
     message: "",
   });
 
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setEmailError("Veuillez entrer une adresse email valide");
+      return;
+    }
+
+    setEmailError("");
     console.log("Form submitted:", formData);
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    if (name === "email") {
+      if (value && !validateEmail(value)) {
+        setEmailError("Veuillez entrer une adresse email valide");
+      } else {
+        setEmailError("");
+      }
+    }
   };
 
   return (
@@ -123,8 +147,15 @@ export const ContactPage = (): JSX.Element => {
                     onChange={handleChange}
                     placeholder="votre@email.com"
                     required
-                    className="h-12 px-4 bg-white/50 rounded-lg border-none shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ebebeb]"
+                    className={`h-12 px-4 bg-white/50 rounded-lg border-none shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ebebeb] ${
+                      emailError ? "ring-2 ring-red-500" : ""
+                    }`}
                   />
+                  {emailError && (
+                    <p className="text-red-500 text-sm font-paragraphe-2-mobile">
+                      {emailError}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-2">
