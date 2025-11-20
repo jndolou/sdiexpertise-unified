@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { ScrollArea, ScrollBar } from "../../../../components/ui/scroll-area";
-import { InteractiveMap } from "../../../../components/shared";
 
 const featureCards = [
   {
@@ -46,15 +45,6 @@ const featureCards = [
 export const YourPartnerSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-start gap-[25px] pt-[60px] pb-0 px-4 relative">
-      <Card className="w-full h-[232px] rounded-2xl border border-solid border-[#aa7ffb] overflow-hidden bg-cover bg-center bg-no-repeat">
-        <CardContent className="p-0 h-full">
-          <InteractiveMap
-            center={[48.9478, 2.2484]}
-            zoom={13}
-          />
-        </CardContent>
-      </Card>
-
       <div className="flex flex-col items-start gap-8 relative w-full">
         <div className="flex flex-col items-start justify-center gap-[15px] relative w-full">
           <h2 className="w-full font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
