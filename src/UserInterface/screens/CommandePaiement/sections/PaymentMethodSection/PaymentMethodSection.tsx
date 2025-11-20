@@ -11,17 +11,43 @@ const steps = [
 ];
 
 const formFields = [
-  { label: "Prénom*", value: "Jean", type: "text" },
-  { label: "Nom*", value: "Lebon", type: "text" },
-  { label: "Email*", value: "jean.lebon@gmail.com", type: "email" },
-  { label: "Téléphone", value: "06 36 96 25 45", type: "tel" },
+  { label: "Prénom*", key: "prenom", type: "text" },
+  { label: "Nom*", key: "nom", type: "text" },
+  { label: "Email*", key: "email", type: "email" },
+  { label: "Téléphone", key: "telephone", type: "tel" },
 ];
 
-export const PaymentMethodSection = (): JSX.Element => {
-  const [phoneValue, setPhoneValue] = useState("06 36 96 25 45");
-  const [phoneError, setPhoneError] = useState("");
-  const [emailValue, setEmailValue] = useState("jean.lebon@gmail.com");
-  const [emailError, setEmailError] = useState("");
+interface PaymentMethodSectionProps {
+  formData: {
+    prenom: string;
+    nom: string;
+    email: string;
+    telephone: string;
+    consent: boolean;
+  };
+  setFormData: React.Dispatch<React.SetStateAction<{
+    prenom: string;
+    nom: string;
+    email: string;
+    telephone: string;
+    consent: boolean;
+  }>>;
+  formErrors: {
+    email: string;
+    telephone: string;
+  };
+  setFormErrors: React.Dispatch<React.SetStateAction<{
+    email: string;
+    telephone: string;
+  }>>;
+}
+
+export const PaymentMethodSection = ({
+  formData,
+  setFormData,
+  formErrors,
+  setFormErrors,
+}: PaymentMethodSectionProps): JSX.Element => {
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -38,29 +64,33 @@ export const PaymentMethodSection = (): JSX.Element => {
       formatted += value[i];
     }
 
-    setPhoneValue(formatted);
+    setFormData({ ...formData, telephone: formatted });
 
     const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
     const cleanValue = formatted.replace(/\s/g, "");
 
     if (cleanValue && !phoneRegex.test(cleanValue)) {
-      setPhoneError("Format de téléphone invalide");
+      setFormErrors({ ...formErrors, telephone: "Format de téléphone invalide" });
     } else {
-      setPhoneError("");
+      setFormErrors({ ...formErrors, telephone: "" });
     }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setEmailValue(value);
+    setFormData({ ...formData, email: value });
 
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (value && !emailRegex.test(value)) {
-      setEmailError("Format d'email invalide");
+      setFormErrors({ ...formErrors, email: "Format d'email invalide" });
     } else {
-      setEmailError("");
+      setFormErrors({ ...formErrors, email: "" });
     }
+  };
+
+  const handleFieldChange = (key: string, value: string) => {
+    setFormData({ ...formData, [key]: value });
   };
   return (
     <section className="flex flex-col items-start gap-[25px] w-full">
@@ -123,20 +153,27 @@ export const PaymentMethodSection = (): JSX.Element => {
                         <Input
                           id={`field-${index}`}
                           type={field.type}
-                          value={field.type === "tel" ? phoneValue : field.type === "email" ? emailValue : undefined}
-                          defaultValue={field.type !== "tel" && field.type !== "email" ? field.value : undefined}
-                          onChange={field.type === "tel" ? handlePhoneChange : field.type === "email" ? handleEmailChange : undefined}
+                          value={formData[field.key as keyof typeof formData] as string}
+                          onChange={(e) => {
+                            if (field.type === "tel") {
+                              handlePhoneChange(e);
+                            } else if (field.type === "email") {
+                              handleEmailChange(e);
+                            } else {
+                              handleFieldChange(field.key, e.target.value);
+                            }
+                          }}
                           className="w-fit mt-[-1.00px] [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 whitespace-nowrap border-0 bg-transparent p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                {field.type === "tel" && phoneError && (
-                  <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                {field.type === "tel" && formErrors.telephone && (
+                  <p className="text-xs text-red-500 mt-1">{formErrors.telephone}</p>
                 )}
-                {field.type === "email" && emailError && (
-                  <p className="text-xs text-red-500 mt-1">{emailError}</p>
+                {field.type === "email" && formErrors.email && (
+                  <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
                 )}
               </div>
             </div>
@@ -145,6 +182,8 @@ export const PaymentMethodSection = (): JSX.Element => {
           <div className="flex w-[361px] items-center gap-[9px] mt-[-21px]">
             <Checkbox
               id="consent"
+              checked={formData.consent}
+              onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
               className="w-2.5 h-2.5 border border-solid border-[#5d3ca4] rounded-none data-[state=checked]:bg-[#5d3ca4] data-[state=checked]:text-white"
             />
             <Label
