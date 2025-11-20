@@ -46,7 +46,7 @@ export const ContactPage = (): JSX.Element => {
   };
 
   const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^(?:0[1-9]|(?:\+|00)33[1-9])(?:[\s.-]?\d{2}){4}$/;
+    const phoneRegex = /^0[1-9]\d{8}$/;
     return phoneRegex.test(phone);
   };
 
@@ -63,7 +63,7 @@ export const ContactPage = (): JSX.Element => {
     }
 
     if (!validatePhone(formData.phone)) {
-      setPhoneError("Veuillez entrer un numéro de téléphone français valide (ex: 01 23 45 67 89 ou +33 1 23 45 67 89)");
+      setPhoneError("Veuillez entrer un numéro de téléphone valide (10 chiffres, ex: 0123456789)");
       hasError = true;
     } else {
       setPhoneError("");
@@ -96,7 +96,7 @@ export const ContactPage = (): JSX.Element => {
 
     if (name === "phone") {
       if (value && !validatePhone(value)) {
-        setPhoneError("Veuillez entrer un numéro de téléphone français valide (ex: 01 23 45 67 89 ou +33 1 23 45 67 89)");
+        setPhoneError("Veuillez entrer un numéro de téléphone valide (10 chiffres, ex: 0123456789)");
       } else {
         setPhoneError("");
       }
@@ -195,8 +195,9 @@ export const ContactPage = (): JSX.Element => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="01 23 45 67 89"
+                    placeholder="0123456789"
                     required
+                    maxLength={10}
                     className={`h-12 px-4 bg-white/50 rounded-lg border-none shadow-[inset_0px_1.85px_1.85px_#ffffff,inset_0px_-1.85px_1.85px_#ebebeb] ${
                       phoneError ? "ring-2 ring-red-500" : ""
                     }`}
