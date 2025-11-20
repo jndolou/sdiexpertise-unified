@@ -56,19 +56,31 @@ export const AddressAutocomplete = ({
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(value)}&limit=5`
+          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(value)}&limit=5&postcode=75*&postcode=77*&postcode=78*&postcode=91*&postcode=92*&postcode=93*&postcode=94*&postcode=95*`
         );
         const data = await response.json();
 
-        const formattedSuggestions: AddressSuggestion[] = data.features.map(
-          (feature: any) => ({
+        const formattedSuggestions: AddressSuggestion[] = data.features
+          .filter((feature: any) => {
+            const postcode = feature.properties.postcode;
+            return postcode && (
+              postcode.startsWith('75') ||
+              postcode.startsWith('77') ||
+              postcode.startsWith('78') ||
+              postcode.startsWith('91') ||
+              postcode.startsWith('92') ||
+              postcode.startsWith('93') ||
+              postcode.startsWith('94') ||
+              postcode.startsWith('95')
+            );
+          })
+          .map((feature: any) => ({
             label: feature.properties.label,
             city: feature.properties.city,
             postcode: feature.properties.postcode,
             context: feature.properties.context,
             coordinates: feature.geometry.coordinates,
-          })
-        );
+          }));
 
         setSuggestions(formattedSuggestions);
         setShowSuggestions(true);
