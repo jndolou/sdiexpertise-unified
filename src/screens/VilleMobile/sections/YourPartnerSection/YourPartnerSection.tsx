@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { ScrollArea, ScrollBar } from "../../../../components/ui/scroll-area";
+import { Input } from "../../../../components/ui/input";
 import { InteractiveMap } from "../../../../components/shared";
 
 const featureCards = [
@@ -44,13 +45,38 @@ const featureCards = [
 ];
 
 export const YourPartnerSection = (): JSX.Element => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchTrigger, setSearchTrigger] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchTrigger(searchQuery);
+  };
+
   return (
     <section className="flex flex-col w-full items-start gap-[25px] pt-[60px] pb-0 px-4 relative">
+      <form onSubmit={handleSearch} className="w-full flex gap-2">
+        <Input
+          type="text"
+          placeholder="Rechercher une ville..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="flex-1 h-12 px-4 bg-white rounded-xl border border-[#aa7ffb] shadow-sm"
+        />
+        <Button
+          type="submit"
+          className="h-12 px-6 bg-gradient-to-r from-[#aa7ffb] to-[#7e3287] text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+        >
+          Rechercher
+        </Button>
+      </form>
+
       <Card className="w-full h-[232px] rounded-2xl border border-solid border-[#aa7ffb] overflow-hidden bg-cover bg-center bg-no-repeat">
         <CardContent className="p-0 h-full">
           <InteractiveMap
             center={[48.9478, 2.2484]}
             zoom={13}
+            searchQuery={searchTrigger}
           />
         </CardContent>
       </Card>
