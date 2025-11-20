@@ -94,19 +94,13 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
           </h3>
 
           <div className="flex flex-col w-full items-start gap-1.5">
-            <Label
-              htmlFor="property-type"
-              className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
-            >
-              Type de logement*
-            </Label>
             <ToggleGroup
               type="single"
               value={selectedPropertyType}
               onValueChange={(value) => {
                 if (value) setSelectedPropertyType(value);
               }}
-              className="grid grid-cols-2 gap-2 w-full"
+              className="items-center justify-center grid grid-cols-2 gap-2 w-full"
             >
               {propertyTypes.map((type) => (
                 <ToggleGroupItem
@@ -120,6 +114,33 @@ export const ProjectTypeSelectorSection = (): JSX.Element => {
                 </ToggleGroupItem>
               ))}
             </ToggleGroup>
+          </div>
+
+          <div className="flex flex-col w-full items-start gap-1.5">
+            <Label
+              htmlFor="property-type-input"
+              className="[font-family:'Open_Sans',Helvetica] font-normal text-[#5d3ca4] text-sm tracking-[0] leading-[18.2px]"
+            >
+              Type de logement*
+            </Label>
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-1 flex items-center gap-2 pl-3 pr-2 py-0 rounded-xl border-[none] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] bg-[linear-gradient(142deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_100%)] relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-xl before:[background:linear-gradient(172deg,rgba(255,255,255,0)_0%,rgba(170,127,251,1)_37%,rgba(170,127,251,1)_70%,rgba(255,255,255,0)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+                <Input
+                  id="property-type-input"
+                  type="text"
+                  value="Appartement : T2"
+                  readOnly
+                  className="flex-1 h-11 px-0 py-1.5 border-0 bg-transparent [font-family:'Open_Sans',Helvetica] font-normal text-[#1c1b1b] text-sm tracking-[0] leading-5 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-10 h-10 rounded-lg flex-shrink-0"
+              >
+                <Pencil className="w-5 h-5 text-[#1c1b1b]" />
+              </Button>
+            </div>
           </div>
 
           <div className="flex flex-col w-full items-start gap-1.5">
