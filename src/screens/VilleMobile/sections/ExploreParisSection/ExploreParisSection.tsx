@@ -8,7 +8,7 @@ export const ExploreParisSection = (): JSX.Element => {
 
   return (
     <section className="flex flex-col w-full items-start gap-[25px] pt-[60px] pb-0 px-4 relative">
-      <div className="inline-flex flex-col items-start gap-5 w-full relative z-[200]">
+      <div className="inline-flex flex-col items-start gap-5 w-full relative z-[10]">
         <div className="inline-flex flex-col items-start gap-[15px] w-full">
           <h2 className="w-full font-titre-2-mobile font-[number:var(--titre-2-mobile-font-weight)] text-dark text-[length:var(--titre-2-mobile-font-size)] tracking-[var(--titre-2-mobile-letter-spacing)] leading-[var(--titre-2-mobile-line-height)] [font-style:var(--titre-2-mobile-font-style)]">
             Explorer Paris par arrondissement
@@ -28,8 +28,8 @@ export const ExploreParisSection = (): JSX.Element => {
           </p>
         </div>
 
-        <div className="flex flex-col w-full items-start gap-0.5 relative z-[200]">
-          <div className="flex flex-col items-start gap-1 w-full relative z-[200]">
+        <div className="flex flex-col w-full items-start gap-0.5 relative z-[10]">
+          <div className="flex flex-col items-start gap-1 w-full relative z-[10]">
             <AddressAutocomplete
               value={postalCode}
               onChange={(value, suggestion) => {
