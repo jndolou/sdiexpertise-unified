@@ -65,11 +65,14 @@ export class DeepCityService {
 
   private async geocodeAddress(address: string): Promise<string | null> {
     try {
+      console.log('🔍 Geocoding address:', address);
+
       const banResponse = await fetch(
         `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(address)}&limit=1`
       );
 
       if (!banResponse.ok) {
+        console.error('❌ BAN API error:', banResponse.status, banResponse.statusText);
         return null;
       }
 
@@ -77,8 +80,11 @@ export class DeepCityService {
       const coordinates = banData.features?.[0]?.geometry?.coordinates;
 
       if (!coordinates || coordinates.length !== 2) {
+        console.error('❌ No coordinates found for address');
         return null;
       }
+
+      console.log('✅ Coordinates found:', coordinates);
 
       const [lon, lat] = coordinates;
       const geomParam = encodeURIComponent(JSON.stringify({
@@ -86,20 +92,29 @@ export class DeepCityService {
         coordinates: [lon, lat]
       }));
 
+      console.log('🗺️ Fetching cadastral parcel ID...');
+
       const cadastreResponse = await fetch(
         `https://apicarto.ign.fr/api/cadastre/parcelle?geom=${geomParam}`
       );
 
       if (!cadastreResponse.ok) {
+        console.error('❌ Cadastre API error:', cadastreResponse.status, cadastreResponse.statusText);
         return null;
       }
 
       const cadastreData: CadastreApiResponse = await cadastreResponse.json();
       const parcelId = cadastreData.features?.[0]?.properties?.idu;
 
-      return parcelId || null;
+      if (!parcelId) {
+        console.error('❌ No parcel ID found');
+        return null;
+      }
+
+      console.log('✅ Parcel ID found:', parcelId);
+      return parcelId;
     } catch (error) {
-      console.error('Erreur geocoding:', error);
+      console.error('❌ Erreur geocoding:', error);
       return null;
     }
   }
@@ -108,17 +123,25 @@ export class DeepCityService {
     parcelId: string
   ): Promise<DeepCityPropertyResponse | null> {
     try {
-      const response = await fetch(
-        `${this.BASE_URL}/properties?parcel_id=${encodeURIComponent(parcelId)}`
-      );
+      console.log('🏠 Fetching property data for parcel:', parcelId);
+
+      const url = `${this.BASE_URL}/properties?parcel_id=${encodeURIComponent(parcelId)}`;
+      console.log('📡 Request URL:', url);
+
+      const response = await fetch(url);
 
       if (!response.ok) {
+        console.error('❌ DeepCity API error:', response.status, response.statusText);
+        const errorText = await response.text();
+        console.error('Error details:', errorText);
         return null;
       }
 
-      return await response.json();
+      const data = await response.json();
+      console.log('✅ Property data received:', data);
+      return data;
     } catch (error) {
-      console.error('Erreur récupération données propriété:', error);
+      console.error('❌ Erreur récupération données propriété:', error);
       return null;
     }
   }
