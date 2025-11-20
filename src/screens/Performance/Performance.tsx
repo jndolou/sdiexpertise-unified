@@ -81,6 +81,7 @@ const legalLinks = ["Mentions légales", "Cookies", "CGV"];
 const benefitCards = [
   {
     icon: "/vector.svg",
+    iconColor: "#479053",
     title: "Réduction des consommations",
     description: "Moins d'énergie, c'est moins de charges.",
     highlight:
@@ -88,6 +89,7 @@ const benefitCards = [
   },
   {
     icon: "/vector-5.svg",
+    iconColor: "#479053",
     title: "Impact sur la valeur du bien",
     description:
       "Un bon classement énergétique améliore l'attractivité et le prix de vente ou de location.",
@@ -95,6 +97,7 @@ const benefitCards = [
   },
   {
     icon: "/frame-357-1.svg",
+    iconColor: "#479053",
     title: "Risques de gel de location",
     description:
       "Depuis 2023, certaines étiquettes F et G sont interdites à la location.",
@@ -103,6 +106,7 @@ const benefitCards = [
   },
   {
     icon: "/frame-357.svg",
+    iconColor: "#479053",
     title: "Aides à la rénovation énergétique",
     description:
       "Des dispositif (CEE, MaPrimeRénov', TVA réduite...) existent pour financer vos travaux.",
@@ -147,24 +151,28 @@ const valuePoints = [
 const resources = [
   {
     icon: "/vector-2.svg",
+    iconColor: "#479053",
     title: 'Livre blanc "DPE 2025"',
     description: "Comprendre la réforme et les implications pour les bailleurs",
     buttonText: "Télécharger",
   },
   {
     icon: "/vector.svg",
+    iconColor: "#479053",
     title: "Étude : bâtiments construits avant 1975",
     description: "Les leviers de performance thermique sur le bâtiment ancien",
     buttonText: "Lire l'étude",
   },
   {
     icon: "/vector-4.svg",
+    iconColor: "#479053",
     title: 'Replay "Passoires énergétique : que faire ?"',
     description: "Témoignages +analyse réglementaire",
     buttonText: "Voir le replay",
   },
   {
     icon: "/vector-3.svg",
+    iconColor: "#479053",
     title: 'Calculateur "Étiquette cible"',
     description: "Estimer le gain potentiel d'un projet de rénovation",
     buttonText: "Utiliser",
@@ -261,6 +269,7 @@ export const Performance = (): JSX.Element => {
                   className="relative w-6 h-6 z-10"
                   alt="Icon"
                   src={card.icon}
+                  style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)' }}
                 />
               </div>
             </Card>
@@ -380,6 +389,7 @@ export const Performance = (): JSX.Element => {
                     className="w-auto h-auto"
                     alt="Vector"
                     src={resource.icon}
+                    style={{ filter: 'invert(46%) sepia(18%) saturate(1341%) hue-rotate(77deg) brightness(94%) contrast(90%)' }}
                   />
 
                   <div className="flex flex-col gap-[17px]">
@@ -521,14 +531,14 @@ export const Performance = (): JSX.Element => {
 
         <div className="flex items-start justify-between w-full">
           <div className="flex items-center gap-1">
-            <UserIcon className="w-4 h-4" />
+            <UserIcon className="w-4 h-4 text-[#479053]" />
             <span className="font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
               Mon Espace
             </span>
           </div>
 
           <div className="flex items-center gap-1">
-            <ShoppingCartIcon className="w-4 h-4" />
+            <ShoppingCartIcon className="w-4 h-4 text-[#479053]" />
             <span className="font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
               Mon Panier
             </span>
@@ -547,14 +557,14 @@ export const Performance = (): JSX.Element => {
 
         <div className="flex flex-col gap-[23px] w-full">
           <div className="flex items-center gap-1.5">
-            <ZapIcon className="w-5 h-5" />
+            <ZapIcon className="w-5 h-5 text-[#479053]" />
             <span className="font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
               Simuler mon DPE
             </span>
           </div>
 
           <div className="flex items-start gap-2">
-            <DollarSignIcon className="w-5 h-5" />
+            <DollarSignIcon className="w-5 h-5 text-[#479053]" />
             <span className="font-titre-3 font-[number:var(--titre-3-font-weight)] text-dark text-[length:var(--titre-3-font-size)] tracking-[var(--titre-3-letter-spacing)] leading-[var(--titre-3-line-height)] [font-style:var(--titre-3-font-style)]">
               Estimer la valeur de mon bien
             </span>
