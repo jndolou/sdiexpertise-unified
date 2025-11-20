@@ -11,7 +11,7 @@ const features = [
 export const HeroSectionSubsection = (): JSX.Element => {
   return (
     <section className="flex w-full items-start gap-2.5 px-px py-0">
-      <Card className="flex flex-col w-full items-start gap-[59px] px-4 py-8 rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] border-none bg-transparent">
+      <Card className="flex flex-col w-full items-start gap-[59px] px-4 py-8 rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] border-none bg-transparent">
         <CardContent className="inline-flex flex-col items-start gap-5 p-0 w-full">
           <div className="flex flex-col w-full items-start gap-5">
             <h1 className="self-stretch font-titre-1-mobile font-[number:var(--titre-1-mobile-font-weight)] text-dark text-[length:var(--titre-1-mobile-font-size)] leading-[var(--titre-1-mobile-line-height)] tracking-[var(--titre-1-mobile-letter-spacing)] [font-style:var(--titre-1-mobile-font-style)]">
