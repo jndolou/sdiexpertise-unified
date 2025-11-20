@@ -249,7 +249,7 @@ export const ContrleTechnique = (): JSX.Element => {
                   src="/polygon-7.svg"
                 />
                 <img
-                  className="absolute top-[25px] left-[26px]"
+                  className="absolute top-[25px] left-[26px] brightness-0 saturate-100 [filter:brightness(0)_saturate(100%)_invert(44%)_sepia(74%)_saturate(1014%)_hue-rotate(350deg)_brightness(97%)_contrast(88%)]"
                   alt="Icon"
                   src={card.icon}
                 />
