@@ -18,7 +18,7 @@ const paginationDots = [
 export const HeroSectionSubsection = (): JSX.Element => {
   return (
     <section className="flex w-full items-start gap-2.5 relative">
-      <Card className="flex flex-col w-full items-start gap-[59px] px-4 py-8 relative rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] border-none">
+      <Card className="flex flex-col w-full items-start gap-[59px] px-4 py-8 relative rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] border-none">
         <CardContent className="p-0 w-full">
           <div className="inline-flex flex-col items-start gap-5 relative flex-[0_0_auto]">
             <div className="flex flex-col w-full items-start gap-5 relative flex-[0_0_auto]">
