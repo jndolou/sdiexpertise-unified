@@ -259,7 +259,7 @@ export const Performance = (): JSX.Element => {
                 </div>
               </CardContent>
 
-              <div className="absolute top-[-39px] left-1/2 -translate-x-1/2 w-[74px] h-[78px] flex items-center justify-center bg-white rounded-full">
+              <div className="absolute top-[-39px] left-1/2 -translate-x-1/2 w-[74px] h-[78px] flex items-center justify-center">
                 <img
                   className="absolute inset-0 w-full h-full"
                   alt="Polygon"
