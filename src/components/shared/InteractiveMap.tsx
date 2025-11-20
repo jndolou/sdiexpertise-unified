@@ -19,25 +19,31 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if ((window as any).google) {
-      setIsLoaded(true);
+    const checkGoogleMaps = () => {
+      if ((window as any).google && (window as any).google.maps) {
+        setIsLoaded(true);
+        return true;
+      }
+      return false;
+    };
+
+    if (checkGoogleMaps()) {
       return;
     }
 
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&libraries=places`;
-    script.async = true;
-    script.defer = true;
+    const interval = setInterval(() => {
+      if (checkGoogleMaps()) {
+        clearInterval(interval);
+      }
+    }, 100);
 
-    script.onload = () => {
-      setIsLoaded(true);
-    };
-
-    document.head.appendChild(script);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     if (!isLoaded || !mapRef.current || mapInstanceRef.current) return;
+
+    const google = (window as any).google;
 
     const map = new google.maps.Map(mapRef.current, {
       center: { lat: center[0], lng: center[1] },
@@ -45,6 +51,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
       mapTypeControl: true,
       streetViewControl: false,
       fullscreenControl: false,
+      zoomControl: true,
     });
 
     mapInstanceRef.current = map;
@@ -53,22 +60,29 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
       position: { lat: center[0], lng: center[1] },
       map: map,
       title: 'Argenteuil',
+      animation: google.maps.Animation.DROP,
     });
 
     const infoWindow = new google.maps.InfoWindow({
-      content: '<b>Argenteuil</b><br>Nous intervenons ici',
+      content: '<div style="padding: 8px;"><b>Argenteuil</b><br>Nous intervenons ici</div>',
     });
 
     infoWindow.open(map, marker);
     markerRef.current = marker;
+
+    setTimeout(() => {
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter({ lat: center[0], lng: center[1] });
+    }, 300);
   }, [isLoaded, center, zoom]);
 
   useEffect(() => {
     if (!searchQuery || !isLoaded || !mapInstanceRef.current) return;
 
+    const google = (window as any).google;
     const geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({ address: searchQuery }, (results, status) => {
+    geocoder.geocode({ address: searchQuery }, (results: any, status: any) => {
       if (status === 'OK' && results && results[0]) {
         const location = results[0].geometry.location;
         const lat = location.lat();
@@ -85,10 +99,11 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           position: { lat, lng },
           map: mapInstanceRef.current,
           title: results[0].formatted_address,
+          animation: google.maps.Animation.DROP,
         });
 
         const infoWindow = new google.maps.InfoWindow({
-          content: `<b>${results[0].formatted_address}</b>`,
+          content: `<div style="padding: 8px;"><b>${results[0].formatted_address}</b></div>`,
         });
 
         infoWindow.open(mapInstanceRef.current, marker);
@@ -105,5 +120,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
     });
   }, [searchQuery, isLoaded, onLocationChange]);
 
-  return <div ref={mapRef} className="w-full h-full rounded-2xl" />;
+  return (
+    <div ref={mapRef} className="w-full h-full rounded-2xl" style={{ minHeight: '232px' }} />
+  );
 };
