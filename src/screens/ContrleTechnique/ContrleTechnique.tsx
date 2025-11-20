@@ -242,7 +242,7 @@ export const ContrleTechnique = (): JSX.Element => {
                   </p>
                 </div>
               </CardContent>
-              <div className="absolute top-[-39px] left-[-37px] w-[74px] h-[78px]">
+              <div className="absolute top-[-39px] left-1/2 -translate-x-1/2 w-[74px] h-[78px]">
                 <img
                   className="absolute top-0 left-0 w-full h-full"
                   alt="Polygon"
