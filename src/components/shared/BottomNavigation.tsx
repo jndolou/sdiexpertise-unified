@@ -40,7 +40,7 @@ export const BottomNavigation = ({ className = "" }: BottomNavigationProps): JSX
                 : "[border-image:linear-gradient(147deg,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_100%)_1]"
             }`}
           >
-            <img className="w-6 h-6 [filter:brightness(0)_saturate(100%)_invert(42%)_sepia(96%)_saturate(376%)_hue-rotate(173deg)_brightness(95%)_contrast(93%)]" alt={item.label} src={item.icon} />
+            <img className="w-6 h-6" alt={item.label} src={item.icon} />
             <div
               className={`w-fit ${
                 index === 0 ? "ml-[-1.75px]" : ""

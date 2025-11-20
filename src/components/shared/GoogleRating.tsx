@@ -21,7 +21,7 @@ export const GoogleRating = ({
           {[...Array(5)].map((_, index) => (
             <StarIcon
               key={index}
-              className="relative w-3 h-3 fill-current text-[#346ca0]"
+              className="relative w-3 h-3 fill-current text-black"
             />
           ))}
         </div>
