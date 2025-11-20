@@ -4,7 +4,7 @@ import { GoogleRating } from "../../../../components/shared";
 
 export const HeroSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-start gap-[22px] pt-8 pb-0 px-4 relative rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)]">
+    <section className="flex flex-col w-full items-start gap-[22px] pt-8 pb-0 px-4 relative rounded-2xl shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33]">
       <div className="inline-flex flex-col items-start gap-[39px] relative flex-[0_0_auto]">
         <div className="inline-flex flex-col items-start gap-7 relative flex-[0_0_auto]">
           <div className="flex flex-col w-full items-start gap-5 relative flex-[0_0_auto]">

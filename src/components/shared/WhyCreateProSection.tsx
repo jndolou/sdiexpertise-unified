@@ -81,7 +81,7 @@ export const WhyCreateProSection = ({
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="gap-2.5 p-2 self-stretch w-full flex-[0_0_auto] bg-[#ffffff1a] rounded-2xl border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)] flex items-start relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(138deg,rgba(255,255,255,1)_0%,rgba(170,127,251,1)_34%,rgba(170,127,251,1)_66%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
+                className="gap-2.5 p-2 self-stretch w-full flex-[0_0_auto] bg-[#ffffff1a] rounded-2xl border-[none] shadow-[inset_0px_1.85px_1.85px_#ffffff33,inset_0px_-1.85px_1.85px_#ffffff33] flex items-start relative before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-2xl before:[background:linear-gradient(138deg,rgba(255,255,255,1)_0%,rgba(170,127,251,1)_34%,rgba(170,127,251,1)_66%,rgba(255,255,255,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none"
               >
                 <div className="inline-flex items-center gap-2.5 relative flex-[0_0_auto]">
                   <img
